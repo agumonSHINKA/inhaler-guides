@@ -1,0 +1,162 @@
+{
+ "symbicort": {
+  "t": "吸必擴有兩種不同裝置",
+  "m": [
+   "symbicort-turbuhaler",
+   "symbicort-rapihaler"
+  ],
+  "x": "都保（乾粉，快速用力吸）與氣化噴霧劑（噴霧，慢慢吸）用法不同。"
+ },
+ "seretide": {
+  "t": "使肺泰有兩種不同裝置",
+  "m": [
+   "seretide",
+   "seretide-accuhaler"
+  ],
+  "x": "優氟吸入劑（噴霧）與準納（乾粉）用法不同。"
+ },
+ "foster": {
+  "t": "肺舒坦有兩種不同裝置",
+  "m": [
+   "foster",
+   "foster-nexthaler"
+  ],
+  "x": "定量吸入劑（噴霧）與耐舒樂（乾粉）用法不同；另有 100/6 與 200/6 兩種含量。"
+ },
+ "respimat": {
+  "t": "同樣是舒沛噴裝置的不同藥",
+  "m": [
+   "spiriva",
+   "spiolto",
+   "striverdi-respimat"
+  ],
+  "x": "外觀相似，藥不一樣。"
+ },
+ "breezhaler": {
+  "t": "同樣是膠囊吸入器的不同藥",
+  "m": [
+   "onbrez-breezhaler",
+   "ultibro-breezhaler",
+   "enerzair-breezhaler"
+  ],
+  "x": "每種膠囊只能用自己盒內附的吸入器。"
+ },
+ "ellipta": {
+  "t": "同樣是易利達裝置的不同藥",
+  "m": [
+   "anoro",
+   "incruse-ellipta",
+   "relvar-ellipta",
+   "trelegy-ellipta"
+  ],
+  "x": "外觀相似，成分與開封後期限不同。"
+ },
+ "aerosphere": {
+  "t": "同樣是 Aerosphere 裝置的不同藥",
+  "m": [
+   "bevespi-aerosphere",
+   "breztri"
+  ],
+  "x": "必肺宜與必肺暢名稱相近，成分不同。"
+ },
+ "beroduo": {
+  "t": "名稱相近",
+  "m": [
+   "berotec",
+   "berodual"
+  ],
+  "x": "備勞喘與備喘全成分不同。"
+ },
+ "relvar-strength": {
+  "t": "同名不同含量",
+  "m": [
+   "relvar-ellipta"
+  ],
+  "x": "有 92/22 與 184/22 兩種含量。"
+ },
+ "accuhaler-strength": {
+  "t": "同名不同含量",
+  "m": [
+   "seretide-accuhaler"
+  ],
+  "x": "有 100/50、250/50、500/50 等含量。"
+ },
+ "enerzair-strength": {
+  "t": "同名不同含量",
+  "m": [
+   "enerzair-breezhaler"
+  ],
+  "x": "有 150/50/80 與 150/50/160 兩種含量。"
+ },
+ "alvesco-strength": {
+  "t": "同名不同含量",
+  "m": [
+   "alvesco-mdi"
+  ],
+  "x": "有 80 與 160 微公克兩種含量。"
+ },
+ "glargine": {
+  "t": "同成分（insulin glargine）但濃度或配方不同",
+  "m": [
+   "lantus-solostar",
+   "toujeo-solostar",
+   "semglee-pen",
+   "soliqua-100-33",
+   "soliqua-100-50"
+  ],
+  "x": "蘭德仕 100 單位/mL、糖德仕 300 單位/mL、爽胰達另含 GLP-1，不可互換。"
+ },
+ "solostar": {
+  "t": "同樣是 SoloStar 筆的不同藥",
+  "m": [
+   "lantus-solostar",
+   "toujeo-solostar",
+   "apidra-solostar",
+   "soliqua-100-33",
+   "soliqua-100-50"
+  ],
+  "x": "筆的外型相似，請看筆身顏色與名稱。"
+ },
+ "humalog": {
+  "t": "優泌樂有三種",
+  "m": [
+   "humalog-kwikpen",
+   "humalog-mix25-kwikpen",
+   "humalog-mix50-kwikpen"
+  ],
+  "x": "速效（澄清）、混合型 25、混合型 50（乳白色）不可互換。"
+ },
+ "soliqua": {
+  "t": "爽胰達有兩種含量",
+  "m": [
+   "soliqua-100-33",
+   "soliqua-100-50"
+  ],
+  "x": "100/33 與 100/50 不可互換。"
+ },
+ "flexpen": {
+  "t": "同樣是 FlexPen 諾易筆的不同胰島素",
+  "m": [
+   "levemir-flexpen",
+   "novomix30-flexpen",
+   "novorapid-flexpen"
+  ],
+  "x": "長效、預混、速效外觀相似，請看筆身顏色與名稱。"
+ },
+ "flextouch": {
+  "t": "同樣是 FlexTouch 諾特筆的不同胰島素",
+  "m": [
+   "tresiba-flextouch",
+   "ryzodeg-flextouch",
+   "awiqli"
+  ],
+  "x": "每天一次、複方、每週一次，不可互換。"
+ },
+ "weekly": {
+  "t": "每週一次的胰島素",
+  "m": [
+   "awiqli"
+  ],
+  "x": "週胰保一週只打一次，不是每天打。"
+ }
+}

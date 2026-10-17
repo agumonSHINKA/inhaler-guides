@@ -1,0 +1,1608 @@
+{
+ "version": "1.0.0",
+ "lastReviewed": "2026-10",
+ "effective": "2026-10-18",
+ "drugs": [
+  {
+   "slug": "symbicort-turbuhaler",
+   "no": 1,
+   "brand": "Symbicort Turbuhaler",
+   "zhName": "吸必擴都保定量粉狀吸入劑",
+   "ingredient": "Budesonide / Formoterol",
+   "strength": "160 / 4.5 微公克／劑；120 劑／瓶",
+   "category": "乾粉吸入器",
+   "chip": "dpi",
+   "license": "衛署藥輸字第023265號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第023265號",
+   "technique": "turbuhaler",
+   "role": "mart",
+   "rinse": true,
+   "video": "https://www.tspccm.org.tw/media/10878",
+   "lasa": [
+    "symbicort"
+   ],
+   "purpose": "含[[吸入型類固醇]]（budesonide）和長效[[支氣管擴張劑]]（formoterol）的乾粉吸入劑，用於氣喘或慢性阻塞性肺病（COPD）。",
+   "usual": [
+    "使用次數與吸數依醫師處方與藥袋。",
+    "部分氣喘病人醫師會指示「保養加緩解」（[[MART]]）用法；只有您的氣喘行動計畫有寫才可以這樣用。"
+   ],
+   "prep": [
+    {
+     "t": "新的吸入器第一次使用：蓋子轉開拿掉，吸入器直立，底座往一個方向轉到底，再轉回來直到「喀」一聲；這個步驟做 2 次（不用吸）。",
+     "tm": "turbuhaler/03-twist-grip-click",
+     "img": "tbh-twist",
+     "c": [
+      "直立",
+      "來回轉 2 次"
+     ]
+    }
+   ],
+   "storage": [
+    "不要高於 30°C，用完一定蓋緊蓋子。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛署藥輸字第023265號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "spiriva",
+   "no": 2,
+   "brand": "Spiriva Respimat",
+   "zhName": "適倍樂舒沛噴吸入劑",
+   "ingredient": "Tiotropium",
+   "strength": "2.5 微公克／噴；60 噴／瓶",
+   "category": "柔霧吸入器",
+   "chip": "smi",
+   "license": "衛署藥輸字第025033號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第025033號",
+   "technique": "respimat",
+   "role": "maintenance",
+   "video": "https://www.tspccm.org.tw/media/10682",
+   "lasa": [
+    "respimat"
+   ],
+   "purpose": "長效抗膽鹼[[支氣管擴張劑]]（tiotropium），用於 COPD 與部分氣喘病人的保養治療。",
+   "usual": [
+    "一次劑量是連續 2 噴，每天 1 次，每天固定時間使用（依醫師處方）。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛署藥輸字第025033號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "berotec",
+   "no": 3,
+   "brand": "Berotec N",
+   "zhName": "備勞喘定量噴霧液",
+   "ingredient": "Fenoterol",
+   "strength": "100 微公克／噴；200 噴／瓶",
+   "category": "定量噴霧吸入器",
+   "chip": "pmdi",
+   "license": "衛署藥輸字第023074號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第023074號",
+   "technique": "pmdi",
+   "role": "reliever",
+   "shake": true,
+   "video": null,
+   "lasa": [
+    "beroduo"
+   ],
+   "purpose": "短效[[支氣管擴張劑]]（fenoterol），突然喘的時候用的[[急救吸入劑]]。",
+   "usual": [
+    "依醫師處方在需要時使用。每天最多可用幾次請依藥袋與仿單，不要自己加量。",
+    "如果需要的次數越來越多，表示氣喘或 COPD 沒控制好，請盡快回診。"
+   ],
+   "prep": [
+    {
+     "t": "新的吸入器第一次使用：搖勻後朝空中、遠離臉部按壓 2 下。",
+     "tm": "pmdi/03-prime-test-spray",
+     "img": "prime-air",
+     "c": [
+      "朝空中 2 下"
+     ]
+    },
+    {
+     "t": "超過 3 天沒有使用：使用前先朝空中按壓 1 下。",
+     "img": "prime-air",
+     "c": [
+      "朝空中 1 下"
+     ]
+    }
+   ],
+   "empty": [
+    "本品沒有劑量計數器時：新的一支共 200 噴，每按一下（包括試噴）就在藥袋或紙上畫一筆，到 200 就換新的。"
+   ],
+   "cleaning": [
+    "每週清潔一次：先取下金屬藥罐，用溫水沖洗塑膠吸嘴外殼，甩乾後自然風乾，乾了再把藥罐裝回去。金屬藥罐不可以碰水。"
+   ],
+   "storage": [
+    "30°C 以下保存；加壓罐不可刺穿、焚燒或放在超過 50°C 的地方。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛署藥輸字第023074號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "berodual",
+   "no": 4,
+   "brand": "Berodual N",
+   "zhName": "備喘全定量噴霧液",
+   "ingredient": "Ipratropium / Fenoterol",
+   "strength": "100 微公克／噴；200 噴／瓶",
+   "category": "定量噴霧吸入器",
+   "chip": "pmdi",
+   "license": "衛署藥輸字第023473號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第023473號",
+   "technique": "pmdi",
+   "role": "reliever",
+   "shake": true,
+   "video": null,
+   "lasa": [
+    "beroduo"
+   ],
+   "purpose": "兩種短效[[支氣管擴張劑]]（ipratropium＋fenoterol）的定量噴霧劑，用於緩解喘、胸悶。",
+   "usual": [
+    "依醫師處方在需要時使用。每天最多可用幾次請依藥袋與仿單，不要自己加量。",
+    "如果需要的次數越來越多，請盡快回診。"
+   ],
+   "prep": [
+    {
+     "t": "新的吸入器第一次使用：搖勻後朝空中、遠離臉部按壓 2 下。",
+     "tm": "pmdi/03-prime-test-spray",
+     "img": "prime-air",
+     "c": [
+      "朝空中 2 下"
+     ]
+    },
+    {
+     "t": "超過 3 天沒有使用：先朝空中按壓 1 下。",
+     "img": "prime-air",
+     "c": [
+      "朝空中 1 下"
+     ]
+    }
+   ],
+   "empty": [
+    "本品沒有劑量計數器時：新的一支共 200 噴，每按一下（包括試噴）就在藥袋或紙上畫一筆，到 200 就換新的。"
+   ],
+   "cleaning": [
+    "每週清潔一次：先取下金屬藥罐，用溫水沖洗塑膠吸嘴外殼，甩乾後自然風乾，乾了再裝回藥罐。藥罐不可碰水。"
+   ],
+   "storage": [
+    "30°C 以下保存；加壓罐不可刺穿、焚燒或放在超過 50°C 的地方。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛署藥輸字第023473號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "spiolto",
+   "no": 5,
+   "brand": "Spiolto Respimat",
+   "zhName": "適喘樂舒沛噴吸入劑",
+   "ingredient": "Tiotropium / Olodaterol",
+   "strength": "2.5 / 2.5 微公克／噴；60 噴／瓶",
+   "category": "柔霧吸入器",
+   "chip": "smi",
+   "license": "衛部藥輸字第026735號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第026735號",
+   "technique": "respimat",
+   "role": "copdOnly",
+   "video": "https://www.tspccm.org.tw/media/10682",
+   "lasa": [
+    "respimat"
+   ],
+   "purpose": "兩種長效[[支氣管擴張劑]]（tiotropium＋olodaterol），用於[[慢性阻塞性肺病]]的保養治療。",
+   "usual": [
+    "一次劑量是連續 2 噴，每天 1 次，每天固定時間使用（依醫師處方）。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛部藥輸字第026735號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "symbicort-rapihaler",
+   "no": 6,
+   "brand": "Symbicort Rapihaler",
+   "zhName": "吸必擴氣化噴霧劑",
+   "ingredient": "Budesonide / Formoterol",
+   "strength": "160 / 4.5 微公克／噴；120 噴／瓶",
+   "category": "定量噴霧吸入器",
+   "chip": "pmdi",
+   "license": "衛部藥輸字第026657號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第026657號",
+   "technique": "pmdi",
+   "role": "mart",
+   "rinse": true,
+   "shake": true,
+   "video": "https://www.tspccm.org.tw/media/10877",
+   "lasa": [
+    "symbicort"
+   ],
+   "purpose": "含[[吸入型類固醇]]（budesonide）和長效[[支氣管擴張劑]]（formoterol）的定量噴霧吸入器。",
+   "usual": [
+    "使用次數與噴數依醫師處方與藥袋；是否也當緩解用，只能依醫師給您的行動計畫。"
+   ],
+   "prep": [
+    {
+     "t": "新的吸入器、超過 1 週沒用、或摔到之後：搖 5 秒，朝空中遠離臉部按 1 下；再搖 5 秒、再按 1 下，共試噴 2 次。",
+     "tm": "pmdi/03-prime-test-spray",
+     "img": "prime-air",
+     "c": [
+      "搖 5 秒",
+      "共試噴 2 次"
+     ]
+    }
+   ],
+   "empty": [
+    "看吸入器上的劑量計數器；數字快到 0 時準備新的一支。"
+   ],
+   "cleaning": [
+    "每週用乾布擦吸嘴裡外。不要放進水裡、不要拆下藥罐。"
+   ],
+   "storage": [
+    "30°C 以下保存。從鋁箔袋取出後 3 個月內用完（請在吸入器上寫下拆封日期）。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛部藥輸字第026657號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "seretide",
+   "no": 7,
+   "brand": "Seretide 50 Evohaler",
+   "zhName": "使肺泰優氟吸入劑",
+   "ingredient": "Salmeterol / Fluticasone",
+   "strength": "25 / 50 微公克／噴；120 噴／瓶",
+   "category": "定量噴霧吸入器",
+   "chip": "pmdi",
+   "license": "衛署藥輸字第023480號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第023480號",
+   "technique": "pmdi",
+   "role": "maintenance",
+   "rinse": true,
+   "shake": true,
+   "video": "https://www.tspccm.org.tw/media/s/pMXI9a",
+   "videoNote": "影片為台灣胸腔暨重症加護醫學會的 GSK Evohaler 同型定量噴霧器教學，試噴次數請以本頁為準。",
+   "lasa": [
+    "seretide"
+   ],
+   "purpose": "含[[吸入型類固醇]]（fluticasone）和長效[[支氣管擴張劑]]（salmeterol）的定量噴霧吸入器（優氟吸入劑）。",
+   "usual": [
+    "每天使用次數依醫師處方，即使沒有症狀也要規律使用。"
+   ],
+   "prep": [
+    {
+     "t": "第一次使用：取下吸嘴蓋，搖勻後朝空中、遠離臉部試噴，直到計數器顯示 120。",
+     "tm": "pmdi/03-prime-test-spray",
+     "img": "prime-air",
+     "c": [
+      "朝空中試噴",
+      "計數器到 120"
+     ]
+    },
+    {
+     "t": "超過 1 星期沒有使用：使用前搖勻並朝空中試噴（次數請依仿單或藥師說明）。",
+     "img": "prime-air",
+     "c": [
+      "朝空中試噴"
+     ]
+    }
+   ],
+   "gap": "約 30 秒",
+   "empty": [
+    "看計數器的數字；數字快到 0 時請準備新的一支。"
+   ],
+   "cleaning": [
+    "每週一次用乾布或紙巾擦吸嘴裡外。不要拆下藥罐，不要用水洗。"
+   ],
+   "storage": [
+    "30°C 以下保存。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛署藥輸字第023480號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "flixotide",
+   "no": 8,
+   "brand": "Flixotide Evohaler",
+   "zhName": "輔舒酮優氟吸入劑",
+   "ingredient": "Fluticasone",
+   "strength": "50 微公克／噴；120 噴／瓶",
+   "category": "定量噴霧吸入器",
+   "chip": "pmdi",
+   "license": "衛署藥輸字第023755號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第023755號",
+   "technique": "pmdi",
+   "role": "maintenance",
+   "rinse": true,
+   "shake": true,
+   "video": "https://www.tspccm.org.tw/media/s/pMXI9a",
+   "videoNote": "影片為台灣胸腔暨重症加護醫學會的 GSK Evohaler 同型定量噴霧器教學，試噴次數請以本頁為準。",
+   "purpose": "[[吸入型類固醇]]（fluticasone）定量噴霧吸入器，用於預防氣喘發作。",
+   "usual": [
+    "每天規律使用，次數依醫師處方。"
+   ],
+   "prep": [
+    {
+     "t": "第一次使用或超過 1 星期沒用：搖勻後朝空中、遠離臉部試噴 2 下。",
+     "tm": "pmdi/03-prime-test-spray",
+     "img": "prime-air",
+     "c": [
+      "朝空中 2 下"
+     ]
+    }
+   ],
+   "gap": "約 30 秒",
+   "empty": [
+    "有計數器時看計數器。本品沒有劑量計數器時：新的一支共 120 噴，每按一下（包括試噴）就在藥袋或紙上畫一筆，到 120 就換新的。"
+   ],
+   "cleaning": [
+    "每週一次用乾布或紙巾擦吸嘴裡外。不要拆下藥罐，不要用水洗。"
+   ],
+   "storage": [
+    "30°C 以下保存。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛署藥輸字第023755號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "duasma",
+   "no": 9,
+   "brand": "Duasma",
+   "zhName": "帝舒滿定量噴霧劑",
+   "ingredient": "Budesonide",
+   "strength": "200 微公克／噴；200 噴／瓶",
+   "category": "定量噴霧吸入器",
+   "chip": "pmdi",
+   "license": "衛署藥製字第057770號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛署藥製字第057770號",
+   "technique": "pmdi",
+   "role": "maintenance",
+   "rinse": true,
+   "shake": true,
+   "video": null,
+   "purpose": "[[吸入型類固醇]]（budesonide）定量噴霧劑，用於預防氣喘發作。可接[[吸藥輔助器]]使用。",
+   "usual": [
+    "每天規律使用，次數依醫師處方。"
+   ],
+   "prep": [
+    {
+     "t": "第一次使用：搖勻後朝空中、遠離臉部按壓 2 下。",
+     "tm": "pmdi/03-prime-test-spray",
+     "img": "prime-air",
+     "c": [
+      "朝空中 2 下"
+     ]
+    }
+   ],
+   "spacerNote": [
+    "接輔助器時：按壓藥罐後立刻用正常呼吸的速度吸入（不要延遲，藥霧會很快黏在輔助器內壁），閉氣約 5–10 秒。",
+    "輔助器用溫水加清潔劑或肥皂清洗，沖乾淨後讓它乾燥。"
+   ],
+   "empty": [
+    "本品沒有劑量計數器時：新的一支共 200 噴，每按一下（包括試噴）就在藥袋或紙上畫一筆，到 200 就換新的。"
+   ],
+   "cleaning": [
+    "吸入器的清潔方式請依仿單或藥師說明。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛署藥製字第057770號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "foster-nexthaler",
+   "no": 10,
+   "brand": "Foster NEXThaler",
+   "zhName": "肺舒坦耐舒樂乾粉吸入劑",
+   "ingredient": "Beclomethasone / Formoterol",
+   "strength": "100 / 6 微公克／劑；120 劑／瓶",
+   "category": "乾粉吸入器",
+   "chip": "dpi",
+   "license": "衛部藥輸字第026816號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第026816號",
+   "technique": "nexthaler",
+   "role": "mart",
+   "rinse": true,
+   "video": "https://www.tspccm.org.tw/media/10879",
+   "lasa": [
+    "foster"
+   ],
+   "purpose": "含[[吸入型類固醇]]（beclometasone）和長效[[支氣管擴張劑]]（formoterol）的乾粉吸入劑。",
+   "usual": [
+    "使用次數依醫師處方；是否也當緩解用，只能依醫師給您的行動計畫。"
+   ],
+   "storage": [
+    "開袋前不要放在 25°C 以上。從保護袋取出後 6 個月內用完（請寫下開袋日期）。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛部藥輸字第026816號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "foster",
+   "no": 11,
+   "brand": "Foster",
+   "zhName": "肺舒坦定量吸入劑",
+   "ingredient": "Beclomethasone / Formoterol",
+   "strength": "100 / 6 微公克／噴；120 噴／瓶",
+   "category": "定量噴霧吸入器",
+   "chip": "pmdi",
+   "license": "衛署藥輸字第025092號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第025092號",
+   "technique": "pmdi",
+   "role": "mart",
+   "rinse": true,
+   "shake": "check",
+   "video": "https://www.tspccm.org.tw/media/10683",
+   "lasa": [
+    "foster"
+   ],
+   "purpose": "含[[吸入型類固醇]]（beclometasone）和長效[[支氣管擴張劑]]（formoterol）的定量吸入劑（溶液型）。",
+   "usual": [
+    "使用次數依醫師處方；是否也當緩解用，只能依醫師給您的行動計畫。"
+   ],
+   "prep": [
+    {
+     "t": "第一次使用或超過 14 天沒用：朝空中、遠離臉部按壓 1 下，確認計數器變成 120。",
+     "tm": "pmdi/03-prime-test-spray",
+     "img": "prime-air",
+     "c": [
+      "朝空中 1 下",
+      "計數器 120"
+     ]
+    }
+   ],
+   "empty": [
+    "看計數器的數字；數字快到 0 時準備新的一支。"
+   ],
+   "cleaning": [
+    "用乾布擦吸嘴裡外。不要拆下藥罐，不要用水洗。"
+   ],
+   "storage": [
+    "藥局交給您之前放冰箱；領藥後放 25°C 以下，最多 5 個月（請在盒上寫下領藥日期）。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛署藥輸字第025092號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "anoro",
+   "no": 12,
+   "brand": "Anoro Ellipta",
+   "zhName": "安肺樂易利達乾粉吸入劑",
+   "ingredient": "Umeclidinium / Vilanterol",
+   "strength": "55 / 22 微公克／劑；30 劑／瓶",
+   "category": "乾粉吸入器",
+   "chip": "dpi",
+   "license": "衛部藥輸字第026315號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第026315號",
+   "technique": "ellipta",
+   "role": "copd",
+   "video": "https://www.tspccm.org.tw/media/7025",
+   "lasa": [
+    "ellipta"
+   ],
+   "purpose": "兩種長效[[支氣管擴張劑]]（umeclidinium＋vilanterol）的乾粉吸入劑。",
+   "usual": [
+    "每天 1 次、每次 1 吸，每天固定時間使用（依醫師處方）。"
+   ],
+   "storage": [
+    "藥盒開封後 6 週內用完（請在標籤寫下開封日與丟棄日）。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛部藥輸字第026315號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "breztri",
+   "no": 13,
+   "brand": "Breztri",
+   "zhName": "必肺暢氣化噴霧劑",
+   "ingredient": "Budesonide / Glycopyrronium / Formoterol",
+   "strength": "160 / 7.2 / 5 微公克／噴；120 噴／瓶",
+   "category": "定量噴霧吸入器",
+   "chip": "pmdi",
+   "license": "衛部藥輸字第028183號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第028183號",
+   "technique": "pmdi",
+   "role": "copd",
+   "rinse": true,
+   "shake": true,
+   "video": "https://www.tspccm.org.tw/media/10686",
+   "videoNote": "影片為同一種 Aerosphere 吸入器（Bevespi）的操作教學，試噴次數請以本頁為準。",
+   "lasa": [
+    "aerosphere"
+   ],
+   "purpose": "三合一（[[吸入型類固醇]] budesonide＋兩種長效支氣管擴張劑）的定量噴霧吸入器。",
+   "usual": [
+    "使用次數依醫師處方，即使沒有症狀也要規律使用。"
+   ],
+   "prep": [
+    {
+     "t": "第一次使用：每次先充分搖勻，朝空中、遠離臉部按壓，共 4 次。",
+     "tm": "pmdi/03-prime-test-spray",
+     "img": "prime-air",
+     "c": [
+      "朝空中 4 次"
+     ]
+    },
+    {
+     "t": "超過 7 天沒用、摔到、或每週清洗後：搖勻後朝空中按壓 2 次。",
+     "img": "prime-air",
+     "c": [
+      "朝空中 2 次"
+     ]
+    }
+   ],
+   "empty": [
+    "看計數器的數字；數字快到 0 時準備新的一支。"
+   ],
+   "cleaning": [
+    "每週清洗一次：取出藥罐（藥罐不可碰水），溫水從吸入器上方流過約 30 秒，再從吸嘴端流過約 30 秒，甩乾後自然風乾；裝回藥罐後依上面規定試噴 2 次。"
+   ],
+   "storage": [
+    "25°C 以下乾燥處保存。從鋁箔袋取出後 3 個月內用完。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛部藥輸字第028183號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "trimbow",
+   "no": 14,
+   "brand": "Trimbow",
+   "zhName": "喘寶定量吸入劑",
+   "ingredient": "Beclomethasone / Formoterol / Glycopyrronium",
+   "strength": "100 / 6 / 12.5 微公克／噴；120 噴／瓶",
+   "category": "定量噴霧吸入器",
+   "chip": "pmdi",
+   "license": "衛部藥輸字第027672號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第027672號",
+   "technique": "pmdi",
+   "role": "copd",
+   "rinse": true,
+   "shake": "check",
+   "video": "https://www.tspccm.org.tw/media/10689",
+   "purpose": "三合一（[[吸入型類固醇]] beclometasone＋formoterol＋glycopyrronium）的定量吸入劑。",
+   "usual": [
+    "使用次數依醫師處方，即使沒有症狀也要規律使用。"
+   ],
+   "prep": [
+    {
+     "t": "第一次使用：計數器應顯示 121。朝空中、遠離臉部按壓 1 下，計數器變成 120 就完成。",
+     "tm": "pmdi/03-prime-test-spray",
+     "img": "prime-air",
+     "c": [
+      "朝空中 1 下",
+      "121 → 120"
+     ]
+    }
+   ],
+   "gap": "約 30 秒",
+   "empty": [
+    "看計數器的數字；數字快到 0 時準備新的一支。"
+   ],
+   "cleaning": [
+    "用乾布擦吸嘴。不要拆下藥罐，不要用水洗。"
+   ],
+   "storage": [
+    "藥局交給您之前放冰箱；領藥後放 25°C 以下，最多 4 個月（請寫下領藥日期）。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛部藥輸字第027672號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "ventolin",
+   "no": 15,
+   "brand": "Ventolin MDI",
+   "zhName": "泛得林定量噴霧劑",
+   "ingredient": "Salbutamol",
+   "strength": "100 微公克／噴；200 噴／瓶",
+   "category": "定量噴霧吸入器",
+   "chip": "pmdi",
+   "license": "衛署藥輸字第017528號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第017528號",
+   "technique": "pmdi",
+   "role": "reliever",
+   "shake": true,
+   "video": "https://www.tspccm.org.tw/media/s/pMXI9a",
+   "videoNote": "影片為台灣胸腔暨重症加護醫學會的 GSK Evohaler 同型定量噴霧器教學，試噴次數請以本頁為準。",
+   "purpose": "短效[[支氣管擴張劑]]（salbutamol），突然喘的時候用的[[急救吸入劑]]。",
+   "usual": [
+    "依醫師處方在需要時使用；每天最多可用幾次請依藥袋與仿單。",
+    "需要越用越多次，表示病情沒控制好，請盡快回診。"
+   ],
+   "prep": [
+    {
+     "t": "第一次使用或超過 5 天沒用：搖勻後朝空中、遠離臉部按壓 2 下。",
+     "tm": "pmdi/03-prime-test-spray",
+     "img": "prime-air",
+     "c": [
+      "朝空中 2 下"
+     ]
+    }
+   ],
+   "gap": "約 30 秒",
+   "empty": [
+    "本品沒有劑量計數器時：新的一支共 200 噴，每按一下（包括試噴）就在藥袋或紙上畫一筆，到 200 就換新的。"
+   ],
+   "cleaning": [
+    "每週清潔一次：取出金屬藥罐，用溫水沖洗塑膠外殼與吸嘴，甩乾後自然風乾，乾了再裝回藥罐。藥罐不可碰水。"
+   ],
+   "storage": [
+    "30°C 以下保存，避免結霜與陽光直射。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛署藥輸字第017528號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "onbrez-breezhaler",
+   "no": 16,
+   "brand": "Onbrez Breezhaler",
+   "zhName": "昂舒吸入膠囊 150 微克",
+   "ingredient": "Indacaterol",
+   "strength": "150 微公克／膠囊；30 粒／盒",
+   "category": "乾粉吸入器",
+   "chip": "dpi",
+   "license": "衛署藥輸字第025282號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第025282號",
+   "technique": "breezhaler",
+   "role": "copdOnly",
+   "video": "https://www.tspccm.org.tw/media/10673",
+   "lasa": [
+    "breezhaler"
+   ],
+   "purpose": "長效[[支氣管擴張劑]]（indacaterol）吸入膠囊，用於[[慢性阻塞性肺病]]的保養治療。",
+   "usual": [
+    "每天 1 次、每次 1 顆膠囊（放進吸入器吸，不能吞），每天固定時間（依醫師處方）。"
+   ],
+   "storage": [
+    "30°C 以下；膠囊留在鋁箔中，要用時才取出。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛署藥輸字第025282號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "striverdi-respimat",
+   "no": 17,
+   "brand": "Striverdi Respimat",
+   "zhName": "適維樂舒沛噴吸入劑 2.5 微公克",
+   "ingredient": "Olodaterol",
+   "strength": "2.5 微公克／噴；60 噴／瓶",
+   "category": "柔霧吸入器",
+   "chip": "smi",
+   "license": "衛部藥輸字第026292號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第026292號",
+   "technique": "respimat",
+   "role": "copdOnly",
+   "video": "https://www.tspccm.org.tw/media/10682",
+   "lasa": [
+    "respimat"
+   ],
+   "purpose": "長效[[支氣管擴張劑]]（olodaterol），用於[[慢性阻塞性肺病]]的保養治療。",
+   "usual": [
+    "一次劑量是連續 2 噴，每天 1 次，每天固定時間使用（依醫師處方）。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛部藥輸字第026292號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "incruse-ellipta",
+   "no": 18,
+   "brand": "Incruse Ellipta",
+   "zhName": "英克賜易利達 55 微公克乾粉吸入劑",
+   "ingredient": "Umeclidinium",
+   "strength": "55 微公克／劑；30 劑／盒",
+   "category": "乾粉吸入器",
+   "chip": "dpi",
+   "license": "衛部藥輸字第026500號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第026500號",
+   "technique": "ellipta",
+   "role": "copd",
+   "video": "https://www.tspccm.org.tw/media/5877",
+   "lasa": [
+    "ellipta"
+   ],
+   "purpose": "長效抗膽鹼[[支氣管擴張劑]]（umeclidinium）乾粉吸入劑。",
+   "usual": [
+    "每天 1 次、每次 1 吸，每天固定時間（依醫師處方）。"
+   ],
+   "storage": [
+    "藥盒開封後 6 週內用完（請在標籤寫下開封日與丟棄日）。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛部藥輸字第026500號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "relvar-ellipta",
+   "no": 19,
+   "brand": "Relvar Ellipta",
+   "zhName": "潤娃易利達乾粉吸入劑",
+   "ingredient": "Fluticasone furoate / Vilanterol",
+   "strength": "92/22 或 184/22 微公克／劑；30 劑",
+   "category": "乾粉吸入器",
+   "chip": "dpi",
+   "license": "衛部藥輸字第026318號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第026318號",
+   "technique": "ellipta",
+   "role": "maintenance",
+   "rinse": true,
+   "video": "https://www.tspccm.org.tw/media/10684",
+   "lasa": [
+    "ellipta",
+    "relvar-strength"
+   ],
+   "purpose": "含[[吸入型類固醇]]（fluticasone furoate）和長效[[支氣管擴張劑]]（vilanterol）的乾粉吸入劑。有 92/22 和 184/22 兩種含量。",
+   "usual": [
+    "每天 1 次、每次 1 吸，每天固定時間（依醫師處方）。"
+   ],
+   "storage": [
+    "30°C 以下；從藥盒取出後最多 1 個月內用完（請寫下開封日與丟棄日）。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛部藥輸字第026318號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "seretide-accuhaler",
+   "no": 20,
+   "brand": "Seretide Accuhaler",
+   "zhName": "使肺泰準納乾粉吸入劑",
+   "ingredient": "Fluticasone propionate / Salmeterol",
+   "strength": "100/50、250/50 或 500/50 微公克／劑；60 劑",
+   "category": "乾粉吸入器",
+   "chip": "dpi",
+   "license": "衛署藥輸字第023202號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第023202號",
+   "technique": "accuhaler",
+   "role": "maintenance",
+   "rinse": true,
+   "video": "https://www.tspccm.org.tw/media/s/UK2fjq",
+   "lasa": [
+    "seretide",
+    "accuhaler-strength"
+   ],
+   "purpose": "含[[吸入型類固醇]]（fluticasone）和長效[[支氣管擴張劑]]（salmeterol）的乾粉吸入劑（準納）。有 100/50、250/50、500/50 等含量。",
+   "usual": [
+    "每天使用次數依醫師處方，即使沒有症狀也要規律使用。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛署藥輸字第023202號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "ultibro-breezhaler",
+   "no": 21,
+   "brand": "Ultibro Breezhaler",
+   "zhName": "昂帝博吸入膠囊 110/50 微克",
+   "ingredient": "Indacaterol / Glycopyrronium",
+   "strength": "110/50 微公克／膠囊；30 粒／盒",
+   "category": "乾粉吸入器",
+   "chip": "dpi",
+   "license": "衛部藥輸字第026301號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第026301號",
+   "technique": "breezhaler",
+   "role": "copdOnly",
+   "video": "https://www.tspccm.org.tw/media/10673",
+   "lasa": [
+    "breezhaler"
+   ],
+   "purpose": "兩種長效[[支氣管擴張劑]]（indacaterol＋glycopyrronium）吸入膠囊，用於[[慢性阻塞性肺病]]的保養治療。",
+   "usual": [
+    "每天 1 次、每次 1 顆膠囊（放進吸入器吸，不能吞），每天固定時間（依醫師處方）。"
+   ],
+   "empty": [
+    "看鋁箔剩下幾顆膠囊。吸入器使用 30 天後要丟棄，換用新盒附的吸入器。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛部藥輸字第026301號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "bevespi-aerosphere",
+   "no": 22,
+   "brand": "Bevespi Aerosphere",
+   "zhName": "必肺宜氣化噴霧劑 7.2/5.0 微克／劑量",
+   "ingredient": "Glycopyrronium / Formoterol",
+   "strength": "7.2/5.0 微公克／噴；120 噴／瓶",
+   "category": "定量噴霧吸入器",
+   "chip": "pmdi",
+   "license": "衛部藥輸字第027524號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第027524號",
+   "technique": "pmdi",
+   "role": "copd",
+   "shake": true,
+   "video": "https://www.tspccm.org.tw/media/10686",
+   "lasa": [
+    "aerosphere"
+   ],
+   "purpose": "兩種長效[[支氣管擴張劑]]（glycopyrronium＋formoterol）的定量噴霧吸入器。",
+   "usual": [
+    "使用次數依醫師處方，即使沒有症狀也要規律使用。"
+   ],
+   "prep": [
+    {
+     "t": "第一次使用：每次先充分搖勻，朝空中、遠離臉部按壓，共 4 次。",
+     "tm": "pmdi/03-prime-test-spray",
+     "img": "prime-air",
+     "c": [
+      "朝空中 4 次"
+     ]
+    },
+    {
+     "t": "超過 7 天沒用、摔到、或每週清洗後：搖勻後朝空中按壓 2 次。",
+     "img": "prime-air",
+     "c": [
+      "朝空中 2 次"
+     ]
+    }
+   ],
+   "hold": "最多約 10 秒（舒服範圍內）",
+   "empty": [
+    "看計數器的數字；數字快到 0 時準備新的一支。"
+   ],
+   "cleaning": [
+    "每週清洗一次：取出藥罐（藥罐不可碰水），溫水從吸入器上方流過約 30 秒，再從吸嘴端流過約 30 秒，甩乾後自然風乾；裝回藥罐後試噴 2 次。"
+   ],
+   "storage": [
+    "25°C 以下乾燥處保存。從鋁箔袋取出後 3 個月內用完。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛部藥輸字第027524號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "trelegy-ellipta",
+   "no": 23,
+   "brand": "Trelegy Ellipta",
+   "zhName": "肺樂喜易利達乾粉吸入劑",
+   "ingredient": "Fluticasone furoate / Umeclidinium / Vilanterol",
+   "strength": "92/55/22 或 184/55/22 微公克／劑；30 劑",
+   "category": "乾粉吸入器",
+   "chip": "dpi",
+   "license": "衛部藥輸字第027395號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第027395號",
+   "technique": "ellipta",
+   "role": "maintenance",
+   "rinse": true,
+   "video": "https://www.tspccm.org.tw/media/5879",
+   "lasa": [
+    "ellipta"
+   ],
+   "purpose": "三合一（[[吸入型類固醇]] fluticasone furoate＋umeclidinium＋vilanterol）乾粉吸入劑。",
+   "usual": [
+    "每天 1 次、每次 1 吸，每天固定時間（依醫師處方）。"
+   ],
+   "storage": [
+    "藥盒開封後 1 個月內用完（請在標籤寫下開封日與丟棄日）。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛部藥輸字第027395號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "enerzair-breezhaler",
+   "no": 24,
+   "brand": "Enerzair Breezhaler",
+   "zhName": "艾能舒吸入膠囊",
+   "ingredient": "Indacaterol / Glycopyrronium / Mometasone",
+   "strength": "150/50/80 或 150/50/160 微公克／膠囊",
+   "category": "乾粉吸入器",
+   "chip": "dpi",
+   "license": "衛部藥輸字第028048號／第028049號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第028048號",
+   "technique": "breezhaler",
+   "role": "maintenance",
+   "rinse": true,
+   "video": "https://www.tspccm.org.tw/media/10690",
+   "lasa": [
+    "breezhaler",
+    "enerzair-strength"
+   ],
+   "purpose": "三合一（[[吸入型類固醇]] mometasone＋兩種長效支氣管擴張劑）吸入膠囊，用於氣喘的保養治療。有 150/50/80 和 150/50/160 兩種含量。",
+   "usual": [
+    "每天 1 次、每次 1 顆膠囊（放進吸入器吸，不能吞），每天固定時間（依醫師處方）。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛部藥輸字第028048號／第028049號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "alvesco-mdi",
+   "no": 25,
+   "brand": "Alvesco MDI",
+   "zhName": "保衛康治喘樂吸入劑",
+   "ingredient": "Ciclesonide",
+   "strength": "80 或 160 微公克／噴；120 噴／瓶",
+   "category": "定量噴霧吸入器",
+   "chip": "pmdi",
+   "license": "衛署藥輸字第024787號／第024786號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第024787號",
+   "technique": "pmdi",
+   "role": "maintenance",
+   "rinse": true,
+   "shake": "check",
+   "video": null,
+   "lasa": [
+    "alvesco-strength"
+   ],
+   "purpose": "[[吸入型類固醇]]（ciclesonide）定量吸入劑，用於預防氣喘發作。有 80 和 160 微公克兩種含量。",
+   "usual": [
+    "每天規律使用，次數依醫師處方。"
+   ],
+   "prep": [
+    {
+     "t": "第一次使用（或久未使用）：先朝空中、遠離臉部試噴（次數請依仿單或藥師說明）。",
+     "tm": "pmdi/03-prime-test-spray",
+     "img": "prime-air",
+     "c": [
+      "朝空中試噴"
+     ]
+    }
+   ],
+   "cleaning": [
+    "清潔方式請依仿單或藥師說明。"
+   ],
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛署藥輸字第024787號／第024786號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "awiqli",
+   "no": 26,
+   "brand": "Awiqli FlexTouch",
+   "zhName": "週胰保諾特筆",
+   "ingredient": "Insulin icodec",
+   "strength": "700 單位/mL；3 mL/支",
+   "category": "胰島素注射筆",
+   "chip": "insulin",
+   "license": "衛部菌疫輸字第001287號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛部菌疫輸字第001287號",
+   "role": "insulinWeekly",
+   "video": null,
+   "lasa": [
+    "flextouch",
+    "weekly"
+   ],
+   "test": "依盒內使用說明書（台灣仿單未收錄使用說明，待藥師確認）",
+   "hold": "依盒內使用說明書",
+   "retries": null,
+   "purpose": "每週一次的長效[[基礎胰島素]]（insulin icodec），濃度 700 單位/mL。",
+   "usual": [
+    "一週只打一次，不是每天打。每週固定同一天注射，劑量依醫師處方。",
+    "請在月曆上記下每週注射的日子。"
+   ],
+   "warn": [
+    "一週只打一次，不是每天打。",
+    "高濃度（700 單位/mL）：絕對不可以用空針從筆裡抽藥。"
+   ],
+   "storage": [
+    "未開封：冰箱 2–8°C，不可冷凍。",
+    "開始使用或隨身攜帶時：30°C 以下或冰箱，最多 12 週。"
+   ],
+   "technique": "insulin-pen",
+   "highAlert": true,
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛部菌疫輸字第001287號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "ryzodeg-flextouch",
+   "no": 27,
+   "brand": "Ryzodeg FlexTouch",
+   "zhName": "諾胰得諾特筆",
+   "ingredient": "Insulin degludec / insulin aspart",
+   "strength": "100 單位/mL；3 mL/支",
+   "category": "胰島素注射筆",
+   "chip": "insulin",
+   "license": "衛部菌疫輸字第001053號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛部菌疫輸字第001053號",
+   "role": "insulinCoform",
+   "video": null,
+   "lasa": [
+    "flextouch"
+   ],
+   "test": "2 單位",
+   "retries": "最多 6 次",
+   "hold": "至少 6 秒",
+   "purpose": "長效（degludec）＋速效（aspart）胰島素的複方，澄清液，不需要混勻。",
+   "usual": [
+    "依醫師處方，和一天中的主餐一起注射。"
+   ],
+   "missed": "忘記打：在當天下一次正餐時補打，之後照原來時間；不要為了補而多打一次。（依台灣仿單；有疑問請聯絡藥師／醫師）",
+   "storage": [
+    "未開封：冰箱 2–8°C，不可冷凍。",
+    "開始使用後：冰箱或 30°C 以下，28 天內用完。"
+   ],
+   "technique": "insulin-pen",
+   "highAlert": true,
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛部菌疫輸字第001053號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "tresiba-flextouch",
+   "no": 28,
+   "brand": "Tresiba FlexTouch",
+   "zhName": "諾胰保諾特筆",
+   "ingredient": "Insulin degludec",
+   "strength": "100 單位/mL；3 mL/支",
+   "category": "胰島素注射筆",
+   "chip": "insulin",
+   "license": "衛部菌疫輸字第001054號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛部菌疫輸字第001054號",
+   "role": "insulinBasal",
+   "video": null,
+   "lasa": [
+    "flextouch"
+   ],
+   "test": "2 單位",
+   "retries": "最多 6 次",
+   "hold": "至少 6 秒",
+   "purpose": "長效[[基礎胰島素]]（insulin degludec），每天一次。",
+   "usual": [
+    "每天注射一次，劑量依醫師處方。"
+   ],
+   "missed": "成人忘記打：醒著發現時補打，兩次注射至少間隔 8 小時，之後照原來時間。（依台灣仿單；待藥師確認措辭）",
+   "storage": [
+    "未開封：冰箱 2–8°C，不可冷凍。",
+    "開始使用後：冰箱或 30°C 以下，56 天內用完。"
+   ],
+   "technique": "insulin-pen",
+   "highAlert": true,
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛部菌疫輸字第001054號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "lantus-solostar",
+   "no": 29,
+   "brand": "Lantus SoloStar",
+   "zhName": "蘭德仕注射劑",
+   "ingredient": "Insulin glargine",
+   "strength": "100 單位/mL；3 mL/支",
+   "category": "胰島素注射筆",
+   "chip": "insulin",
+   "license": "衛署菌疫輸字第000728號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛署菌疫輸字第000728號",
+   "role": "insulinBasal",
+   "video": null,
+   "lasa": [
+    "glargine",
+    "solostar"
+   ],
+   "test": "2 單位",
+   "retries": null,
+   "hold": "10 秒",
+   "purpose": "長效[[基礎胰島素]]（insulin glargine 100 單位/mL）。",
+   "usual": [
+    "每天固定時間注射一次，劑量依醫師處方。"
+   ],
+   "storage": [
+    "未開封：冰箱 2–8°C，不可冷凍。冰的筆請在注射前 1–2 小時拿出來回溫。",
+    "開始使用後：30°C 以下保存，不要再放回冰箱，4 週內用完。"
+   ],
+   "technique": "insulin-pen",
+   "highAlert": true,
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛署菌疫輸字第000728號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "semglee-pen",
+   "no": 30,
+   "brand": "Semglee Prefilled Pen",
+   "zhName": "喜穩胰注射劑",
+   "ingredient": "Insulin glargine",
+   "strength": "100 單位/mL；3 mL/支",
+   "category": "胰島素注射筆",
+   "chip": "insulin",
+   "license": "衛部菌疫輸字第001184號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛部菌疫輸字第001184號",
+   "role": "insulinBasal",
+   "video": null,
+   "lasa": [
+    "glargine"
+   ],
+   "test": "2 單位",
+   "retries": "最多 4 次",
+   "hold": "10 秒",
+   "purpose": "長效[[基礎胰島素]]（insulin glargine 100 單位/mL）。",
+   "usual": [
+    "每天固定時間注射一次，劑量依醫師處方。"
+   ],
+   "storage": [
+    "未開封：冰箱 2–8°C，不可冷凍。",
+    "開始使用後：25°C 以下，不要放冰箱，4 週內用完。"
+   ],
+   "technique": "insulin-pen",
+   "highAlert": true,
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛部菌疫輸字第001184號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "humalog-mix25-kwikpen",
+   "no": 31,
+   "brand": "Humalog Mix25 KwikPen",
+   "zhName": "優泌樂筆－混合型 25",
+   "ingredient": "25% insulin lispro / 75% insulin lispro protamine",
+   "strength": "100 單位/mL；3 mL/支",
+   "category": "胰島素注射筆",
+   "chip": "insulin",
+   "license": "衛署菌疫輸字第000898號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛署菌疫輸字第000898號",
+   "role": "insulinMix",
+   "mix": "每次注射前：把筆在手掌間滾動 10 次，再上下翻轉（180°）10 次，直到均勻乳白色。不要用力搖。",
+   "video": null,
+   "lasa": [
+    "humalog"
+   ],
+   "test": "2 單位（依使用說明書）",
+   "retries": null,
+   "hold": "依使用說明書（台灣仿單未收錄，待確認）",
+   "purpose": "預混型胰島素：25% 速效 lispro＋75% 中效 lispro protamine，外觀為乳白色。",
+   "usual": [
+    "依醫師處方，通常在餐前注射。"
+   ],
+   "storage": [
+    "未開封：冰箱 2–8°C，不可冷凍。",
+    "開始使用後：30°C 以下，不要放冰箱，28 天內用完。"
+   ],
+   "technique": "insulin-pen",
+   "highAlert": true,
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛署菌疫輸字第000898號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "humalog-mix50-kwikpen",
+   "no": 32,
+   "brand": "Humalog Mix50 KwikPen",
+   "zhName": "優泌樂筆－混合型 50",
+   "ingredient": "50% insulin lispro / 50% insulin lispro protamine",
+   "strength": "100 單位/mL；3 mL/支",
+   "category": "胰島素注射筆",
+   "chip": "insulin",
+   "license": "衛署菌疫輸字第000899號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛署菌疫輸字第000899號",
+   "role": "insulinMix",
+   "mix": "每次注射前：把筆在手掌間滾動 10 次，再上下翻轉 10 次，直到均勻乳白色。不要用力搖。",
+   "video": null,
+   "lasa": [
+    "humalog"
+   ],
+   "test": "2 單位",
+   "retries": null,
+   "hold": "數到 5",
+   "purpose": "預混型胰島素：50% 速效 lispro＋50% 中效 lispro protamine，外觀為乳白色。",
+   "usual": [
+    "依醫師處方，通常在餐前注射。"
+   ],
+   "storage": [
+    "未開封：冰箱 2–8°C，不可冷凍。",
+    "開始使用後：30°C 以下；可使用天數依包裝說明書（待藥師確認）。"
+   ],
+   "technique": "insulin-pen",
+   "highAlert": true,
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛署菌疫輸字第000899號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "levemir-flexpen",
+   "no": 33,
+   "brand": "Levemir FlexPen",
+   "zhName": "瑞和密爾諾易筆",
+   "ingredient": "Insulin detemir",
+   "strength": "100 單位/mL；3 mL/支",
+   "category": "胰島素注射筆",
+   "chip": "insulin",
+   "license": "衛署菌疫輸字第000810號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛署菌疫輸字第000810號",
+   "role": "insulinBasal",
+   "video": null,
+   "lasa": [
+    "flexpen"
+   ],
+   "test": "2 單位",
+   "retries": "最多 6 次",
+   "hold": "至少 6 秒",
+   "purpose": "長效[[基礎胰島素]]（insulin detemir）。",
+   "usual": [
+    "依醫師處方，每天 1 或 2 次固定時間注射。"
+   ],
+   "storage": [
+    "未開封：冰箱 2–8°C，不可冷凍。",
+    "開始使用後：30°C 以下或冰箱，6 週內用完。"
+   ],
+   "technique": "insulin-pen",
+   "highAlert": true,
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛署菌疫輸字第000810號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "toujeo-solostar",
+   "no": 34,
+   "brand": "Toujeo SoloStar",
+   "zhName": "糖德仕注射劑",
+   "ingredient": "Insulin glargine",
+   "strength": "300 單位/mL；1.5 mL/支",
+   "category": "胰島素注射筆",
+   "chip": "insulin",
+   "license": "衛部菌疫輸字第001011號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛部菌疫輸字第001011號",
+   "role": "insulinBasal",
+   "video": null,
+   "lasa": [
+    "glargine",
+    "solostar"
+   ],
+   "test": "3 單位",
+   "testNote": "依原廠使用說明（非台灣版）；台灣版使用說明待藥師確認",
+   "retries": "3 次仍無藥滴就換針頭（原廠說明）",
+   "hold": "數到 5",
+   "purpose": "高濃度長效[[基礎胰島素]]（insulin glargine 300 單位/mL）。",
+   "usual": [
+    "每天固定時間注射一次，劑量依醫師處方。"
+   ],
+   "warn": [
+    "高濃度（300 單位/mL）：絕對不可以用空針從筆裡抽藥。",
+    "和蘭德仕（Lantus，100 單位/mL）不同，不可互換或自己換算劑量。"
+   ],
+   "storage": [
+    "未開封：冰箱 2–8°C，不可冷凍。",
+    "開始使用後：30°C 以下，不要放冰箱，42 天內用完。"
+   ],
+   "technique": "insulin-pen",
+   "highAlert": true,
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛部菌疫輸字第001011號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "novomix30-flexpen",
+   "no": 35,
+   "brand": "NovoMix 30 FlexPen",
+   "zhName": "諾和密斯 30 諾易筆",
+   "ingredient": "Biphasic insulin aspart 30",
+   "strength": "100 單位/mL；3 mL/支",
+   "category": "胰島素注射筆",
+   "chip": "insulin",
+   "license": "衛署菌疫輸字第000820號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛署菌疫輸字第000820號",
+   "role": "insulinMix",
+   "video": null,
+   "lasa": [
+    "flexpen"
+   ],
+   "test": "2 單位",
+   "retries": "最多 6 次",
+   "hold": "至少 6 秒",
+   "mix": "新筆第一次注射前：筆保持水平，在手掌間滾動 10 次，再把筆在上下兩個位置間擺動 10 次，讓筆芯裡的玻璃球兩端來回滾動；重複滾動和擺動，直到藥液均勻白色雲霧狀。之後每次注射前：在上下兩個位置間擺動至少 10 次。",
+   "purpose": "預混型胰島素：30% 速效 aspart＋70% 中效 aspart protamine，外觀為乳白色。",
+   "usual": [
+    "依醫師處方，通常在餐前注射。"
+   ],
+   "storage": [
+    "未開封：冰箱 2–8°C，不可冷凍。",
+    "開始使用後：不要放冰箱，30°C 以下，4 星期內用完。"
+   ],
+   "technique": "insulin-pen",
+   "highAlert": true,
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛署菌疫輸字第000820號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "novorapid-flexpen",
+   "no": 36,
+   "brand": "NovoRapid FlexPen",
+   "zhName": "諾和瑞諾易筆",
+   "ingredient": "Insulin aspart",
+   "strength": "100 單位/mL；3 mL/支",
+   "category": "胰島素注射筆",
+   "chip": "insulin",
+   "license": "衛署菌疫輸字第000823號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛署菌疫輸字第000823號",
+   "role": "insulinRapid",
+   "video": null,
+   "lasa": [
+    "flexpen"
+   ],
+   "test": "2 單位",
+   "retries": "最多 6 次",
+   "hold": "至少 6 秒",
+   "purpose": "[[速效胰島素]]（insulin aspart），控制吃飯後的血糖。",
+   "usual": [
+    "依醫師處方在餐前注射；打了就要吃飯。"
+   ],
+   "storage": [
+    "未開封：冰箱 2–8°C，不可冷凍。",
+    "開始使用後：30°C 以下或冰箱 2–8°C，4 星期內用完。"
+   ],
+   "technique": "insulin-pen",
+   "highAlert": true,
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛署菌疫輸字第000823號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "soliqua-100-33",
+   "no": 37,
+   "brand": "Soliqua 100/33 SoloStar",
+   "zhName": "爽胰達 100 單位＋33 微克",
+   "ingredient": "Insulin glargine / lixisenatide",
+   "strength": "Insulin glargine 100 單位/mL + lixisenatide 33 微克/mL；3 mL/支",
+   "category": "胰島素注射筆",
+   "chip": "insulin",
+   "license": "衛部菌疫輸字第001079號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛部菌疫輸字第001079號",
+   "role": "insulinCombo",
+   "triage2": "glp1",
+   "video": null,
+   "lasa": [
+    "soliqua",
+    "glargine",
+    "solostar"
+   ],
+   "test": "2 單位",
+   "testNote": "依原廠使用說明（非台灣版）；台灣版待確認",
+   "retries": "3 次仍無藥滴就換針頭（原廠說明）",
+   "hold": "數到 10",
+   "purpose": "長效胰島素（insulin glargine 100 單位/mL）＋GLP-1 受體促效劑（lixisenatide 33 微克/mL）的固定比例複方，不是單純的胰島素。",
+   "usual": [
+    "每天一次，在一餐前注射（時間與劑量依醫師處方）。"
+   ],
+   "warn": [
+    "100/33 和 100/50 兩種筆不可互換，請核對筆上的含量。",
+    "持續劇烈腹痛（可能痛到背部）、伴隨嘔吐：可能是胰臟炎，請停藥並當天急診。"
+   ],
+   "storage": [
+    "未開封：冰箱 2–8°C，不可冷凍。",
+    "開始使用後：25°C 以下最多 28 天，或 30°C 以下最多 14 天；不要再放回冰箱，不可冷凍。"
+   ],
+   "technique": "insulin-pen",
+   "highAlert": true,
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛部菌疫輸字第001079號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "soliqua-100-50",
+   "no": 38,
+   "brand": "Soliqua 100/50 SoloStar",
+   "zhName": "爽胰達 100 單位＋50 微克",
+   "ingredient": "Insulin glargine / lixisenatide",
+   "strength": "Insulin glargine 100 單位/mL + lixisenatide 50 微克/mL；3 mL/支",
+   "category": "胰島素注射筆",
+   "chip": "insulin",
+   "license": "衛部菌疫輸字第001080號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛部菌疫輸字第001080號",
+   "role": "insulinCombo",
+   "triage2": "glp1",
+   "video": null,
+   "lasa": [
+    "soliqua",
+    "glargine",
+    "solostar"
+   ],
+   "test": "2 單位",
+   "testNote": "依原廠使用說明（非台灣版）；台灣版待確認",
+   "retries": "3 次仍無藥滴就換針頭（原廠說明）",
+   "hold": "數到 10",
+   "purpose": "長效胰島素（insulin glargine 100 單位/mL）＋GLP-1 受體促效劑（lixisenatide 50 微克/mL）的固定比例複方，不是單純的胰島素。",
+   "usual": [
+    "每天一次，在一餐前注射（時間與劑量依醫師處方）。"
+   ],
+   "warn": [
+    "100/33 和 100/50 兩種筆不可互換，請核對筆上的含量。",
+    "持續劇烈腹痛（可能痛到背部）、伴隨嘔吐：可能是胰臟炎，請停藥並當天急診。"
+   ],
+   "storage": [
+    "未開封：冰箱 2–8°C，不可冷凍。",
+    "開始使用後：25°C 以下最多 28 天，或 30°C 以下最多 14 天；不要再放回冰箱，不可冷凍。"
+   ],
+   "technique": "insulin-pen",
+   "highAlert": true,
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛部菌疫輸字第001080號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "apidra-solostar",
+   "no": 39,
+   "brand": "Apidra SoloStar",
+   "zhName": "愛胰達注射劑",
+   "ingredient": "Insulin glulisine",
+   "strength": "100 單位/mL；3 mL/支",
+   "category": "胰島素注射筆",
+   "chip": "insulin",
+   "license": "衛署菌疫輸字第000803號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛署菌疫輸字第000803號",
+   "role": "insulinRapid",
+   "video": null,
+   "lasa": [
+    "solostar"
+   ],
+   "test": "2 單位",
+   "retries": null,
+   "hold": "10 秒",
+   "purpose": "[[速效胰島素]]（insulin glulisine），控制吃飯後的血糖。",
+   "usual": [
+    "依醫師處方在用餐前後短時間內注射（時間依仿單與醫囑）。"
+   ],
+   "storage": [
+    "未開封：冰箱 2–8°C，不可冷凍。",
+    "開始使用後：25°C 以下，不需冷藏，4 週內用完。"
+   ],
+   "technique": "insulin-pen",
+   "highAlert": true,
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛署菌疫輸字第000803號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  },
+  {
+   "slug": "humalog-kwikpen",
+   "no": 40,
+   "brand": "Humalog KwikPen",
+   "zhName": "優泌樂筆注射劑",
+   "ingredient": "Insulin lispro",
+   "strength": "100 單位/mL；3 mL/支",
+   "category": "胰島素注射筆",
+   "chip": "insulin",
+   "license": "衛署菌疫輸字第000900號",
+   "insert": "https://mcp.fda.gov.tw/exportpdf/衛署菌疫輸字第000900號",
+   "role": "insulinRapid",
+   "video": null,
+   "lasa": [
+    "humalog"
+   ],
+   "test": "2 單位",
+   "retries": "最多 4 次，仍無藥滴就換針頭",
+   "hold": "數到 5",
+   "purpose": "[[速效胰島素]]（insulin lispro），控制吃飯後的血糖。",
+   "usual": [
+    "依醫師處方在餐前注射；打了就要吃飯。"
+   ],
+   "storage": [
+    "未開封：冰箱 2–8°C，不可冷凍。",
+    "開始使用後：30°C 以下，28 天內用完。"
+   ],
+   "technique": "insulin-pen",
+   "highAlert": true,
+   "reviewStatus": "draft",
+   "sources": [
+    "食藥署核准仿單（衛署菌疫輸字第000900號），2026-10-17 下載",
+    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
+    "醫師審閱 qa/physician-review.md"
+   ]
+  }
+ ]
+}

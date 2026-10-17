@@ -1,0 +1,24 @@
+{
+ "_comment": "Hospital branding and site settings. Edit this file to rebrand; then run `node tools/build.mjs`.",
+ "hospitalName": "示範醫院 藥劑部",
+ "hospitalShort": "示範醫院",
+ "logo": "",
+ "colors": { "primary": "#1e3a8a", "accent": "#b45309", "bg": "#fffaf3" },
+ "consultPhone": "（請填入院內用藥諮詢電話）",
+ "consultPhoneHref": "",
+ "consultHours": "（請填入服務時間）",
+ "poisonCenter": { "name": "臺北榮總毒藥物防治諮詢中心（24 小時）", "phone": "02-2871-7121", "href": "tel:0228717121" },
+ "baseUrl": "https://agumonshinka.github.io/inhaler-guides/",
+ "version": "1.0.0",
+ "lastReviewed": "2026-10",
+ "effective": "2026-10-18",
+ "defaultLang": "zh-TW",
+ "languages": [
+  { "code": "zh-TW", "label": "繁體中文", "tts": "zh-TW", "enabled": true },
+  { "code": "en", "label": "English", "tts": "en-US", "enabled": false },
+  { "code": "id", "label": "Bahasa Indonesia", "tts": "id-ID", "enabled": false },
+  { "code": "vi", "label": "Tiếng Việt", "tts": "vi-VN", "enabled": false },
+  { "code": "th", "label": "ไทย", "tts": "th-TH", "enabled": false },
+  { "code": "fil", "label": "Filipino", "tts": "fil-PH", "enabled": false }
+ ]
+}

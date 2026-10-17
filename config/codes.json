@@ -1,0 +1,9 @@
+{
+ "_comment": "Hospital in-house drug code -> page. URL form: <baseUrl>?code=XXXX (or d/<slug>/?code=XXXX). status: active | disabled. target: 'd/<slug>' (40 detailed pages) or 't/<technique>'. One code maps to one active target. Codes below are SYNTHETIC examples only; replace with real HIS codes.",
+ "codes": {
+  "TEST-INH-001": { "target": "d/symbicort-turbuhaler", "status": "active", "note": "示範：吸必擴都保" },
+  "TEST-INS-001": { "target": "d/lantus-solostar", "status": "active", "note": "示範：蘭德仕" },
+  "TEST-EYE-001": { "target": "t/eye-drops", "status": "active", "note": "示範：眼藥水通用頁" },
+  "TEST-OLD-009": { "target": "d/seretide", "status": "disabled", "note": "示範：已停用代碼" }
+ }
+}

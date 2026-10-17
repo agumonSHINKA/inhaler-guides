@@ -114,3 +114,6 @@ img.ill{aspect-ratio:1/1;max-width:300px!important}
  .qrsheet{grid-template-columns:repeat(5,1fr)}.qrsheet svg{width:28mm;height:28mm}
  .gl-btn{border:0}
 }
+
+.beta-banner{background:#fef3c7;color:#422006;border-bottom:3px solid #b45309;padding:.6em 1em;font-size:1rem;line-height:1.5;text-align:center}
+@media print{.beta-banner{background:none;border:2px solid #000;color:#000}}

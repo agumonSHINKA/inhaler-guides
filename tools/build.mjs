@@ -1,6 +1,7 @@
 // Static site builder. Usage: node tools/build.mjs   (output: ./dist)
 // Content: data/*.json (drugs, lasa, index shards) + i18n/<lang>/*.json (texts) + config/*.json (branding, codes).
 import fs from 'node:fs'; import path from 'node:path'; import { createRequire } from 'node:module';
+import { createHash } from 'node:crypto';
 import { illustrate } from '../js/svg.js';
 const require = createRequire(import.meta.url); const qrcode = require('./vendor/qrcode.cjs');
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..'); const OUT = path.join(ROOT, 'dist');
@@ -42,7 +43,7 @@ function layout({ rel, title, desc = '', body, cls = '', canonical = '', noindex
   const url = SITE.baseUrl + rel.replace(/index\.html$/, '');
   const langs = SITE.languages.map(l => `<option value="${l.code}"${l.code === LANG ? ' selected' : ''}${l.enabled ? '' : ' disabled'}>${esc(l.label)}${l.enabled ? '' : '（準備中）'}</option>`).join('');
   const phone = SITE.consultPhoneHref ? `<a href="${esc(SITE.consultPhoneHref)}">${esc(SITE.consultPhone)}</a>` : esc(SITE.consultPhone);
-  return `<!doctype html><html lang="zh-Hant-TW"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  return `<!doctype html><html lang="zh-Hant-TW"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
 <title>${esc(title)}｜${esc(SITE.hospitalShort)} ${esc(U.siteTitle)}</title><meta name="description" content="${esc(desc || U.homeIntro)}">
 <link rel="canonical" href="${esc(canonical || url)}"><meta name="theme-color" content="${SITE.colors.primary}">
 <link rel="stylesheet" href="${B}css/style.css?v=${VER}"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%F0%9F%92%8A%3C/text%3E%3C/svg%3E"><link rel="manifest" href="${B}manifest.webmanifest">
@@ -50,6 +51,7 @@ function layout({ rel, title, desc = '', body, cls = '', canonical = '', noindex
 <script>try{if(localStorage.getItem('lt')==='1')document.documentElement.classList.add('lt')}catch(e){}</script>
 </head><body class="${cls}" data-base="${B}" data-ver="${VER}" data-url="${esc(url)}">
 <a class="skip" href="#main">${U.skip}</a>
+<div class="beta-banner" role="note"><strong>測試版 v1</strong> — 尚未經藥師正式審核，請勿用於實際用藥決策，實際用法以醫師處方與藥師指導為準</div>
 <header class="top"><div class="wrap top-in">
 <a class="brand" href="${B}">${SITE.logo ? `<img src="${B}${esc(SITE.logo)}" alt="" height="40">` : '<span class="logo" aria-hidden="true">💊</span>'}<span><b>${esc(SITE.hospitalName)}</b><small>${esc(U.siteTitle)}</small></span></a>
 <div class="tools" role="group" aria-label="顯示設定">
@@ -204,7 +206,7 @@ ${ds.length ? sec('drugs', '這個裝置的詳細藥品頁', `<ul class="links">
 </article>`;
   write(rel, layout({ rel, title: t.title, desc: t.summary, body, cls: 'p-tech' }));
 }
-function redirectPage(rel, to) { return `<!doctype html><html lang="zh-Hant-TW"><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=${to}"><link rel="canonical" href="${to}"><title>轉址</title><a href="${to}">前往新頁面</a></html>`; }
+function redirectPage(rel, to) { return `<!doctype html><html lang="zh-Hant-TW"><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=${to}"><link rel="canonical" href="${to}"><title>轉址</title><a href="${to}">前往新頁面</a></html>`; }
 
 // ---------- home ----------
 function home() {
@@ -283,7 +285,9 @@ function assets() {
   const techTitles = Object.fromEntries(Object.entries(T).map(([k, t]) => [k, t.title]));
   fs.writeFileSync(path.join(OUT, 'data/app.json'), JSON.stringify({ version: VER, techTitles, codes: CODES.codes, langs: SITE.languages, slugs: DRUGS.map(d => d.slug), ui: { notFound: U.notFound, retired: U.retired, updated: U.updated, langNotAvailable: U.langNotAvailable, ttsUnavailable: U.ttsUnavailable, showing: U.showing, indexLoading: U.indexLoading, indexSearchHint: U.indexSearchHint, openTechnique: U.openTechnique, insert: U.insert, license: U.license, ingredient: U.ingredient, form: U.form, indexOnlyNote: U.indexOnlyNote, checkDrug: U.checkDrug } }));
   fs.writeFileSync(path.join(OUT, 'manifest.webmanifest'), JSON.stringify({ name: SITE.hospitalShort + ' ' + U.siteTitle, short_name: '用藥衛教', start_url: './', display: 'standalone', background_color: SITE.colors.bg, theme_color: SITE.colors.primary, lang: 'zh-Hant-TW', icons: [] }));
-  fs.copyFileSync(path.join(ROOT, 'js/sw.js'), path.join(OUT, 'sw.js'));
+  { const h = createHash('sha1');
+    for (const f of ['css/style.css', 'js/app.js', 'js/svg.js', 'js/sw.js']) h.update(fs.readFileSync(path.join(ROOT, f)));
+    fs.writeFileSync(path.join(OUT, 'sw.js'), fs.readFileSync(path.join(ROOT, 'js/sw.js'), 'utf8').replace("const V = 'v1.0.0';", `const V = 'v1-${h.digest('hex').slice(0, 10)}';`)); }
   fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
   fs.writeFileSync(path.join(OUT, 'robots.txt'), 'User-agent: *\nAllow: /\n');
 }

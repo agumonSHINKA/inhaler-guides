@@ -60,8 +60,8 @@
    "長期使用類固醇：皮膚變薄、微血管擴張"
   ],
   "sources": [
-   "British Association of Dermatologists: Topical corticosteroids",
-   "各產品食藥署核准仿單"
+   "British Association of Dermatologists：Topical corticosteroids https://www.bad.org.uk/pils/topical-corticosteroids （2026-10-18 查詢）",
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）"
   ]
  },
  "transdermal-patch": {
@@ -144,13 +144,13 @@
    "鴉片類貼片：嗜睡、便秘、噁心；呼吸變慢是危險徵兆"
   ],
   "sources": [
-   "Durogesic 多瑞喜穿皮貼片 食藥署核准仿單",
-   "食藥署管制藥品組 吩坦尼穿皮貼片劑治療疼痛使用指引暨管理注意事項",
-   "FDA Consumer Update: Accidental Exposures to Fentanyl Patches"
+   "Durogesic 多瑞喜穿皮貼片 台灣說明書（衛署藥輸字第024841號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第024841號（2026-10-17 查詢）",
+   "食藥署管制藥品組「吩坦尼穿皮貼片劑治療疼痛使用指引暨管理注意事項」：https://www.fda.gov.tw/tc/lawContent.aspx?id=3348 （2026-10-17 查詢）",
+   "FDA Consumer Update：Accidental Exposures to Fentanyl Patches Continue to Be Deadly to Children https://www.fda.gov/consumers/consumer-updates/accidental-exposures-fentanyl-patches-continue-be-deadly-children （2026-10-18 查詢）"
   ],
   "missed": [
    "忘記換貼片：請聯絡藥師或醫師。",
-   "不要同時貼兩片來「補」。發現忘記撕舊貼片：馬上撕掉舊的；有嗜睡、呼吸變慢就撥 119。"
+   "不要同時貼兩片來「補」。發現忘記撕舊貼片：馬上撕掉舊的；有嗜睡、呼吸變慢就撥 119。{審核中}"
   ]
  },
  "medicated-plaster": {
@@ -195,7 +195,7 @@
    "皮膚紅、癢、起疹子"
   ],
   "sources": [
-   "各產品食藥署核准仿單"
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）"
   ]
  },
  "eye-drops": {
@@ -209,6 +209,7 @@
    "洗手，頭往後仰往上看",
    "拉下下眼皮成小袋，滴 1 滴",
    "瓶口不要碰到眼睛或睫毛",
+   "兩眼都要點：每一眼各點（依處方），換眼時瓶口也不碰眼",
    "閉眼並輕壓內眼角 1–2 分鐘",
    "兩種眼藥間隔至少 5 分鐘，眼藥膏最後用",
    "戴隱形眼鏡：先取下，點完至少等 15 分鐘再戴（依說明書）"
@@ -235,6 +236,10 @@
     "c": [
      "瓶口不碰眼"
     ]
+   },
+   {
+    "t": "兩眼都要點時（依處方）：另一眼照同樣方法各點一次。換眼時瓶口一樣不要碰到眼睛、睫毛或手指。",
+    "c": []
    },
    {
     "t": "輕輕閉上眼睛（不要用力眨），用手指輕壓靠鼻子那側的眼角（[[淚囊]]）1–2 分鐘。擦掉流出來的藥水。",
@@ -272,9 +277,9 @@
    "短暫刺痛、視線模糊（等清楚再開車）"
   ],
   "sources": [
-   "NHS: How to use eye drops",
-   "Moorfields Eye Hospital: How to use your eye drops",
-   "各產品食藥署核准仿單"
+   "NHS：How and when to use timolol eye drops https://www.nhs.uk/medicines/timolol-eye-drops/how-and-when-to-use-timolol-eye-drops/ （2026-10-18 查詢）",
+   "Moorfields Eye Hospital：How to use your eye drops https://www.moorfields.nhs.uk/for-patients/information-hub/how-to-use-your-eye-drops （2026-10-18 查詢）",
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）"
   ]
  },
  "eye-ointment": {
@@ -330,8 +335,8 @@
    "視線模糊、短暫刺痛"
   ],
   "sources": [
-   "NHS / Moorfields eye drop guidance",
-   "各產品食藥署核准仿單"
+   "NHS／Moorfields 眼藥使用說明：https://www.moorfields.nhs.uk/for-patients/information-hub/how-to-use-your-eye-drops （2026-10-18 查詢）",
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）"
   ]
  },
  "ear-drops": {
@@ -397,9 +402,9 @@
    "短暫不適、癢、刺激"
   ],
   "sources": [
-   "Royal United Hospitals Bath: Ear drops (ENT010)",
-   "MedlinePlus",
-   "各產品食藥署核准仿單"
+   "Royal United Hospitals Bath：Ear drops（ENT010）https://www.ruh.nhs.uk/For_Clinicians/departments_ruh/ENT/documents/referrals/ENT010_Ear_drops.pdf （2026-10-18 查詢）",
+   "MedlinePlus：https://medlineplus.gov/druginfo/meds/a601169.html （2026-10-18 查詢）",
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）"
   ]
  },
  "nasal-spray": {
@@ -473,8 +478,8 @@
    "類固醇鼻噴劑長期使用：鼻腔乾燥"
   ],
   "sources": [
-   "University Hospital Southampton NHS: How to use a nasal spray",
-   "各產品食藥署核准仿單"
+   "University Hospital Southampton NHS：How to use a nasal spray https://www.uhs.nhs.uk/Media/UHS-website-2019/Patientinformation/Respiratory/How-to-use-a-nasal-spray-patient-information.pdf （2026-10-18 查詢）",
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）"
   ]
  },
  "suppository": {
@@ -486,14 +491,14 @@
   "summary": "先排便、洗手，側躺彎膝，把塞劑輕輕推進肛門，夾緊臀部幾分鐘。",
   "keyPoints": [
    "盡量先排便",
-   "洗手，撕開包裝；太軟可以先冰一下",
+   "先洗手（可戴拋棄式手套或指套），撕開包裝；太軟可以先冰一下",
    "側躺、上面那隻腳彎曲",
    "用手指輕推入肛門，多數是尖端先塞（方向依說明書為準；成人約手指第一節深）",
-   "夾緊臀部躺幾分鐘，洗手"
+   "塞完夾緊臀部、躺一下，盡量忍住不要馬上上廁所；洗手"
   ],
   "use": [
    {
-    "t": "盡量先排便。洗手，撕開包裝取出塞劑。太軟時可以連包裝放冰箱或冷水中一下再用。",
+    "t": "盡量先排便。先洗手（可以戴拋棄式手套或指套），撕開包裝取出塞劑。太軟時可以連包裝放冰箱或冷水中一下再用。",
     "img": "supp-unwrap",
     "c": [
      "撕開包裝"
@@ -514,37 +519,37 @@
     ]
    },
    {
-    "t": "用手指把塞劑輕輕推進肛門，要超過肛門口的肌肉（成人大約一個手指第一節的深度；兒童較淺）。多數塞劑是尖的那一端先塞進去；如果藥盒裡的說明書寫不同，照說明書做。",
+    "t": "用手指把塞劑輕輕推進肛門裡面，要推過肛門口會夾緊的那一圈（成人大約一個手指第一節的深度；兒童較淺）。多數塞劑是尖的那一端先塞進去；如果藥盒裡的說明書寫不同，照說明書做。",
     "img": "supp-insert",
     "c": [
      "輕輕推入"
     ]
    },
    {
-    "t": "夾緊臀部，維持躺姿幾分鐘，避免滑出。洗手。",
+    "t": "夾緊臀部，維持躺姿一下，避免滑出；盡量忍住不要馬上上廁所。要躺多久、多久內不要排便，依說明書或問藥師。{審核中}洗手。",
     "img": "supp-hold",
     "c": [
      "夾緊臀部",
-     "躺幾分鐘"
+     "躺一下"
     ]
    }
   ],
   "empty": [],
   "cleaning": [],
   "storage": [
-   "依仿單（很多需要陰涼處或冷藏）。看起來像糖果的不是糖果，放在兒童拿不到、看不到的地方。"
+   "依仿單（很多要放在不熱、不曬太陽的地方，或放冰箱）。看起來像糖果的不是糖果，放在兒童拿不到、看不到的地方。"
   ],
   "mistakes": [
    "塞太淺滑出來",
    "沒撕開包裝就塞",
-   "用口服"
+   "拿來吃（塞劑不能吃）"
   ],
   "side": [
    "肛門刺激感、想排便"
   ],
   "sources": [
-   "NHS: How to use suppositories",
-   "各產品食藥署核准仿單"
+   "NHS：How and when to use hydrocortisone for piles（含塞劑用法）https://www.nhs.uk/medicines/hydrocortisone-for-piles-and-itchy-bottom/how-and-when-to-use-hydrocortisone-for-piles-and-itchy-bottom/ （2026-10-18 查詢）",
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）"
   ]
  },
  "enema": {
@@ -597,7 +602,7 @@
    "腹部不適、絞痛"
   ],
   "sources": [
-   "各產品食藥署核准仿單"
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）"
   ]
  },
  "vaginal-insert": {
@@ -662,9 +667,9 @@
    "月經期間要不要繼續用、會不會影響保險套，依說明書或問醫師、藥師。"
   ],
   "sources": [
-   "Canesten UK Patient Information Leaflet",
-   "NHS: Clotrimazole",
-   "各產品食藥署核准仿單"
+   "Canesten 英國病人說明書：https://www.medicines.org.uk/emc/files/pil.4129.pdf （2026-10-18 查詢）",
+   "NHS：Clotrimazole https://www.nhs.uk/medicines/clotrimazole/ （2026-10-18 查詢）",
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）"
   ]
  },
  "vaginal-cream": {
@@ -724,7 +729,7 @@
    "局部刺激"
   ],
   "sources": [
-   "各產品食藥署核准仿單"
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）"
   ]
  },
  "vaginal-ring": {
@@ -760,7 +765,7 @@
    "依仿單"
   ],
   "sources": [
-   "各產品食藥署核准仿單"
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）"
   ]
  }
 }

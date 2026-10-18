@@ -65,7 +65,7 @@
   function voice() { if (!synth) return null; var vs = synth.getVoices(); return vs.filter(function (v) { return /zh[-_]TW/i.test(v.lang); })[0] || vs.filter(function (v) { return /^zh/i.test(v.lang) && !/HK/i.test(v.lang); })[0] || null; }
   function textOf(el) {
     var c = el.cloneNode(true);
-    $$('button.tts-sec,.gl-pop,svg title,.callouts,.no-tts,.qrimg', c).forEach(function (x) { x.remove(); });
+    $$('button.tts-sec,.gl-pop,svg,figure,.callouts,.no-tts,.qrimg,.print-only', c).forEach(function (x) { x.remove(); });
     $$('.st-n', c).forEach(function (x) { x.textContent = '第' + x.textContent + '步，'; });
     return (c.innerText || c.textContent).replace(/\s+/g, ' ').trim();
   }
@@ -105,8 +105,18 @@
       }).join('');
       more.hidden = lastHits.length <= shown;
     }
+    var techLis = $$('.tgroup li[data-s]'), techBox = $('#tech-hits'), ORD = { rectal: 1, vaginal: 2 };
+    techLis.forEach(function (li) { li._s = norm(li.getAttribute('data-s')); });
+    function techHits(v) {
+      if (!techBox) return;
+      var hits = v.length < 1 ? [] : techLis.filter(function (li) { return li._s.indexOf(v) >= 0; });
+      hits.sort(function (a, b) { return (ORD[a.getAttribute('data-g')] || 0) - (ORD[b.getAttribute('data-g')] || 0); });
+      techBox.hidden = !hits.length;
+      techBox.innerHTML = hits.length ? '<h2 class="h3">符合的使用方法</h2><ul class="links">' + hits.map(function (li) { var g = li.closest('.tgroup'), h = g && g.querySelector('h3'); var a = li.querySelector('a'); return '<li><a href="' + a.getAttribute('href') + '">' + esc(a.textContent) + '</a>' + (h ? '<span class="small">（' + esc(h.textContent) + '）</span>' : '') + '</li>'; }).join('') + '</ul>' : '';
+    }
     function run() {
       var v = norm(q.value), n = 0;
+      techHits(v);
       cards.forEach(function (c) { var ok = (!chip || c.getAttribute('data-chip') === chip) && (!v || c._s.indexOf(v) >= 0); c.hidden = !ok; if (ok) n++; });
       app().then(function (a) {
         count.textContent = a.ui.showing.replace('{n}', n).replace('{total}', cards.length);
@@ -125,7 +135,7 @@
     var tmr; q.addEventListener('input', function () { clearTimeout(tmr); tmr = setTimeout(run, 180); });
     q.addEventListener('focus', function () { loadIndex(); }, { once: true });
     more.addEventListener('click', function () { shown += 100; app().then(renderIdx); });
-    $$('.chip').forEach(function (b) { b.addEventListener('click', function () { chip = b.getAttribute('data-chip'); $$('.chip').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); }); run(); }); });
+    $$('button.chip').forEach(function (b) { b.addEventListener('click', function () { chip = b.getAttribute('data-chip'); $$('button.chip').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); }); run(); }); });
     var pq = params.get('q'); if (pq) { q.value = pq; }
     run();
   }
@@ -149,7 +159,7 @@
     var k = c.getAttribute('data-key'), tot = $('.cnt-total', c), used = $('.cnt-used', c), left = $('.cnt-left', c);
     function get() { try { return JSON.parse(localStorage.getItem(k) || '{}'); } catch (e) { return {}; } }
     function put(v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { } show(v); }
-    function show(v) { var u = v.used || 0, t = v.total || 0; used.textContent = u; tot.value = t || ''; if (t) { var r = Math.max(t - u, 0); left.textContent = '，剩 ' + r + ' 下' + (r <= 20 ? '（快用完了，請準備新的一支）' : ''); left.className = 'cnt-left' + (r <= 20 ? ' low' : ''); } else { left.textContent = ''; left.className = 'cnt-left'; } }
+    function show(v) { var u = v.used || 0, t = v.total || parseInt(tot.getAttribute('data-default') || '0', 10) || 0; used.textContent = u; tot.value = t || ''; if (t) { var r = Math.max(t - u, 0); left.textContent = '，剩 ' + r + ' 下' + (r <= 20 ? '（快用完了，請準備新的一支）' : ''); left.className = 'cnt-left' + (r <= 20 ? ' low' : ''); } else { left.textContent = ''; left.className = 'cnt-left'; } }
     tot.addEventListener('change', function () { var v = get(); var n = parseInt(tot.value, 10); v.total = n > 0 ? n : 0; put(v); });
     $('.cnt-plus', c).addEventListener('click', function () { var v = get(); v.used = (v.used || 0) + 1; put(v); });
     $('.cnt-minus', c).addEventListener('click', function () { var v = get(); v.used = Math.max((v.used || 0) - 1, 0); put(v); });

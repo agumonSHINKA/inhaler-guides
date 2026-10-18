@@ -62,9 +62,9 @@
    "依各藥仿單；出現皮疹、嘴唇或眼睛腫、呼吸困難立即就醫"
   ],
   "sources": [
-   "ISMP Oral Dosage Forms That Should Not Be Crushed",
+   "ISMP Oral Dosage Forms That Should Not Be Crushed：https://www.ismp.org/sites/default/files/attachments/2018-02/DoNotCrush.pdf （2026-10-18 查詢）",
    "食藥署用藥安全宣導",
-   "各產品食藥署核准仿單"
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）"
   ]
  },
  "oral-capsule": {
@@ -126,8 +126,8 @@
    "依各藥仿單"
   ],
   "sources": [
-   "ISMP Do Not Crush list",
-   "各產品食藥署核准仿單"
+   "ISMP Oral Dosage Forms That Should Not Be Crushed：https://www.ismp.org/sites/default/files/attachments/2018-02/DoNotCrush.pdf （2026-10-18 查詢）",
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）"
   ]
  },
  "oral-modified": {
@@ -182,8 +182,8 @@
    "依各藥仿單"
   ],
   "sources": [
-   "ISMP Oral Dosage Forms That Should Not Be Crushed",
-   "各產品食藥署核准仿單"
+   "ISMP Oral Dosage Forms That Should Not Be Crushed：https://www.ismp.org/sites/default/files/attachments/2018-02/DoNotCrush.pdf （2026-10-18 查詢）",
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）"
   ]
  },
  "chewable": {
@@ -227,7 +227,7 @@
    "依各藥仿單"
   ],
   "sources": [
-   "各產品食藥署核准仿單"
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）"
   ]
  },
  "odt": {
@@ -274,7 +274,7 @@
    "依各藥仿單"
   ],
   "sources": [
-   "各產品食藥署核准仿單"
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）"
   ]
  },
  "sublingual": {
@@ -283,18 +283,19 @@
   "device": "",
   "triage": "general",
   "accent": "#dc2626",
-  "summary": "放在舌頭下面讓它自然溶解吸收，不要吞、不要嚼。用於胸痛的硝化甘油舌下錠，請依醫師的指示與 119 時機。",
+  "summary": "放在舌頭下面讓它自然溶解吸收，不要吞、不要嚼。台灣目前有的硝化甘油舌下錠：耐絞寧 Nitrostat 0.6 毫克、尼斯可硝基甘油錠 0.6 毫克。胸痛時怎麼含、何時打 119，請照下面步驟與醫師指示。",
   "keyPoints": [
-   "24 小時內吃過威而鋼（sildenafil）或 vardenafil、48 小時內吃過犀利士（tadalafil）：不可以含硝化甘油，胸痛直接撥 119",
+   "吃過威而鋼、犀利士等同類藥，或 riociguat：不可以含硝化甘油，胸痛直接撥 119",
    "先坐下（可能頭暈）",
    "放在舌頭下面，不要吞、不要嚼",
    "溶完之前不要喝水、吞口水盡量少",
-   "胸痛用藥：含第 1 顆 5 分鐘後還沒改善或更痛，立即打 119"
+   "胸痛用藥：含第 1 顆 5 分鐘後還沒改善或更痛，立即打 119",
+   "等救護車時：說明書寫可每 5 分鐘再含 1 顆，15 分鐘內最多 3 顆（依醫師指示）{審核中}"
   ],
   "use": [
    {
     "img": "no-pde5",
-    "t": "用硝化甘油之前：24 小時內吃過 sildenafil（威而鋼）或 vardenafil，或 48 小時內吃過 tadalafil（犀利士）：不可以含硝化甘油（會嚴重低血壓甚至休克）。胸痛請直接撥打 119，並告訴救護人員吃過這類藥。",
+    "t": "用硝化甘油之前：正在使用威而鋼（sildenafil）、犀利士（tadalafil）等同類藥（不論用途、商品名，也包括治療肺高壓或攝護腺的同類藥），或治療肺高壓的 riociguat（例如 Adempas），都不可以含硝化甘油；胸痛直接撥 119，並告訴救護人員。國外指引（ACC/AHA 2014，不是說明書）：24 小時內吃過 sildenafil，或 48 小時內吃過 tadalafil，不可含；吃過 vardenafil 等同類藥，請先問醫師。{審核中}",
     "c": []
    },
    {
@@ -312,7 +313,7 @@
     ]
    },
    {
-    "t": "治療胸痛（心絞痛）的硝化甘油：含第 1 顆 5 分鐘後胸痛沒有改善或更嚴重，立刻撥 119。等救護車時是否再含、最多幾顆，依醫師指示。",
+    "t": "治療胸痛（心絞痛）的硝化甘油：含第 1 顆 5 分鐘後胸痛沒有改善或更嚴重，立刻撥 119。等救護車時：依說明書，可每 5 分鐘再含 1 顆，15 分鐘內最多 3 顆（依您的醫師指示）。{審核中}",
     "img": "call-119",
     "c": [
      "5 分鐘沒改善 → 119"
@@ -328,24 +329,38 @@
   "empty": [],
   "cleaning": [],
   "storage": [
-   "硝化甘油舌下錠放在原來的玻璃瓶，蓋緊、避光，不要分裝到藥盒；開瓶後效期依仿單。隨身攜帶但不要貼身放太熱的地方。",
+   "放在原來的玻璃瓶，蓋緊；室溫 20–25°C、乾燥的地方（說明書）。開瓶後把瓶內的棉花丟掉。不要分裝到藥盒。隨身攜帶但不要貼身放在太熱的地方。",
+   "開瓶後可以用多久：依藥局標示或問藥師。{審核中}",
    "放在兒童拿不到、看不到的地方。"
   ],
   "mistakes": [
    "站著含藥（頭暈跌倒）",
    "把藥吞下",
    "胸痛等吃了好幾顆才打 119",
-   "吃過威而鋼、犀利士等藥，又含硝化甘油"
+   "吃過威而鋼、犀利士等同類藥或 riociguat，又含硝化甘油"
   ],
   "side": [
-   "頭痛、頭暈、臉潮紅、血壓下降"
+   "頭痛（可能很嚴重）、頭暈、臉潮紅、血壓下降（站著時更容易）",
+   "視力模糊或口乾：停藥並告訴醫師（說明書）"
   ],
   "sources": [
-   "MedlinePlus: Nitroglycerin Sublingual",
-   "各產品食藥署核准仿單"
+   "耐絞寧 Nitrostat 0.6 mg 台灣說明書（衛署藥輸字第020802號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第020802號（2026-10-18 查詢）",
+   "尼斯可硝基甘油錠 0.6 mg（衛署藥製字第012825號）：https://mcp.fda.gov.tw/exportpdf/衛署藥製字第012825號（2026-10-18 查詢）",
+   "MedlinePlus：Nitroglycerin Sublingual https://medlineplus.gov/druginfo/meds/a601086.html （2026-10-18 查詢）",
+   "2014 AHA/ACC 非 ST 段上升急性冠心症指引（PDE5 抑制劑時間）https://doi.org/10.1016/j.jacc.2014.09.017 （2026-10-18 查詢）"
   ],
   "missed": [
    "這是需要時才用的藥，請隨身攜帶，不需要補用。"
+  ],
+  "interactions": [
+   "喝酒、降血壓藥、乙型阻斷劑、鈣離子阻斷劑同時使用，可能更容易頭暈或血壓過低（站起來時特別小心）。（說明書）"
+  ],
+  "overdose": [
+   "含太多可能嚴重頭痛、頭暈、昏倒：躺下抬腳；意識不清就撥 119。"
+  ],
+  "products": [
+   "耐絞寧 Nitrostat 0.6 毫克（衛署藥輸字第020802號）",
+   "尼斯可硝基甘油錠 0.6 毫克（衛署藥製字第012825號）"
   ]
  },
  "buccal": {
@@ -388,7 +403,7 @@
    "依各藥仿單"
   ],
   "sources": [
-   "各產品食藥署核准仿單"
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）"
   ]
  },
  "effervescent": {
@@ -441,7 +456,7 @@
    "依各藥仿單"
   ],
   "sources": [
-   "各產品食藥署核准仿單"
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）"
   ]
  },
  "oral-liquid": {
@@ -507,8 +522,8 @@
    "依各藥仿單"
   ],
   "sources": [
-   "AAP Policy Statement: Metric Units and the Preferred Dosing of Orally Administered Liquid Medications, Pediatrics 2015",
-   "各產品食藥署核准仿單"
+   "AAP Policy Statement: Metric Units and the Preferred Dosing of Orally Administered Liquid Medications（Pediatrics 2015）：https://doi.org/10.1542/peds.2015-0072 （2026-10-18 查詢）",
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）"
   ]
  },
  "oral-reconstitute": {
@@ -557,7 +572,7 @@
    "依各藥仿單"
   ],
   "sources": [
-   "各產品食藥署核准仿單"
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）"
   ]
  },
  "oral-powder": {
@@ -601,7 +616,7 @@
    "依各藥仿單"
   ],
   "sources": [
-   "各產品食藥署核准仿單"
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）"
   ]
  },
  "lozenge": {
@@ -637,7 +652,7 @@
    "依各藥仿單"
   ],
   "sources": [
-   "各產品食藥署核准仿單"
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）"
   ]
  },
  "oral-spray": {
@@ -651,7 +666,7 @@
    "第一次或久未用依仿單試噴（遠離臉）",
    "對準仿單指定位置（舌下或口腔）",
    "噴的時候不要吸氣",
-   "胸痛用硝化甘油噴劑：5 分鐘沒改善打 119"
+   "胸痛用的噴劑：依醫師指示；5 分鐘沒改善或更痛，立即打 119"
   ],
   "use": [
    {
@@ -685,7 +700,7 @@
    "依各藥仿單"
   ],
   "sources": [
-   "各產品食藥署核准仿單"
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）"
   ]
  },
  "mouth-topical": {
@@ -729,7 +744,7 @@
    "依各藥仿單"
   ],
   "sources": [
-   "各產品食藥署核准仿單"
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）"
   ]
  }
 }

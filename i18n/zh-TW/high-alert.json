@@ -39,9 +39,12 @@
     "剩藥：一般錠劑依「剩藥怎麼丟」的一般原則處理。"
    ],
    "sources": [
-    "Orfarin、Pradaxa、Xarelto、Eliquis、Lixiana 食藥署核准仿單",
-    "臺中榮民總醫院 新型口服抗凝血劑注意事項",
-    "食藥署藥品仿單查詢平台 https://mcp.fda.gov.tw/（2026-10-17 查詢）"
+    "Orfarin 5 mg（衛署藥輸字第023572號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第023572號（2026-10-17 查詢）",
+    "Pradaxa 150 mg（衛署藥輸字第025458號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第025458號（2026-10-17 查詢）",
+    "Xarelto 20 mg（衛署藥輸字第025647號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第025647號（2026-10-17 查詢）",
+    "Eliquis 5 mg（衛部藥輸字第026133號）：https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第026133號（2026-10-17 查詢）",
+    "Lixiana 60 mg（衛部藥輸字第026599號）：https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第026599號（2026-10-17 查詢）",
+    "臺中榮民總醫院「新型口服抗凝血劑注意事項」：https://ihealth.vghtc.gov.tw/media/327 （2026-10-17 查詢）"
    ]
   },
   {
@@ -75,8 +78,8 @@
     "用過的針筒整支放入硬質容器（有安全護套的先啟動），依就診醫院規定交回；沒用完的針劑送回醫院或藥局。{審核中}"
    ],
    "sources": [
-    "Clexane、Fragmin 食藥署核准仿單",
-    "食藥署藥品仿單查詢平台 https://mcp.fda.gov.tw/（2026-10-17 查詢）"
+    "Clexane（衛署藥輸字第022177號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第022177號（2026-10-17 查詢）",
+    "Fragmin 5000 IU/0.2 mL（衛署藥輸字第019376號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第019376號（2026-10-17 查詢）"
    ]
   },
   {
@@ -118,10 +121,14 @@
     "針頭放入硬質容器，依就診醫院規定交回。{審核中}"
    ],
    "sources": [
-    "各胰島素、Ozempic、Trulicity、Mounjaro、Victoza 食藥署核准仿單",
-    "臺北榮民總醫院 低血糖之照護",
-    "食藥署藥品仿單查詢平台 https://mcp.fda.gov.tw/（2026-10-17 查詢）"
-   ]
+    "各胰島素：見各胰島素藥品頁「資料來源」的台灣說明書連結",
+    "Ozempic（衛部菌疫輸字第001107號）：https://mcp.fda.gov.tw/exportpdf/衛部菌疫輸字第001107號（2026-10-17 查詢）",
+    "Trulicity（衛部菌疫輸字第000978號）：https://mcp.fda.gov.tw/exportpdf/衛部菌疫輸字第000978號（2026-10-17 查詢）",
+    "Mounjaro KwikPen（衛部藥輸字第028801號）：https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第028801號（2026-10-17 查詢）",
+    "Victoza（衛署菌疫輸字第000914號）：https://mcp.fda.gov.tw/exportpdf/衛署菌疫輸字第000914號（2026-10-17 查詢）",
+    "臺北榮民總醫院護理部「低血糖之照護」：https://ihealth.vghtpe.gov.tw/media/1083 （2026-10-17 查詢）"
+   ],
+   "titleInsulin": "胰島素"
   },
   {
    "id": "epinephrine",
@@ -132,14 +139,15 @@
    "key": [
     "嚴重過敏一出現就打；打完仍然必須立即就醫。",
     "只打大腿外側中間，可以隔著衣服；不可打臀部、手指、手或腳。",
-    "幫幼兒注射時先固定好腿。劑量依體重由醫師決定。"
+    "幫幼兒注射時先固定好腿。劑量依體重由醫師決定。",
+    "用力壓住 3 秒（台灣 EpiPen 說明書 201811V2；舊版說明書寫 10 秒，照您盒內的說明書）；拔出後按摩注射部位約 10 秒。"
    ],
    "missed": [
     "不適用（急救用藥）：有嚴重過敏症狀就打。"
    ],
    "overdose": [
     "誤打到手指、手或腳：立即到急診。",
-    "打完 5–15 分鐘沒有改善或變嚴重，而且手邊有第二支筆：在另一側大腿打第二支（依醫師給您的過敏急救計畫），並等救護車。"
+    "若醫師已教您帶 2 支：打完 5–15 分鐘沒有改善或變嚴重，在另一側大腿打第二支，並等救護車（台灣說明書：連續施打應在醫師監督下進行；國際指引 WAO 2020：5–15 分鐘沒有改善可打第二支）。{審核中}"
    ],
    "call": [
     "只要用了腎上腺素注射筆 → 撥 119 或到急診。",
@@ -155,8 +163,9 @@
     "用過的筆是尖銳物：就醫時交給醫護人員；過期的筆送回醫院或藥局。"
    ],
    "sources": [
-    "EpiPen 食藥署核准仿單（201811V2）",
-    "食藥署藥品仿單查詢平台 https://mcp.fda.gov.tw/（2026-10-17 查詢）"
+    "EpiPen 0.3 mg（衛署藥輸字第025223號，201811V2）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第025223號（2026-10-18 查詢）",
+    "EpiPen Jr（衛署藥輸字第025133號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第025133號（2026-10-18 查詢）",
+    "World Allergy Organization Anaphylaxis Guidance 2020：https://doi.org/10.1016/j.waojou.2020.100472 （2026-10-18 查詢）"
    ]
   },
   {
@@ -193,9 +202,8 @@
     "用過的貼片仍然含藥，一定要遠離兒童。"
    ],
    "sources": [
-    "Durogesic 食藥署核准仿單",
-    "食藥署 吩坦尼穿皮貼片劑治療疼痛使用指引暨管理注意事項",
-    "食藥署藥品仿單查詢平台 https://mcp.fda.gov.tw/（2026-10-17 查詢）"
+    "Durogesic D-TRANS 25 μg/h（衛署藥輸字第024841號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第024841號（2026-10-17 查詢）",
+    "食藥署管制藥品組「吩坦尼穿皮貼片劑治療疼痛使用指引暨管理注意事項」：https://www.fda.gov.tw/tc/lawContent.aspx?id=3348 （2026-10-17 查詢）"
    ]
   },
   {
@@ -230,9 +238,8 @@
     "屬於特殊藥品：剩藥送回醫院或藥局，不要丟一般垃圾。"
    ],
    "sources": [
-    "Methotrexate Sodium Tablets 食藥署核准仿單",
-    "中國醫藥大學附設醫院 Methotrexate 安全資訊",
-    "食藥署藥品仿單查詢平台 https://mcp.fda.gov.tw/（2026-10-17 查詢）"
+    "Methotrexate Sodium Tablets 2.5 mg（衛署藥輸字第022726號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第022726號（2026-10-17 查詢）",
+    "中國醫藥大學附設醫院 Methotrexate 安全資訊：https://www.cmuh.cmu.edu.tw/NewsInfo/NewsArticle?no=3572 （2026-10-17 查詢）"
    ]
   },
   {
@@ -271,8 +278,10 @@
     "依藥袋保存；剩藥依一般原則處理。"
    ],
    "sources": [
-    "Amaryl、Glucophage、Jardiance、Forxiga 食藥署核准仿單",
-    "食藥署藥品仿單查詢平台 https://mcp.fda.gov.tw/（2026-10-17 查詢）"
+    "Amaryl 2.0（衛署藥輸字第022671號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第022671號（2026-10-17 查詢）",
+    "Glucophage 1000 mg（衛署藥輸字第024189號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第024189號（2026-10-17 查詢）",
+    "Jardiance 10 mg（衛部藥輸字第026406號）：https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第026406號（2026-10-17 查詢）",
+    "Forxiga 10 mg（衛部藥輸字第026476號）：https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第026476號（2026-10-17 查詢）"
    ]
   },
   {
@@ -306,9 +315,8 @@
     "依藥袋保存；錠劑依一般原則，藥水不要倒馬桶。"
    ],
    "sources": [
-    "Lanoxin 食藥署核准仿單",
-    "FDA Lanoxin labeling 2025",
-    "食藥署藥品仿單查詢平台 https://mcp.fda.gov.tw/（2026-10-17 查詢）"
+    "Lanoxin 0.25 mg（衛署藥輸字第009554號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第009554號（2026-10-17 查詢）",
+    "美國 FDA Lanoxin 標示（2025）：https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/009330s040lbl.pdf （2026-10-17 查詢）"
    ]
   },
   {
@@ -347,10 +355,12 @@
     "依藥袋保存；錠劑依一般原則處理，口服液不要倒馬桶。"
    ],
    "sources": [
-    "Keppra、Depakine Chrono、Lamictal 食藥署核准仿單",
-    "衛生署 carbamazepine 仿單加刊公告；健保 HLA-B*1502 給付規定",
-    "馬偕紀念醫院 認識癲癇",
-    "食藥署藥品仿單查詢平台 https://mcp.fda.gov.tw/（2026-10-17 查詢）"
+    "Keppra 500 mg（衛署藥輸字第023889號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第023889號（2026-10-17 查詢）",
+    "Depakine Chrono 500 mg（衛署藥輸字第022008號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第022008號（2026-10-17 查詢）",
+    "Lamictal 100 mg（衛署藥輸字第020510號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第020510號（2026-10-17 查詢）",
+    "衛生署 carbamazepine 仿單加刊公告：https://regulation.cde.org.tw/10254/4045/40118/regPost （2026-10-17 查詢）",
+    "健保 carbamazepine 給付規定（HLA-B*1502）：https://gazette.nat.gov.tw/EG_FileManager/eguploadpub/eg017115/ch08/type2/gov70/num23/OEg.pdf （2026-10-17 查詢）",
+    "馬偕紀念醫院「認識癲癇」：https://www.mmh.org.tw/know_health_view.php?docid=780 （2026-10-17 查詢）"
    ]
   }
  ]

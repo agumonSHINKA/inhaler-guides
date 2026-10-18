@@ -117,3 +117,61 @@ img.ill{aspect-ratio:1/1;max-width:300px!important}
 
 .beta-banner{background:#fef3c7;color:#422006;border-bottom:3px solid #b45309;padding:.6em 1em;font-size:1rem;line-height:1.5;text-align:center}
 @media print{.beta-banner{background:none;border:2px solid #000;color:#000}}
+/* v1.1.0 round-1 */
+.nv{display:inline-block;background:#fef3c7;border:1px dashed #b45309;color:#78350f;border-radius:6px;padding:0 6px;margin:2px 0;font-size:.92em;font-weight:600}
+.note{background:#eff6ff;border-left:5px solid var(--primary);border-radius:8px;padding:10px 12px;margin:10px 0}
+.emerg-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px}
+.emerg-more summary{min-height:44px;display:flex;align-items:center;cursor:pointer;font-weight:700;text-decoration:underline}
+.emerg-more[open] summary{margin-bottom:6px}
+details.adv{margin-top:10px}details.adv summary{min-height:44px;display:flex;align-items:center;cursor:pointer;font-weight:700;color:var(--primary)}
+.counter{margin-top:12px;border:2px solid var(--primary);border-radius:12px;padding:12px}
+.counter h3{margin:0 0 6px}.counter input{font-size:1.2rem;width:6em;min-height:44px;padding:4px 8px;border:2px solid #94a3b8;border-radius:8px}
+.cnt-show{font-size:1.2rem}.cnt-left.low{color:#b91c1c;font-weight:800}
+.tally{border-collapse:collapse;width:100%;table-layout:fixed}.tally td{border:1px solid #333;height:28px;text-align:center;font-size:.75rem;color:#666}
+.callouts{list-style-type:upper-alpha}
+.chip,.tbtn,.tbtn select,.emerg .call,.call-pharm,.tel{min-height:44px}
+.tbtn select{min-height:44px}
+.gl-btn{position:relative}.gl-btn::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:44px;transform:translateY(-50%)}
+.fnav a,.crumb a,.links a{display:inline-flex;align-items:center;min-height:44px}
+h2.h3{font-size:1.15rem}
+@media print{
+ html,html.lt{font-size:9.5pt}
+ .card,.sec{padding:4px 0!important;margin:0 0 4px!important;border:0!important;box-shadow:none!important;break-inside:auto}
+ .sec-head h2,h2{font-size:11.5pt;margin:6px 0 2px;border-bottom:1px solid #999}
+ h1{font-size:15pt;margin:0 0 4px}
+ .steps{display:grid;grid-template-columns:1fr 1fr;gap:4px 10px}
+ .step{break-inside:avoid;display:grid;grid-template-columns:30mm 1fr;gap:6px;align-items:start;margin:0!important;padding:2px 0!important}
+ .step .fig,.step svg.ill{width:30mm!important;max-width:30mm!important;height:auto;margin:0!important}
+ .step .callouts{display:none}
+ .emerg-more,.counter,details.adv,.meta .small,.video,.links,.lasa,.qr p.small{display:none!important}
+ ul{margin:2px 0 2px 1.1em;padding:0}li{margin:0}
+ .warnbox,.note{padding:3px 6px;margin:4px 0}
+ .nv{border:1px dashed #000;background:none;color:#000}
+ .tally td{height:22px}
+}
+@media print{
+ #purpose,#ha,#video,#sources,#mistakes,#cleaning,#spacer,#side,#sharps,#empty,#hypo .small,.beta-banner+.small{display:none!important}
+ .step .fig,.step svg.ill{width:24mm!important;max-width:24mm!important}
+ .step{grid-template-columns:24mm 1fr}
+ .tri{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px}
+ .qrimg svg{width:22mm;height:22mm}
+}
+@media print{
+ html,html.lt{font-size:8.8pt}body{line-height:1.35}
+ @page{size:A4;margin:10mm}
+ .keypts li,.steps li{margin:0}
+ .sec{break-inside:auto!important}
+}
+@media print{
+ #prep .fig,#prep svg.ill{display:none!important}#prep .step{grid-template-columns:1fr}
+ .step .fig,.step svg.ill{width:21mm!important;max-width:21mm!important}.step{grid-template-columns:21mm 1fr}
+ .p-foot,.print-only .small{font-size:7.5pt}
+}
+@media print{
+ .steps{display:block!important;columns:2;column-gap:10px}
+ .step{break-inside:avoid;margin:0 0 4px!important}
+ #prep .step{display:block}
+}
+@media print{html,html.lt{font-size:8.5pt}@page{size:A4;margin:8mm}.sec-head h2,h2{margin:4px 0 1px}}
+@media print{.foot p,.foot .small{font-size:7pt!important;margin:1px 0!important;line-height:1.25}.foot{margin-top:2px;padding-top:2px}}
+@media print{#qr{display:flex!important;align-items:center;gap:8px;break-inside:avoid}#qr .sec-head h2{border:0;margin:0}.qrimg svg,.qrimg img{width:17mm!important;height:17mm!important}}

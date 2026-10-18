@@ -143,4 +143,17 @@
 
   // ---- offline-ish ----
   if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register(B + 'sw.js').catch(function () { });
+
+  // v1.1 puff counter (localStorage only)
+  $$('.counter[data-key]').forEach(function (c) {
+    var k = c.getAttribute('data-key'), tot = $('.cnt-total', c), used = $('.cnt-used', c), left = $('.cnt-left', c);
+    function get() { try { return JSON.parse(localStorage.getItem(k) || '{}'); } catch (e) { return {}; } }
+    function put(v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { } show(v); }
+    function show(v) { var u = v.used || 0, t = v.total || 0; used.textContent = u; tot.value = t || ''; if (t) { var r = Math.max(t - u, 0); left.textContent = '，剩 ' + r + ' 下' + (r <= 20 ? '（快用完了，請準備新的一支）' : ''); left.className = 'cnt-left' + (r <= 20 ? ' low' : ''); } else { left.textContent = ''; left.className = 'cnt-left'; } }
+    tot.addEventListener('change', function () { var v = get(); var n = parseInt(tot.value, 10); v.total = n > 0 ? n : 0; put(v); });
+    $('.cnt-plus', c).addEventListener('click', function () { var v = get(); v.used = (v.used || 0) + 1; put(v); });
+    $('.cnt-minus', c).addEventListener('click', function () { var v = get(); v.used = Math.max((v.used || 0) - 1, 0); put(v); });
+    $('.cnt-reset', c).addEventListener('click', function () { if (confirm('確定換新的一支、把已用次數歸零？')) { var v = get(); v.used = 0; put(v); } });
+    show(get());
+  });
 })();

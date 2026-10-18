@@ -1,6 +1,6 @@
 {
- "version": "1.0.0",
- "lastReviewed": "2026-10",
+ "version": "1.1.0",
+ "lastReviewed": null,
  "effective": "2026-10-18",
  "drugs": [
   {
@@ -42,16 +42,15 @@
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛署藥輸字第023265號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛署藥輸字第023265號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第023265號（2026-10-17 查詢）"
+   ],
+   "version": "1.1.0"
   },
   {
    "slug": "spiriva",
    "no": 2,
    "brand": "Spiriva Respimat",
-   "zhName": "適倍樂舒沛噴吸入劑",
+   "zhName": "適喘樂舒沛噴吸入劑",
    "ingredient": "Tiotropium",
    "strength": "2.5 微公克／噴；60 噴／瓶",
    "category": "柔霧吸入器",
@@ -70,10 +69,12 @@
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛署藥輸字第025033號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛署藥輸字第025033號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第025033號（2026-10-17 查詢）"
+   ],
+   "storage": [
+    "30°C 以下保存，不可冷凍。"
+   ],
+   "version": "1.1.0"
   },
   {
    "slug": "berotec",
@@ -126,10 +127,9 @@
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛署藥輸字第023074號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛署藥輸字第023074號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第023074號（2026-10-17 查詢）"
+   ],
+   "version": "1.1.0"
   },
   {
    "slug": "berodual",
@@ -182,16 +182,18 @@
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛署藥輸字第023473號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛署藥輸字第023473號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第023473號（2026-10-17 查詢）"
+   ],
+   "side": [
+    "口乾；排尿困難、尿不出來；眼睛痛、看東西模糊或有光暈（請避免藥粉或藥霧進到眼睛）→ 請回診。"
+   ],
+   "version": "1.1.0"
   },
   {
    "slug": "spiolto",
    "no": 5,
    "brand": "Spiolto Respimat",
-   "zhName": "適喘樂舒沛噴吸入劑",
+   "zhName": "適倍樂舒沛噴吸入劑",
    "ingredient": "Tiotropium / Olodaterol",
    "strength": "2.5 / 2.5 微公克／噴；60 噴／瓶",
    "category": "柔霧吸入器",
@@ -210,9 +212,11 @@
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛部藥輸字第026735號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
+    "食藥署核准仿單（衛部藥輸字第026735號）：https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第026735號（2026-10-17 查詢）"
+   ],
+   "version": "1.1.0",
+   "storage": [
+    "30°C 以下保存。"
    ]
   },
   {
@@ -227,7 +231,7 @@
    "license": "衛部藥輸字第026657號",
    "insert": "https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第026657號",
    "technique": "pmdi",
-   "role": "mart",
+   "role": "maintenance",
    "rinse": true,
    "shake": true,
    "video": "https://www.tspccm.org.tw/media/10877",
@@ -236,7 +240,7 @@
    ],
    "purpose": "含[[吸入型類固醇]]（budesonide）和長效[[支氣管擴張劑]]（formoterol）的定量噴霧吸入器。",
    "usual": [
-    "使用次數與噴數依醫師處方與藥袋；是否也當緩解用，只能依醫師給您的行動計畫。"
+    "使用次數與噴數依醫師處方與藥袋，即使沒有症狀也要規律使用。"
    ],
    "prep": [
     {
@@ -260,10 +264,10 @@
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛部藥輸字第026657號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛部藥輸字第026657號）：https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第026657號（2026-10-17 查詢）"
+   ],
+   "roleText": "這是每天規律使用的保養藥，不是急救藥。突然喘時請用醫師另外開的急救吸入劑，並隨身帶著。",
+   "version": "1.1.0"
   },
   {
    "slug": "seretide",
@@ -300,10 +304,10 @@
      ]
     },
     {
-     "t": "超過 1 星期沒有使用：使用前搖勻並朝空中試噴（次數請依仿單或藥師說明）。",
+     "t": "超過 1 星期沒有使用：搖勻後朝空中、遠離臉部試噴 2 下。",
      "img": "prime-air",
      "c": [
-      "朝空中試噴"
+      "朝空中 2 下"
      ]
     }
    ],
@@ -319,10 +323,9 @@
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛署藥輸字第023480號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛署藥輸字第023480號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第023480號（2026-10-17 查詢）"
+   ],
+   "version": "1.1.0"
   },
   {
    "slug": "flixotide",
@@ -367,10 +370,9 @@
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛署藥輸字第023755號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛署藥輸字第023755號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第023755號（2026-10-17 查詢）"
+   ],
+   "version": "1.1.0"
   },
   {
    "slug": "duasma",
@@ -414,10 +416,9 @@
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛署藥製字第057770號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛署藥製字第057770號）：https://mcp.fda.gov.tw/exportpdf/衛署藥製字第057770號（2026-10-17 查詢）"
+   ],
+   "version": "1.1.0"
   },
   {
    "slug": "foster-nexthaler",
@@ -446,10 +447,9 @@
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛部藥輸字第026816號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛部藥輸字第026816號）：https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第026816號（2026-10-17 查詢）"
+   ],
+   "version": "1.1.0"
   },
   {
    "slug": "foster",
@@ -465,7 +465,7 @@
    "technique": "pmdi",
    "role": "mart",
    "rinse": true,
-   "shake": "check",
+   "shake": false,
    "video": "https://www.tspccm.org.tw/media/10683",
    "lasa": [
     "foster"
@@ -496,10 +496,11 @@
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛署藥輸字第025092號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛署藥輸字第025092號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第025092號（2026-10-17 查詢）"
+   ],
+   "shakeNote": "本品是溶液型，台灣仿單的使用步驟沒有搖勻，直接照下面步驟使用。",
+   "gapNoInsert": true,
+   "version": "1.1.0"
   },
   {
    "slug": "anoro",
@@ -527,10 +528,13 @@
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛部藥輸字第026315號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛部藥輸字第026315號）：https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第026315號（2026-10-17 查詢）"
+   ],
+   "side": [
+    "口乾；排尿困難、尿不出來；眼睛痛、看東西模糊或有光暈（請避免藥粉或藥霧進到眼睛）→ 請回診。"
+   ],
+   "noCandida": true,
+   "version": "1.1.0"
   },
   {
    "slug": "breztri",
@@ -584,10 +588,12 @@
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛部藥輸字第028183號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛部藥輸字第028183號）：https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第028183號（2026-10-17 查詢）"
+   ],
+   "side": [
+    "口乾；排尿困難、尿不出來；眼睛痛、看東西模糊或有光暈（請避免藥粉或藥霧進到眼睛）→ 請回診。"
+   ],
+   "version": "1.1.0"
   },
   {
    "slug": "trimbow",
@@ -601,11 +607,11 @@
    "license": "衛部藥輸字第027672號",
    "insert": "https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第027672號",
    "technique": "pmdi",
-   "role": "copd",
+   "role": "maintenance",
    "rinse": true,
-   "shake": "check",
+   "shake": false,
    "video": "https://www.tspccm.org.tw/media/10689",
-   "purpose": "三合一（[[吸入型類固醇]] beclometasone＋formoterol＋glycopyrronium）的定量吸入劑。",
+   "purpose": "三合一（[[吸入型類固醇]] beclometasone＋兩種長效支氣管擴張劑 formoterol、glycopyrronium）定量吸入劑，用於 COPD 或成人氣喘的維持治療（依醫師處方）。",
    "usual": [
     "使用次數依醫師處方，即使沒有症狀也要規律使用。"
    ],
@@ -628,14 +634,16 @@
     "用乾布擦吸嘴。不要拆下藥罐，不要用水洗。"
    ],
    "storage": [
-    "藥局交給您之前放冰箱；領藥後放 25°C 以下，最多 4 個月（請寫下領藥日期）。"
+    "未開封：放冰箱冷藏 2–8°C，不可冷凍。",
+    "開封後：放 25°C 以下，最多 4 個月（請寫下開封日期）。"
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛部藥輸字第027672號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛部藥輸字第027672號）：https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第027672號（2026-10-17 查詢）"
+   ],
+   "roleText": "用於慢性阻塞性肺病（COPD），以及已合併使用長效支氣管擴張劑與吸入型類固醇仍控制不好的成人氣喘的保養治療（依醫師處方）。這是保養藥，不是急救藥；突然喘時請用醫師開的急救吸入劑。",
+   "shakeNote": "本品是溶液型，台灣仿單的使用步驟沒有搖勻，直接照下面步驟使用。",
+   "version": "1.1.0"
   },
   {
    "slug": "ventolin",
@@ -680,10 +688,11 @@
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛署藥輸字第017528號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛署藥輸字第017528號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第017528號（2026-10-17 查詢）"
+   ],
+   "hold": "越久越好，到不舒服為止（一般約 10 秒）",
+   "inhaleText": "開始慢慢吸氣的同時按 1 下，繼續保持穩定、深的吸氣。",
+   "version": "1.1.0"
   },
   {
    "slug": "onbrez-breezhaler",
@@ -711,10 +720,12 @@
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛署藥輸字第025282號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛署藥輸字第025282號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第025282號（2026-10-17 查詢）"
+   ],
+   "empty": [
+    "看鋁箔剩下幾顆膠囊。吸入器使用 30 天後要丟棄，換用新盒附的吸入器。"
+   ],
+   "version": "1.1.0"
   },
   {
    "slug": "striverdi-respimat",
@@ -739,9 +750,11 @@
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛部藥輸字第026292號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
+    "食藥署核准仿單（衛部藥輸字第026292號）：https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第026292號（2026-10-17 查詢）"
+   ],
+   "version": "1.1.0",
+   "storage": [
+    "30°C 以下保存。"
    ]
   },
   {
@@ -770,10 +783,13 @@
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛部藥輸字第026500號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛部藥輸字第026500號）：https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第026500號（2026-10-17 查詢）"
+   ],
+   "side": [
+    "口乾；排尿困難、尿不出來；眼睛痛、看東西模糊或有光暈（請避免藥粉或藥霧進到眼睛）→ 請回診。"
+   ],
+   "noCandida": true,
+   "version": "1.1.0"
   },
   {
    "slug": "relvar-ellipta",
@@ -803,10 +819,9 @@
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛部藥輸字第026318號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛部藥輸字第026318號）：https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第026318號（2026-10-17 查詢）"
+   ],
+   "version": "1.1.0"
   },
   {
    "slug": "seretide-accuhaler",
@@ -833,10 +848,12 @@
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛署藥輸字第023202號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛署藥輸字第023202號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第023202號（2026-10-17 查詢）"
+   ],
+   "empty": [
+    "看上方計數窗的剩餘劑數，快用完時準備新藥。"
+   ],
+   "version": "1.1.0"
   },
   {
    "slug": "ultibro-breezhaler",
@@ -864,10 +881,12 @@
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛部藥輸字第026301號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛部藥輸字第026301號）：https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第026301號（2026-10-17 查詢）"
+   ],
+   "side": [
+    "口乾；排尿困難、尿不出來；眼睛痛、看東西模糊或有光暈（請避免藥粉或藥霧進到眼睛）→ 請回診。"
+   ],
+   "version": "1.1.0"
   },
   {
    "slug": "bevespi-aerosphere",
@@ -920,10 +939,13 @@
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛部藥輸字第027524號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛部藥輸字第027524號）：https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第027524號（2026-10-17 查詢）"
+   ],
+   "gapNoInsert": true,
+   "side": [
+    "口乾；排尿困難、尿不出來；眼睛痛、看東西模糊或有光暈（請避免藥粉或藥霧進到眼睛）→ 請回診。"
+   ],
+   "version": "1.1.0"
   },
   {
    "slug": "trelegy-ellipta",
@@ -952,10 +974,12 @@
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛部藥輸字第027395號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛部藥輸字第027395號）：https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第027395號（2026-10-17 查詢）"
+   ],
+   "side": [
+    "口乾；排尿困難、尿不出來；眼睛痛、看東西模糊或有光暈（請避免藥粉或藥霧進到眼睛）→ 請回診。"
+   ],
+   "version": "1.1.0"
   },
   {
    "slug": "enerzair-breezhaler",
@@ -982,10 +1006,12 @@
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛部藥輸字第028048號／第028049號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛部藥輸字第028048號／第028049號）：https://mcp.fda.gov.tw/exportpdf/衛部藥輸字第028048號（2026-10-17 查詢）"
+   ],
+   "side": [
+    "口乾；排尿困難、尿不出來；眼睛痛、看東西模糊或有光暈（請避免藥粉或藥霧進到眼睛）→ 請回診。"
+   ],
+   "version": "1.1.0"
   },
   {
    "slug": "alvesco-mdi",
@@ -1001,7 +1027,7 @@
    "technique": "pmdi",
    "role": "maintenance",
    "rinse": true,
-   "shake": "check",
+   "shake": false,
    "video": null,
    "lasa": [
     "alvesco-strength"
@@ -1012,23 +1038,22 @@
    ],
    "prep": [
     {
-     "t": "第一次使用（或久未使用）：先朝空中、遠離臉部試噴（次數請依仿單或藥師說明）。",
-     "tm": "pmdi/03-prime-test-spray",
+     "t": "第一次使用或超過 1 星期沒用：朝空中、遠離臉部試噴 3 下。",
      "img": "prime-air",
      "c": [
-      "朝空中試噴"
+      "朝空中 3 下"
      ]
     }
    ],
    "cleaning": [
-    "清潔方式請依仿單或藥師說明。"
+    "每週用乾的面紙或布擦吸嘴。不可用水洗，也不可泡水。"
    ],
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛署藥輸字第024787號／第024786號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛署藥輸字第024787號／第024786號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第024787號（2026-10-17 查詢）"
+   ],
+   "shakeNote": "本品是溶液型噴霧，使用前不需要搖。",
+   "version": "1.1.0"
   },
   {
    "slug": "awiqli",
@@ -1047,8 +1072,8 @@
     "flextouch",
     "weekly"
    ],
-   "test": "依盒內使用說明書（台灣仿單未收錄使用說明，待藥師確認）",
-   "hold": "依盒內使用說明書",
+   "test": null,
+   "hold": "盒內使用說明書規定的秒數",
    "retries": null,
    "purpose": "每週一次的長效[[基礎胰島素]]（insulin icodec），濃度 700 單位/mL。",
    "usual": [
@@ -1057,7 +1082,8 @@
    ],
    "warn": [
     "一週只打一次，不是每天打。",
-    "高濃度（700 單位/mL）：絕對不可以用空針從筆裡抽藥。"
+    "高濃度（700 單位/mL）：絕對不可以用空針從筆裡抽藥。",
+    "剛從每天打的胰島素換成本品時，第一次可能有醫師交代的「一次性額外劑量」；第二次起就不要再加。每次注射前都核對劑量窗上的數字，尤其是第一次和第二次。"
    ],
    "storage": [
     "未開封：冰箱 2–8°C，不可冷凍。",
@@ -1067,10 +1093,19 @@
    "highAlert": true,
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛部菌疫輸字第001287號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛部菌疫輸字第001287號）：https://mcp.fda.gov.tw/exportpdf/衛部菌疫輸字第001287號（2026-10-17 查詢）"
+   ],
+   "testText": "每次注射前都要做流量（安全）測試，看到藥滴才注射；單位數請依盒內使用說明書，並請藥師當面示範。",
+   "holdUnset": true,
+   "missed": [
+    "忘記打：想起來就盡快補打，並監測空腹血糖。",
+    "第 2 型糖尿病：在原本注射日 3 天內補打，可以維持原本的每週注射日；超過 3 天才補打，之後改以補打這一天作為每週注射日。",
+    "第 1 型糖尿病：補打後，每週注射日改成補打的這一天。",
+    "補打後當天聯絡藥師或醫師確認之後的注射日。不確定打過了沒有，就不要再打，先測血糖並聯絡藥師或醫師。"
+   ],
+   "inUseFridge": true,
+   "version": "1.1.0",
+   "holdNote": "本品台灣說明書沒有收錄使用步驟{審核中}"
   },
   {
    "slug": "ryzodeg-flextouch",
@@ -1104,10 +1139,10 @@
    "highAlert": true,
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛部菌疫輸字第001053號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛部菌疫輸字第001053號）：https://mcp.fda.gov.tw/exportpdf/衛部菌疫輸字第001053號（2026-10-17 查詢）"
+   ],
+   "inUseFridge": true,
+   "version": "1.1.0"
   },
   {
    "slug": "tresiba-flextouch",
@@ -1132,7 +1167,7 @@
    "usual": [
     "每天注射一次，劑量依醫師處方。"
    ],
-   "missed": "成人忘記打：醒著發現時補打，兩次注射至少間隔 8 小時，之後照原來時間。（依台灣仿單；待藥師確認措辭）",
+   "missed": "成人忘記打：醒著發現時就補打，兩次注射至少間隔 8 小時，之後照原來的時間打。兒童忘記打：請聯絡醫療團隊，並密切監測血糖直到下一次注射。",
    "storage": [
     "未開封：冰箱 2–8°C，不可冷凍。",
     "開始使用後：冰箱或 30°C 以下，56 天內用完。"
@@ -1141,10 +1176,10 @@
    "highAlert": true,
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛部菌疫輸字第001054號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛部菌疫輸字第001054號）：https://mcp.fda.gov.tw/exportpdf/衛部菌疫輸字第001054號（2026-10-17 查詢）"
+   ],
+   "inUseFridge": true,
+   "version": "1.1.0"
   },
   {
    "slug": "lantus-solostar",
@@ -1164,7 +1199,7 @@
     "solostar"
    ],
    "test": "2 單位",
-   "retries": null,
+   "retries": "重做一次安全測試，直到針尖出現藥滴（台灣說明書沒有寫次數上限）",
    "hold": "10 秒",
    "purpose": "長效[[基礎胰島素]]（insulin glargine 100 單位/mL）。",
    "usual": [
@@ -1178,10 +1213,10 @@
    "highAlert": true,
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛署菌疫輸字第000728號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛署菌疫輸字第000728號）：https://mcp.fda.gov.tw/exportpdf/衛署菌疫輸字第000728號（2026-10-17 查詢）"
+   ],
+   "inUseFridge": false,
+   "version": "1.1.0"
   },
   {
    "slug": "semglee-pen",
@@ -1214,10 +1249,10 @@
    "highAlert": true,
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛部菌疫輸字第001184號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛部菌疫輸字第001184號）：https://mcp.fda.gov.tw/exportpdf/衛部菌疫輸字第001184號（2026-10-17 查詢）"
+   ],
+   "inUseFridge": false,
+   "version": "1.1.0"
   },
   {
    "slug": "humalog-mix25-kwikpen",
@@ -1236,9 +1271,9 @@
    "lasa": [
     "humalog"
    ],
-   "test": "2 單位（依使用說明書）",
+   "test": "2 單位",
    "retries": null,
-   "hold": "依使用說明書（台灣仿單未收錄，待確認）",
+   "hold": "盒內使用說明書規定的秒數",
    "purpose": "預混型胰島素：25% 速效 lispro＋75% 中效 lispro protamine，外觀為乳白色。",
    "usual": [
     "依醫師處方，通常在餐前注射。"
@@ -1251,10 +1286,13 @@
    "highAlert": true,
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛署菌疫輸字第000898號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛署菌疫輸字第000898號）：https://mcp.fda.gov.tw/exportpdf/衛署菌疫輸字第000898號（2026-10-17 查詢）"
+   ],
+   "testNote": "原廠使用說明，非台灣版{審核中}",
+   "inUseFridge": false,
+   "version": "1.1.0",
+   "holdUnset": true,
+   "holdNote": "本品台灣說明書沒有收錄使用步驟{審核中}"
   },
   {
    "slug": "humalog-mix50-kwikpen",
@@ -1274,7 +1312,7 @@
     "humalog"
    ],
    "test": "2 單位",
-   "retries": null,
+   "retries": "重複試注排氣，但最多不要超過 4 次，仍沒有就換針頭",
    "hold": "數到 5",
    "purpose": "預混型胰島素：50% 速效 lispro＋50% 中效 lispro protamine，外觀為乳白色。",
    "usual": [
@@ -1282,16 +1320,16 @@
    ],
    "storage": [
     "未開封：冰箱 2–8°C，不可冷凍。",
-    "開始使用後：30°C 以下；可使用天數依包裝說明書（待藥師確認）。"
+    "開始使用後：30°C 以下；可使用天數請看盒內說明書或問藥師。{審核中}"
    ],
    "technique": "insulin-pen",
    "highAlert": true,
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛署菌疫輸字第000899號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛署菌疫輸字第000899號）：https://mcp.fda.gov.tw/exportpdf/衛署菌疫輸字第000899號（2026-10-17 查詢）"
+   ],
+   "inUseFridge": false,
+   "version": "1.1.0"
   },
   {
    "slug": "levemir-flexpen",
@@ -1324,10 +1362,10 @@
    "highAlert": true,
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛署菌疫輸字第000810號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛署菌疫輸字第000810號）：https://mcp.fda.gov.tw/exportpdf/衛署菌疫輸字第000810號（2026-10-17 查詢）"
+   ],
+   "inUseFridge": true,
+   "version": "1.1.0"
   },
   {
    "slug": "toujeo-solostar",
@@ -1347,7 +1385,7 @@
     "solostar"
    ],
    "test": "3 單位",
-   "testNote": "依原廠使用說明（非台灣版）；台灣版使用說明待藥師確認",
+   "testNote": "原廠使用說明，非台灣版",
    "retries": "3 次仍無藥滴就換針頭（原廠說明）",
    "hold": "數到 5",
    "purpose": "高濃度長效[[基礎胰島素]]（insulin glargine 300 單位/mL）。",
@@ -1366,10 +1404,15 @@
    "highAlert": true,
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛部菌疫輸字第001011號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛部菌疫輸字第001011號）：https://mcp.fda.gov.tw/exportpdf/衛部菌疫輸字第001011號（2026-10-17 查詢）"
+   ],
+   "missed": [
+    "每天固定同一時間注射；必要時可以在平常時間的前後 3 小時內注射（台灣仿單）。",
+    "超過 3 小時才想起來：不要自己補打或加倍，先測血糖並聯絡藥師或醫師。"
+   ],
+   "holdNote": "原廠使用說明，非台灣版",
+   "inUseFridge": false,
+   "version": "1.1.0"
   },
   {
    "slug": "novomix30-flexpen",
@@ -1403,10 +1446,10 @@
    "highAlert": true,
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛署菌疫輸字第000820號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛署菌疫輸字第000820號）：https://mcp.fda.gov.tw/exportpdf/衛署菌疫輸字第000820號（2026-10-17 查詢）"
+   ],
+   "inUseFridge": false,
+   "version": "1.1.0"
   },
   {
    "slug": "novorapid-flexpen",
@@ -1439,10 +1482,10 @@
    "highAlert": true,
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛署菌疫輸字第000823號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛署菌疫輸字第000823號）：https://mcp.fda.gov.tw/exportpdf/衛署菌疫輸字第000823號（2026-10-17 查詢）"
+   ],
+   "inUseFridge": true,
+   "version": "1.1.0"
   },
   {
    "slug": "soliqua-100-33",
@@ -1464,7 +1507,7 @@
     "solostar"
    ],
    "test": "2 單位",
-   "testNote": "依原廠使用說明（非台灣版）；台灣版待確認",
+   "testNote": "原廠使用說明，非台灣版",
    "retries": "3 次仍無藥滴就換針頭（原廠說明）",
    "hold": "數到 10",
    "purpose": "長效胰島素（insulin glargine 100 單位/mL）＋GLP-1 受體促效劑（lixisenatide 33 微克/mL）的固定比例複方，不是單純的胰島素。",
@@ -1483,10 +1526,11 @@
    "highAlert": true,
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛部菌疫輸字第001079號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛部菌疫輸字第001079號）：https://mcp.fda.gov.tw/exportpdf/衛部菌疫輸字第001079號（2026-10-17 查詢）"
+   ],
+   "holdNote": "原廠使用說明，非台灣版",
+   "inUseFridge": false,
+   "version": "1.1.0"
   },
   {
    "slug": "soliqua-100-50",
@@ -1508,7 +1552,7 @@
     "solostar"
    ],
    "test": "2 單位",
-   "testNote": "依原廠使用說明（非台灣版）；台灣版待確認",
+   "testNote": "原廠使用說明，非台灣版",
    "retries": "3 次仍無藥滴就換針頭（原廠說明）",
    "hold": "數到 10",
    "purpose": "長效胰島素（insulin glargine 100 單位/mL）＋GLP-1 受體促效劑（lixisenatide 50 微克/mL）的固定比例複方，不是單純的胰島素。",
@@ -1527,10 +1571,11 @@
    "highAlert": true,
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛部菌疫輸字第001080號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛部菌疫輸字第001080號）：https://mcp.fda.gov.tw/exportpdf/衛部菌疫輸字第001080號（2026-10-17 查詢）"
+   ],
+   "holdNote": "原廠使用說明，非台灣版",
+   "inUseFridge": false,
+   "version": "1.1.0"
   },
   {
    "slug": "apidra-solostar",
@@ -1549,7 +1594,7 @@
     "solostar"
    ],
    "test": "2 單位",
-   "retries": null,
+   "retries": "重做一次安全測試，直到針尖出現藥滴（台灣說明書沒有寫次數上限）",
    "hold": "10 秒",
    "purpose": "[[速效胰島素]]（insulin glulisine），控制吃飯後的血糖。",
    "usual": [
@@ -1563,10 +1608,10 @@
    "highAlert": true,
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛署菌疫輸字第000803號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛署菌疫輸字第000803號）：https://mcp.fda.gov.tw/exportpdf/衛署菌疫輸字第000803號（2026-10-17 查詢）"
+   ],
+   "inUseFridge": false,
+   "version": "1.1.0"
   },
   {
    "slug": "humalog-kwikpen",
@@ -1599,10 +1644,10 @@
    "highAlert": true,
    "reviewStatus": "draft",
    "sources": [
-    "食藥署核准仿單（衛署菌疫輸字第000900號），2026-10-17 下載",
-    "事實查核清單 qa/checklist.md v0.1（2026-10-18）",
-    "醫師審閱 qa/physician-review.md"
-   ]
+    "食藥署核准仿單（衛署菌疫輸字第000900號）：https://mcp.fda.gov.tw/exportpdf/衛署菌疫輸字第000900號（2026-10-17 查詢）"
+   ],
+   "inUseFridge": false,
+   "version": "1.1.0"
   }
  ]
 }

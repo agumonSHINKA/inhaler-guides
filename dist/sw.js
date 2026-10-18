@@ -1,5 +1,5 @@
 // Minimal offline support: network-first for pages and data, cache fallback; cache-first for static assets.
-const V = 'v1-a92e7acdac';
+const V = 'v1-1384807d3c';
 self.addEventListener('install', e => { self.skipWaiting(); e.waitUntil(caches.open(V).then(c => c.addAll(['./', './css/style.css', './js/app.js', './data/app.json', './offline/']).catch(() => {}))); });
 self.addEventListener('activate', e => e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== V).map(k => caches.delete(k)))).then(() => self.clients.claim())));
 self.addEventListener('fetch', e => {

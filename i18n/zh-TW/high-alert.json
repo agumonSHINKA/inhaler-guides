@@ -1,78 +1,357 @@
 {
-"intro": "高警訊藥品是「用錯時可能造成嚴重傷害」的藥。這些藥照醫師指示使用是安全有效的；重點是：不可自己停藥或改劑量、核對藥名與含量、知道什麼時候要就醫。",
-"ask": "請聯絡藥師／醫師",
-"classes": [
-{"id": "anticoag", "title": "口服抗凝血劑", "examples": "warfarin（歐服寧 Orfarin）；dabigatran（普栓達 Pradaxa）、rivaroxaban（拜瑞妥 Xarelto）、apixaban（艾必克凝 Eliquis）、edoxaban（里先安 Lixiana）", "technique": "oral-tablet", "triage": "anticoag",
- "key": ["會讓血不容易凝固：太強會出血、太弱會形成血栓。不可自行停藥或增減。", "拔牙、內視鏡、手術、脊椎或硬膜外麻醉前，一定要告訴醫師您在用抗凝血劑。", "Warfarin：要定期抽血驗 PT/INR，隨身帶「使用 warfarin」識別卡；懷孕禁用。", "普栓達（Pradaxa）膠囊要整顆吞、不可打開，放在原包裝防潮。拜瑞妥（Xarelto）15 mg、20 mg 要隨餐吃。"],
- "missed": ["Warfarin：同一天想起來就補吃；隔天不可吃兩倍，並聯絡醫師。", "普栓達（一天兩次）：距離下一次 6 小時以上就補吃；不到 6 小時就跳過這次。", "拜瑞妥（一天一次）、艾必克凝（一天兩次）：同一天內盡快補吃，不可吃兩倍。拜瑞妥 15 mg 一天兩次（治療最初 21 天）另有規則，請依仿單或問藥師。", "里先安：想起來立即補吃，隔天照常；同一天不可吃兩倍。"],
- "overdose": ["吃太多：不要再吃，立即聯絡醫師／藥師或到急診（warfarin 可能需要驗 INR）。", "不確定有沒有吃過：不要再吃第二次，請聯絡藥師／醫師；有出血就就醫。"],
- "call": ["黑便或血便、紅色或深褐色尿、吐血或吐出咖啡渣樣物、咳血、流血不止、大片瘀青。", "劇烈頭痛、頭暈虛弱、跌倒撞到頭（即使當下覺得沒事）。", "中風徵兆（臉歪、一側手腳無力、說話不清）→ 立即撥 119。"],
- "interactions": ["阿斯匹靈、NSAIDs 止痛藥（例如 ibuprofen）會增加出血，不要自行買成藥。", "Warfarin：含維生素 K 的飲食保持穩定（不必不吃青菜，但不要突然大改）；避免小紅莓產品與喝酒；當歸、銀杏、大蒜、人蔘、鳳梨酵素會增加出血，聖約翰草、輔酶 Q10 會降低藥效。", "普栓達不可併用 ketoconazole、itraconazole、cyclosporine；rifampicin、聖約翰草、carbamazepine、phenytoin 會降低藥效。拜瑞妥不建議併用 azole 類抗黴菌藥、HIV 蛋白酶抑制劑。"],
- "storage": ["普栓達：30°C 以下、放原包裝防潮。其他依藥袋。", "剩藥：一般錠劑依「剩藥怎麼丟」的一般原則處理。"],
- "sources": ["Orfarin、Pradaxa、Xarelto、Eliquis、Lixiana 食藥署核准仿單", "臺中榮民總醫院 新型口服抗凝血劑注意事項", "qa/high-alert.md v0.2"]},
-{"id": "lmwh", "title": "皮下注射低分子量肝素", "examples": "enoxaparin（克立生 Clexane）、dalteparin（弗列明 Fragmin）、nadroparin（速避凝）", "technique": "prefilled-syringe", "triage": "anticoag",
- "key": ["只能皮下注射，打在腹壁、左右輪流；捏起皮膚，整支針垂直刺入，打完才放手。", "預充填針筒如果劑量是整支，不需要先推掉氣泡。", "醫師會定期抽血檢查血小板。", "做脊椎或硬膜外麻醉、腰椎穿刺前，務必告知醫師。"],
- "missed": ["請聯絡藥師／醫師。"],
- "overdose": ["打太多：立即聯絡醫師／藥師；有出血就就醫。"],
- "call": ["出血不止、黑便或血便、血尿、吐血、大片瘀青。", "背痛合併腳麻、腳無力或大小便異常（尤其脊椎麻醉後）→ 立即撥 119。", "新的血栓症狀：腿腫痛、胸痛、呼吸困難。"],
- "interactions": ["阿斯匹靈、NSAIDs、其他抗凝血或抗血小板藥會增加出血；用止痛成藥前先問藥師。"],
- "storage": ["克立生：25°C 以下、不可冷凍。弗列明：25°C 以下。", "用過的針筒整支放入硬質容器（有安全護套的先啟動），依就診醫院規定交回；沒用完的針劑送回醫院或藥局。"],
- "sources": ["Clexane、Fragmin 食藥署核准仿單", "qa/high-alert.md v0.2"]},
-{"id": "insulin-glp1", "title": "胰島素筆與 GLP-1 受體促效劑筆", "examples": "Lantus、Toujeo、Tresiba、NovoRapid、NovoMix 30 等胰島素；Ozempic、Trulicity、Victoza、Mounjaro 等 GLP-1", "technique": "insulin-pen", "triage": "insulin",
- "key": ["一支筆只給一個人用，換了針頭也不可以共用。", "每次打完就取下針頭，再收好筆。", "GLP-1 類：本人或家族有甲狀腺髓質癌、MEN 2 者禁用；全身麻醉或深度鎮靜（包括無痛胃鏡）前要告訴醫師。", "不確定打過了沒有，就不要再打。先測血糖，並聯絡藥師或醫師。"],
- "missed": ["Tresiba（成人）：醒著發現時補打，兩次至少間隔 8 小時。Ryzodeg：當天下一次正餐時補打。", "Ozempic：5 天內補打，超過就跳過。Trulicity：距離下次 3 天（72 小時）以上才補，否則跳過。Mounjaro：4 天（96 小時）內補打，超過就跳過。Victoza：不補，下次照常。", "其他胰島素（Lantus、Toujeo、Levemir、速效、預混）：仿單沒有寫 → 請聯絡藥師／醫師，不要自己補打。"],
- "overdose": ["打太多胰島素會低血糖：依下面「低血糖 15 法則」處理，並聯絡醫師。"],
- "call": ["低血糖處理後仍然很低、意識不清、無法吞嚥或抽搐 → 撥 119。不要硬灌食物，讓病人頭側一邊；家人不可以再幫他打胰島素。", "持續劇烈腹痛（可能痛到背部）、伴隨嘔吐 → 可能是胰臟炎，當天急診。", "嘔吐腹瀉、喝不下水、尿變少（脫水可能傷腎）。"],
- "interactions": ["空腹喝酒、沒吃飯照打、運動突然增加 → 容易低血糖。", "和磺醯尿素類降血糖藥或其他胰島素併用，低血糖風險增加。", "Mounjaro 會降低口服避孕藥的效果：開始使用後 4 週與每次加量後 4 週，要另外使用屏障避孕，或改用非口服避孕方式。"],
- "storage": ["未開封：冰箱 2–8°C、不可冷凍。開始使用後依各產品仿單（每支筆不同，請看各藥品頁）。", "針頭放入硬質容器，依就診醫院規定交回。"],
- "sources": ["各胰島素、Ozempic、Trulicity、Mounjaro、Victoza 食藥署核准仿單", "臺北榮民總醫院 低血糖之照護", "qa/high-alert.md v0.2"]},
-{"id": "epinephrine", "title": "腎上腺素自動注射筆", "examples": "艾筆 EpiPen 0.3 mg／EpiPen Jr", "technique": "epinephrine-autoinjector", "triage": "anaphylaxis",
- "key": ["嚴重過敏一出現就打；打完仍然必須立即就醫。", "只打大腿外側中間，可以隔著衣服；不可打臀部、手指、手或腳。", "幫幼兒注射時先固定好腿。劑量依體重由醫師決定。"],
- "missed": ["不適用（急救用藥）：有嚴重過敏症狀就打。"],
- "overdose": ["誤打到手指、手或腳：立即到急診。", "是否使用第二支：依醫師給您的過敏急救計畫。"],
- "call": ["只要用了腎上腺素注射筆 → 撥 119 或到急診。", "打完後胸痛、心跳很不規則。", "注射部位持續紅、熱、腫、痛（可能感染）。"],
- "interactions": ["正在使用乙型阻斷劑（例如 propranolol）、三環抗憂鬱劑、MAOI、強心配醣體、利尿劑或抗心律不整藥：請事先告訴醫師。"],
- "storage": ["放在保護管內避光、室溫，不要放冰箱。", "藥液變粉紅色或棕色、混濁、有顆粒，或過期，就要換新的。藍色安全蓋拔掉後就必須使用。", "用過的筆是尖銳物：就醫時交給醫護人員；過期的筆送回醫院或藥局。"],
- "sources": ["EpiPen 食藥署核准仿單（201811V2）", "qa/high-alert.md v0.2"]},
-{"id": "fentanyl", "title": "經皮鴉片類止痛貼片", "examples": "fentanyl（吩坦尼）：多瑞喜 Durogesic、歐必德 Opiodur 等", "technique": "transdermal-patch", "triage": "opioid",
- "key": ["強效鴉片類止痛藥（第二級管制藥品），可能造成危及生命的呼吸抑制。照處方使用，不可以自己加貼。", "每 72 小時換一次，先撕舊的再貼新的；貼在軀幹或上臂平整的皮膚，每次換位置；用手掌壓 30 秒；不可剪開。", "貼片處避開熱源（電熱毯、熱敷墊、熱水袋、長時間泡熱水澡、三溫暖、日光浴）；發燒要告訴醫師。", "放在兒童拿不到的地方；兒童使用時貼在上背部；誤黏到別人身上要立即撕下。", "填寫醫院給的「使用紀錄表」。"],
- "missed": ["忘記換貼片：請聯絡藥師／醫師。", "貼片提早掉落：在不同部位貼一片相同劑量的新貼片，並告訴醫師。"],
- "overdose": ["貼太多片、貼錯人、孩子誤貼或誤含：立即撕下或取出，撥 119。"],
- "call": ["呼吸變慢變淺、叫不醒、嘴唇發紫、意識混亂（撕下後仍可能持續）→ 撥 119。"],
- "interactions": ["不要喝酒。", "安眠藥、鎮靜劑、benzodiazepine、其他鴉片類、肌肉鬆弛劑、鎮靜型抗組織胺 → 呼吸抑制風險增加。", "部分抗黴菌藥、抗生素、HIV 藥（CYP3A4 抑制劑）會升高濃度。", "SSRI/SNRI 抗憂鬱藥、tramadol、triptan、MAOI → 可能引起血清素症候群。"],
- "storage": ["撕下後黏膠面對折，放回原包裝袋，不可丟垃圾；回診時連同使用紀錄表繳回藥局。沒用完的退還原處方醫院藥局。", "用過的貼片仍然含藥，一定要遠離兒童。"],
- "sources": ["Durogesic 食藥署核准仿單", "食藥署 吩坦尼穿皮貼片劑治療疼痛使用指引暨管理注意事項", "qa/high-alert.md v0.2"]},
-{"id": "methotrexate", "title": "Methotrexate 口服（每週一次）", "examples": "滅殺除炎錠 Methotrexate 2.5 mg（類風濕性關節炎、乾癬等）", "technique": "oral-tablet", "triage": "general",
- "key": ["大多數是「一週只吃一次」，不是每天吃。誤每天吃曾經致命。", "和醫師約定固定的服藥日，並寫下來。", "醫師另外開的葉酸吃法不同，不要搞混。", "要定期抽血；懷孕禁用，男女雙方用藥期間都要避孕。"],
- "missed": ["請聯絡藥師／醫師。"],
- "overdose": ["吃太多或連續幾天每天吃：立即就醫或到急診，帶藥袋說明吃了多少、哪幾天吃的；解毒藥越早給越好。"],
- "call": ["口腔破、潰瘍（中毒的早期徵兆）、喉嚨痛、發燒發冷、不明瘀青出血、黑便、嚴重腹瀉嘔吐。", "乾咳、喘、胸痛、呼吸困難。", "嚴重皮疹、水泡、脫皮。"],
- "interactions": ["避免喝酒。", "NSAIDs、阿斯匹靈會增加毒性；盤尼西林類、磺胺類（例如 sulfamethoxazole/trimethoprim）會減少排出；ciprofloxacin 需要監測。"],
- "storage": ["避光、25°C 以下。", "屬於特殊藥品：剩藥送回醫院或藥局，不要丟一般垃圾。"],
- "sources": ["Methotrexate Sodium Tablets 食藥署核准仿單", "中國醫藥大學附設醫院 Methotrexate 安全資訊", "qa/high-alert.md v0.2"]},
-{"id": "oral-hypoglycemics", "title": "口服降血糖藥", "examples": "磺醯尿素類（glimepiride、gliclazide）、metformin、SGLT2 抑制劑（empagliflozin、dapagliflozin）", "technique": "oral-tablet", "triage": "insulin",
- "key": ["磺醯尿素類最大的風險是低血糖；glimepiride 在早餐前或早餐時吃，沒吃飯照吃會低血糖。", "Metformin 隨餐或飯後吃、整顆吞；要打含碘顯影劑或手術禁食時可能需要暫停，請先告訴醫師。", "SGLT2 抑制劑可能引起酮酸中毒，而且血糖不一定高；預定手術前醫師可能請您先停藥（至少 3 天）。"],
- "missed": ["Glimepiride：不可在下一次加量；補吃時限仿單沒有寫 → 請聯絡藥師／醫師。", "Metformin：跳過這次，下次照常，不吃兩倍。", "Jardiance：盡快補吃，不把下一次加倍。", "Forxiga、gliclazide：請聯絡藥師／醫師。"],
- "overdose": ["磺醯尿素類吃太多 → 低血糖：用 15 法則處理；可能反覆發生，即使好轉也要就醫觀察。", "Metformin 大量誤吃：立即就醫（乳酸中毒）。"],
- "call": ["低血糖處理後沒有改善、意識不清（嚴重時看起來像中風）。", "乳酸中毒：肌肉痙攣、腹痛、嚴重無力、呼吸急促、體溫過低。", "酮酸中毒（SGLT2 抑制劑）：噁心、嘔吐、腹痛、倦怠、呼吸急促 → 即使血糖不高也要停藥就醫。", "會陰部疼痛紅腫合併發燒（SGLT2 抑制劑）。"],
- "interactions": ["喝酒會增加低血糖、乳酸中毒、酮酸中毒的風險。", "含碘顯影劑（metformin）。", "SGLT2 抑制劑和胰島素或磺醯尿素類一起用，低血糖風險增加。"],
- "storage": ["依藥袋保存；剩藥依一般原則處理。"],
- "sources": ["Amaryl、Glucophage、Jardiance、Forxiga 食藥署核准仿單", "qa/high-alert.md v0.2"]},
-{"id": "digoxin", "title": "Digoxin（毛地黃）", "examples": "隆我心 Lanoxin", "technique": "oral-tablet", "triage": "general",
- "key": ["有效劑量和中毒劑量很接近，不可自行增減。", "每天固定時間吃。", "每天量脈搏並記錄（脈搏多少要暫停，請依醫師指示）。", "血鉀低容易中毒（有用利尿劑的人依醫囑驗血鉀）；可能需要抽血驗藥物濃度。"],
- "missed": ["請聯絡藥師／醫師。"],
- "overdose": ["吃太多：立即就醫（心律不整可能在數小時後才最嚴重）。"],
- "call": ["噁心、嘔吐、腹瀉、極度無力、意識混亂、視力模糊或看東西偏黃綠色、有光圈。", "心跳很慢合併頭暈、胸痛、冒冷汗、昏倒，或心跳不規則 → 撥 119。"],
- "interactions": ["會升高作用：amiodarone、quinidine、propafenone、spironolactone、verapamil、erythromycin、clarithromycin、itraconazole、PPI 胃藥（omeprazole）。", "會降低作用：制酸劑、膨脹性緩瀉劑、cholestyramine、rifampicin、聖約翰草。", "會降血鉀的藥增加中毒風險。"],
- "storage": ["依藥袋保存；錠劑依一般原則，藥水不要倒馬桶。"],
- "sources": ["Lanoxin 食藥署核准仿單", "FDA Lanoxin labeling 2025", "qa/high-alert.md v0.2"]},
-{"id": "antiepileptics", "title": "抗癲癇藥", "examples": "carbamazepine、phenytoin、valproate（帝拔癲）、lamotrigine（樂命達）、levetiracetam（優閒）", "technique": "oral-tablet", "triage": "general",
- "key": ["不可自行停藥或減量（可能誘發嚴重發作）；停藥要由醫師逐步減量。", "Carbamazepine：第一次使用前要做 HLA-B*1502 基因檢測，陽性不可使用（嚴重皮膚過敏 SJS/TEN 風險）。", "Valproate：懷孕可能造成胎兒畸形；有生育可能的女性要確實避孕，想懷孕請立即和醫師討論，不要自己停藥。", "Lamotrigine：嚴格依照慢慢加量的時程（嚴重皮疹風險）；停藥一段時間後要重新開始，先問醫師。", "可能嗜睡頭暈，小心開車和跌倒；留意情緒低落或輕生念頭。"],
- "missed": ["請聯絡藥師／醫師。"],
- "overdose": ["吃太多或重複吃：請聯絡藥師／醫師；有危及生命的症狀請依頁首「緊急狀況」撥 119。"],
- "call": ["發作超過 5 分鐘、發作後還沒清醒又再發作、發作後持續意識不清、在水中發作、受傷或懷孕 → 撥 119。嘴裡不要塞東西，讓頭側一邊。", "皮疹合併發燒、口腔破、眼睛紅、水泡、脫皮、喉嚨痛（carbamazepine、lamotrigine）。", "Valproate：明顯疲倦、食慾差、嘔吐、腹痛（肝臟或胰臟問題）。", "有輕生念頭：立即求助。"],
- "interactions": ["避免喝酒。", "Valproate 不建議併用 carbapenem 類抗生素；含雌激素的避孕藥會降低 valproate 濃度。", "Valproate 會影響 lamotrigine 的劑量；口服避孕藥會降低 lamotrigine 濃度。", "Carbamazepine、phenytoin 會降低部分藥物（例如 dabigatran）的濃度。"],
- "storage": ["依藥袋保存；錠劑依一般原則處理，口服液不要倒馬桶。"],
- "sources": ["Keppra、Depakine Chrono、Lamictal 食藥署核准仿單", "衛生署 carbamazepine 仿單加刊公告；健保 HLA-B*1502 給付規定", "馬偕紀念醫院 認識癲癇", "qa/high-alert.md v0.2"]}
-]
+ "intro": "高警訊藥品是「用錯時可能造成嚴重傷害」的藥。這些藥照醫師指示使用是安全有效的；重點是：不可自己停藥或改劑量、核對藥名與含量、知道什麼時候要就醫。",
+ "ask": "請聯絡藥師／醫師",
+ "classes": [
+  {
+   "id": "anticoag",
+   "title": "口服抗凝血劑",
+   "examples": "warfarin（歐服寧 Orfarin）；dabigatran（普栓達 Pradaxa）、rivaroxaban（拜瑞妥 Xarelto）、apixaban（艾必克凝 Eliquis）、edoxaban（里先安 Lixiana）",
+   "technique": "oral-tablet",
+   "triage": "anticoag",
+   "key": [
+    "會讓血不容易凝固：太強會出血、太弱會形成血栓。不可自行停藥或增減。",
+    "拔牙、內視鏡、手術、脊椎或硬膜外麻醉前，一定要告訴醫師您在用抗凝血劑。",
+    "Warfarin：要定期抽血驗 PT/INR，隨身帶「使用 warfarin」識別卡；懷孕禁用。",
+    "普栓達（Pradaxa）膠囊要整顆吞、不可打開，放在原包裝防潮。拜瑞妥（Xarelto）15 mg、20 mg 要隨餐吃。"
+   ],
+   "missed": [
+    "Warfarin：同一天想起來就補吃；隔天不可吃兩倍，並聯絡醫師。",
+    "普栓達（一天兩次）：距離下一次 6 小時以上就補吃；不到 6 小時就跳過這次。",
+    "拜瑞妥（一天一次）、艾必克凝（一天兩次）：同一天內盡快補吃，不可吃兩倍。拜瑞妥 15 mg 一天兩次（治療最初 21 天）另有規則，請依仿單或問藥師。",
+    "里先安：想起來立即補吃，隔天照常；同一天不可吃兩倍。"
+   ],
+   "overdose": [
+    "吃太多：不要再吃，立即聯絡醫師／藥師或到急診（warfarin 可能需要驗 INR）。",
+    "不確定有沒有吃過：不要再吃第二次，請聯絡藥師／醫師；有出血就就醫。{審核中}"
+   ],
+   "call": [
+    "黑便或血便、紅色或深褐色尿、吐血或吐出咖啡渣樣物、咳血、流血不止、大片瘀青。",
+    "劇烈頭痛、頭暈虛弱、跌倒撞到頭（即使當下覺得沒事）。",
+    "中風徵兆（臉歪、一側手腳無力、說話不清）→ 立即撥 119。"
+   ],
+   "interactions": [
+    "阿斯匹靈、NSAIDs 止痛藥（例如 ibuprofen）會增加出血，不要自行買成藥。",
+    "Warfarin：含維生素 K 的飲食保持穩定（不必不吃青菜，但不要突然大改）；避免小紅莓產品與喝酒；當歸、銀杏、大蒜、人蔘、鳳梨酵素會增加出血，聖約翰草、輔酶 Q10 會降低藥效。",
+    "普栓達不可併用 ketoconazole、itraconazole、cyclosporine；rifampicin、聖約翰草、carbamazepine、phenytoin 會降低藥效。拜瑞妥不建議併用 azole 類抗黴菌藥、HIV 蛋白酶抑制劑。"
+   ],
+   "storage": [
+    "普栓達：30°C 以下、放原包裝防潮。其他依藥袋。",
+    "剩藥：一般錠劑依「剩藥怎麼丟」的一般原則處理。"
+   ],
+   "sources": [
+    "Orfarin、Pradaxa、Xarelto、Eliquis、Lixiana 食藥署核准仿單",
+    "臺中榮民總醫院 新型口服抗凝血劑注意事項",
+    "食藥署藥品仿單查詢平台 https://mcp.fda.gov.tw/（2026-10-17 查詢）"
+   ]
+  },
+  {
+   "id": "lmwh",
+   "title": "皮下注射低分子量肝素",
+   "examples": "enoxaparin（克立生 Clexane）、dalteparin（弗列明 Fragmin）、nadroparin（速避凝）",
+   "technique": "prefilled-syringe",
+   "triage": "anticoag",
+   "key": [
+    "只能皮下注射，打在腹壁、左右輪流；捏起皮膚，整支針垂直刺入，打完才放手。",
+    "預充填針筒如果劑量是整支，不需要先推掉氣泡。",
+    "醫師會定期抽血檢查血小板。",
+    "做脊椎或硬膜外麻醉、腰椎穿刺前，務必告知醫師。"
+   ],
+   "missed": [
+    "請聯絡藥師／醫師。"
+   ],
+   "overdose": [
+    "打太多：立即聯絡醫師／藥師；有出血就就醫。"
+   ],
+   "call": [
+    "出血不止、黑便或血便、血尿、吐血、大片瘀青。",
+    "背痛合併腳麻、腳無力或大小便異常（尤其脊椎麻醉後）→ 立即撥 119。",
+    "新的血栓症狀：腿腫痛、胸痛、呼吸困難。"
+   ],
+   "interactions": [
+    "阿斯匹靈、NSAIDs、其他抗凝血或抗血小板藥會增加出血；用止痛成藥前先問藥師。"
+   ],
+   "storage": [
+    "克立生：25°C 以下、不可冷凍。弗列明：25°C 以下。",
+    "用過的針筒整支放入硬質容器（有安全護套的先啟動），依就診醫院規定交回；沒用完的針劑送回醫院或藥局。{審核中}"
+   ],
+   "sources": [
+    "Clexane、Fragmin 食藥署核准仿單",
+    "食藥署藥品仿單查詢平台 https://mcp.fda.gov.tw/（2026-10-17 查詢）"
+   ]
+  },
+  {
+   "id": "insulin-glp1",
+   "title": "胰島素筆與 GLP-1 受體促效劑筆",
+   "examples": "Lantus、Toujeo、Tresiba、NovoRapid、NovoMix 30 等胰島素；Ozempic、Trulicity、Victoza、Mounjaro 等 GLP-1",
+   "technique": "insulin-pen",
+   "triage": "insulin",
+   "key": [
+    "一支筆只給一個人用，換了針頭也不可以共用。",
+    "每次打完就取下針頭，再收好筆。",
+    "GLP-1 類：本人或家族有甲狀腺髓質癌、MEN 2 者禁用；全身麻醉或深度鎮靜（包括無痛胃鏡）前要告訴醫師。",
+    "不確定打過了沒有，就不要再打。先測血糖，並聯絡藥師或醫師。{審核中}"
+   ],
+   "missed": [
+    "Tresiba（成人）：醒著發現時補打，兩次至少間隔 8 小時。Ryzodeg：當天下一次正餐時補打。",
+    "Awiqli（每週一次）：想起來就盡快補打，並監測空腹血糖。第 2 型糖尿病：在原本注射日 3 天內補打，可維持原本的每週注射日；超過 3 天，之後改以補打這天為每週注射日。第 1 型糖尿病：補打後，每週注射日改成補打這天。",
+    "Toujeo：每天固定時間打；必要時可在平常時間的前後 3 小時內注射。超過 3 小時請先問藥師或醫師。",
+    "Ozempic：5 天內補打，超過就跳過。Trulicity：距離下次 3 天（72 小時）以上才補，否則跳過。Mounjaro：4 天（96 小時）內補打，超過就跳過。Victoza：不補，下次照常。",
+    "其他胰島素（Lantus、Levemir、速效、預混）：藥盒裡的說明書沒有寫 → 請聯絡藥師／醫師，不要自己補打。"
+   ],
+   "overdose": [
+    "打太多胰島素會低血糖：依下面「低血糖 15 法則」處理，並聯絡醫師。",
+    "不小心重複打了一次：先測血糖，依低血糖 15 法則準備糖，並立即聯絡藥師或醫師；之後幾小時多測血糖。{審核中}"
+   ],
+   "call": [
+    "低血糖處理後仍然很低、意識不清、無法吞嚥或抽搐：不要從嘴巴餵任何東西，讓病人側躺，立即打 119。",
+    "持續劇烈腹痛（可能痛到背部）、伴隨嘔吐 → 可能是胰臟炎，當天急診。",
+    "嘔吐腹瀉、喝不下水、尿變少（脫水可能傷腎）。"
+   ],
+   "interactions": [
+    "空腹喝酒、沒吃飯照打、運動突然增加 → 容易低血糖。",
+    "和磺醯尿素類降血糖藥或其他胰島素併用，低血糖風險增加。",
+    "Mounjaro 會降低口服避孕藥的效果：開始使用後 4 週與每次加量後 4 週，要另外使用屏障避孕，或改用非口服避孕方式。"
+   ],
+   "storage": [
+    "未開封：冰箱 2–8°C、不可冷凍。",
+    "開始使用後（依台灣核准說明書）：Ozempic 6 週內用完；Victoza 30 天內用完（15–30°C 或冰箱）；Mounjaro KwikPen 30°C 以下、30 天內用完；Trulicity 單次筆可在 30°C 以下放最多 14 天。胰島素見各藥品頁。",
+    "針頭放入硬質容器，依就診醫院規定交回。{審核中}"
+   ],
+   "sources": [
+    "各胰島素、Ozempic、Trulicity、Mounjaro、Victoza 食藥署核准仿單",
+    "臺北榮民總醫院 低血糖之照護",
+    "食藥署藥品仿單查詢平台 https://mcp.fda.gov.tw/（2026-10-17 查詢）"
+   ]
+  },
+  {
+   "id": "epinephrine",
+   "title": "腎上腺素自動注射筆",
+   "examples": "艾筆 EpiPen 0.3 mg／EpiPen Jr",
+   "technique": "epinephrine-autoinjector",
+   "triage": "anaphylaxis",
+   "key": [
+    "嚴重過敏一出現就打；打完仍然必須立即就醫。",
+    "只打大腿外側中間，可以隔著衣服；不可打臀部、手指、手或腳。",
+    "幫幼兒注射時先固定好腿。劑量依體重由醫師決定。"
+   ],
+   "missed": [
+    "不適用（急救用藥）：有嚴重過敏症狀就打。"
+   ],
+   "overdose": [
+    "誤打到手指、手或腳：立即到急診。",
+    "打完 5–15 分鐘沒有改善或變嚴重，而且手邊有第二支筆：在另一側大腿打第二支（依醫師給您的過敏急救計畫），並等救護車。"
+   ],
+   "call": [
+    "只要用了腎上腺素注射筆 → 撥 119 或到急診。",
+    "打完後胸痛、心跳很不規則。",
+    "注射部位持續紅、熱、腫、痛（可能感染）。"
+   ],
+   "interactions": [
+    "正在使用乙型阻斷劑（例如 propranolol）、三環抗憂鬱劑、MAOI、強心配醣體、利尿劑或抗心律不整藥：請事先告訴醫師。"
+   ],
+   "storage": [
+    "放在保護管內避光，25°C 左右室溫保存（可短暫放在 15–30°C），不要放冰箱。",
+    "藥液變粉紅色或棕色、混濁、有顆粒，或過期，就要換新的。藍色安全蓋拔掉後就必須使用。",
+    "用過的筆是尖銳物：就醫時交給醫護人員；過期的筆送回醫院或藥局。"
+   ],
+   "sources": [
+    "EpiPen 食藥署核准仿單（201811V2）",
+    "食藥署藥品仿單查詢平台 https://mcp.fda.gov.tw/（2026-10-17 查詢）"
+   ]
+  },
+  {
+   "id": "fentanyl",
+   "title": "經皮鴉片類止痛貼片",
+   "examples": "fentanyl（吩坦尼）：多瑞喜 Durogesic、歐必德 Opiodur 等",
+   "technique": "transdermal-patch",
+   "triage": "opioid",
+   "key": [
+    "強效鴉片類止痛藥（第二級管制藥品），可能造成危及生命的呼吸抑制。照處方使用，不可以自己加貼。",
+    "每 72 小時換一次，先撕舊的再貼新的；貼在軀幹或上臂平整的皮膚，每次換位置；用手掌壓 30 秒；不可剪開。",
+    "貼片處避開熱源（電熱毯、熱敷墊、熱水袋、長時間泡熱水澡、三溫暖、日光浴）；發燒要告訴醫師。",
+    "放在兒童拿不到的地方；兒童使用時貼在上背部；誤黏到別人身上要立即撕下。",
+    "填寫醫院給的「使用紀錄表」。"
+   ],
+   "missed": [
+    "忘記換貼片：請聯絡藥師／醫師。",
+    "貼片提早掉落：在不同部位貼一片相同劑量的新貼片，並告訴醫師。"
+   ],
+   "overdose": [
+    "貼太多片、貼錯人、孩子誤貼或誤含：立即撕下或取出，撥 119。"
+   ],
+   "call": [
+    "呼吸變慢變淺、叫不醒、嘴唇發紫、意識混亂（撕下後仍可能持續）→ 撥 119。"
+   ],
+   "interactions": [
+    "不要喝酒。",
+    "安眠藥、鎮靜劑、benzodiazepine、其他鴉片類、肌肉鬆弛劑、鎮靜型抗組織胺 → 呼吸抑制風險增加。",
+    "部分抗黴菌藥、抗生素、HIV 藥（CYP3A4 抑制劑）會升高濃度。",
+    "SSRI/SNRI 抗憂鬱藥、tramadol、triptan、MAOI → 可能引起血清素症候群。{審核中}"
+   ],
+   "storage": [
+    "撕下後黏膠面對折，放回原包裝袋，不可丟垃圾；回診時連同使用紀錄表繳回藥局。沒用完的退還原處方醫院藥局。",
+    "用過的貼片仍然含藥，一定要遠離兒童。"
+   ],
+   "sources": [
+    "Durogesic 食藥署核准仿單",
+    "食藥署 吩坦尼穿皮貼片劑治療疼痛使用指引暨管理注意事項",
+    "食藥署藥品仿單查詢平台 https://mcp.fda.gov.tw/（2026-10-17 查詢）"
+   ]
+  },
+  {
+   "id": "methotrexate",
+   "title": "Methotrexate 口服（每週一次）",
+   "examples": "滅殺除炎錠 Methotrexate 2.5 mg（類風濕性關節炎、乾癬等）",
+   "technique": "oral-tablet",
+   "triage": "general",
+   "key": [
+    "大多數是「一週只吃一次」，不是每天吃。誤每天吃曾經致命。",
+    "和醫師約定固定的服藥日，並寫下來。",
+    "醫師另外開的葉酸吃法不同，不要搞混。",
+    "要定期抽血；懷孕禁用，男女雙方用藥期間都要避孕。"
+   ],
+   "missed": [
+    "請聯絡藥師／醫師。"
+   ],
+   "overdose": [
+    "吃太多或連續幾天每天吃：立即就醫或到急診，帶藥袋說明吃了多少、哪幾天吃的；解毒藥越早給越好。"
+   ],
+   "call": [
+    "口腔破、潰瘍（中毒的早期徵兆）、喉嚨痛、發燒發冷、不明瘀青出血、黑便、嚴重腹瀉嘔吐。",
+    "乾咳、喘、胸痛、呼吸困難 → 撥 119。",
+    "嚴重皮疹、水泡、脫皮。"
+   ],
+   "interactions": [
+    "避免喝酒。",
+    "NSAIDs、阿斯匹靈會增加毒性；盤尼西林類、磺胺類（例如 sulfamethoxazole/trimethoprim）會減少排出；ciprofloxacin 需要監測。"
+   ],
+   "storage": [
+    "避光、25°C 以下。",
+    "屬於特殊藥品：剩藥送回醫院或藥局，不要丟一般垃圾。"
+   ],
+   "sources": [
+    "Methotrexate Sodium Tablets 食藥署核准仿單",
+    "中國醫藥大學附設醫院 Methotrexate 安全資訊",
+    "食藥署藥品仿單查詢平台 https://mcp.fda.gov.tw/（2026-10-17 查詢）"
+   ]
+  },
+  {
+   "id": "oral-hypoglycemics",
+   "title": "口服降血糖藥",
+   "examples": "磺醯尿素類（glimepiride、gliclazide）、metformin、SGLT2 抑制劑（empagliflozin、dapagliflozin）",
+   "technique": "oral-tablet",
+   "triage": "insulin",
+   "key": [
+    "磺醯尿素類最大的風險是低血糖；glimepiride 在早餐前或早餐時吃，沒吃飯照吃會低血糖。",
+    "Metformin 隨餐或飯後吃、整顆吞；要打含碘顯影劑或手術禁食時可能需要暫停，請先告訴醫師。",
+    "SGLT2 抑制劑可能引起酮酸中毒，而且血糖不一定高；預定手術前醫師可能請您先停藥（至少 3 天）。"
+   ],
+   "missed": [
+    "Glimepiride：不可在下一次加量；補吃時限仿單沒有寫 → 請聯絡藥師／醫師。",
+    "Metformin：跳過這次，下次照常，不吃兩倍。",
+    "Jardiance：盡快補吃，不把下一次加倍。",
+    "Forxiga、gliclazide：請聯絡藥師／醫師。"
+   ],
+   "overdose": [
+    "磺醯尿素類吃太多 → 低血糖：用 15 法則處理；可能反覆發生，即使好轉也要就醫觀察。",
+    "Metformin 大量誤吃：立即就醫（乳酸中毒）。"
+   ],
+   "call": [
+    "低血糖處理後沒有改善、意識不清（嚴重時看起來像中風）→ 撥 119。",
+    "乳酸中毒：肌肉痙攣、腹痛、嚴重無力、呼吸急促、體溫過低。",
+    "酮酸中毒（SGLT2 抑制劑）：噁心、嘔吐、腹痛、倦怠、呼吸急促 → 即使血糖不高也要停藥就醫。",
+    "會陰部疼痛紅腫合併發燒（SGLT2 抑制劑）。"
+   ],
+   "interactions": [
+    "喝酒會增加低血糖、乳酸中毒、酮酸中毒的風險。",
+    "含碘顯影劑（metformin）。",
+    "SGLT2 抑制劑和胰島素或磺醯尿素類一起用，低血糖風險增加。"
+   ],
+   "storage": [
+    "依藥袋保存；剩藥依一般原則處理。"
+   ],
+   "sources": [
+    "Amaryl、Glucophage、Jardiance、Forxiga 食藥署核准仿單",
+    "食藥署藥品仿單查詢平台 https://mcp.fda.gov.tw/（2026-10-17 查詢）"
+   ]
+  },
+  {
+   "id": "digoxin",
+   "title": "Digoxin（毛地黃）",
+   "examples": "隆我心 Lanoxin",
+   "technique": "oral-tablet",
+   "triage": "general",
+   "key": [
+    "有效劑量和中毒劑量很接近，不可自行增減。",
+    "每天固定時間吃。",
+    "每天量脈搏並記錄（脈搏多少要暫停，請依醫師指示）。",
+    "血鉀低容易中毒（有用利尿劑的人依醫囑驗血鉀）；可能需要抽血驗藥物濃度。"
+   ],
+   "missed": [
+    "請聯絡藥師／醫師。"
+   ],
+   "overdose": [
+    "吃太多：立即就醫（心律不整可能在數小時後才最嚴重）。"
+   ],
+   "call": [
+    "噁心、嘔吐、腹瀉、極度無力、意識混亂、視力模糊或看東西偏黃綠色、有光圈。",
+    "心跳很慢合併頭暈、胸痛、冒冷汗、昏倒，或心跳不規則 → 撥 119。"
+   ],
+   "interactions": [
+    "會升高作用：amiodarone、quinidine、propafenone、spironolactone、verapamil、erythromycin、clarithromycin、itraconazole、PPI 胃藥（omeprazole）。",
+    "會降低作用：制酸劑、膨脹性緩瀉劑、cholestyramine、rifampicin、聖約翰草。",
+    "會降血鉀的藥增加中毒風險。"
+   ],
+   "storage": [
+    "依藥袋保存；錠劑依一般原則，藥水不要倒馬桶。"
+   ],
+   "sources": [
+    "Lanoxin 食藥署核准仿單",
+    "FDA Lanoxin labeling 2025",
+    "食藥署藥品仿單查詢平台 https://mcp.fda.gov.tw/（2026-10-17 查詢）"
+   ]
+  },
+  {
+   "id": "antiepileptics",
+   "title": "抗癲癇藥",
+   "examples": "carbamazepine、phenytoin、valproate（帝拔癲）、lamotrigine（樂命達）、levetiracetam（優閒）",
+   "technique": "oral-tablet",
+   "triage": "general",
+   "key": [
+    "不可自行停藥或減量（可能誘發嚴重發作）；停藥要由醫師逐步減量。",
+    "Carbamazepine：第一次使用前要做 HLA-B*1502 基因檢測，陽性不可使用（嚴重皮膚過敏 SJS/TEN 風險）。",
+    "Valproate：懷孕可能造成胎兒畸形；有生育可能的女性要確實避孕，想懷孕請立即和醫師討論，不要自己停藥。",
+    "Lamotrigine：嚴格依照慢慢加量的時程（嚴重皮疹風險）；停藥一段時間後要重新開始，先問醫師。",
+    "可能嗜睡頭暈，小心開車和跌倒；留意情緒低落或輕生念頭。"
+   ],
+   "missed": [
+    "請聯絡藥師／醫師。"
+   ],
+   "overdose": [
+    "吃太多：極度嗜睡、走路不穩、意識變差、呼吸變慢 → 立即就醫或撥 119，帶著藥袋。{審核中}",
+    "重複吃了一次：聯絡藥師／醫師。"
+   ],
+   "call": [
+    "發作超過 5 分鐘、發作後還沒清醒又再發作、發作後持續意識不清、在水中發作、受傷或懷孕 → 撥 119。嘴裡不要塞東西，讓頭側一邊。",
+    "皮疹合併發燒、口腔破、眼睛紅、水泡、脫皮、喉嚨痛（carbamazepine、lamotrigine）。",
+    "Valproate：明顯疲倦、食慾差、嘔吐、腹痛（肝臟或胰臟問題）。",
+    "有輕生念頭：立即告訴家人並求助；危急時撥 119。"
+   ],
+   "interactions": [
+    "避免喝酒。",
+    "Valproate 不建議併用 carbapenem 類抗生素；含雌激素的避孕藥會降低 valproate 濃度。",
+    "Valproate 會影響 lamotrigine 的劑量；口服避孕藥會降低 lamotrigine 濃度。",
+    "Carbamazepine、phenytoin 會降低部分藥物（例如 dabigatran）的濃度。"
+   ],
+   "storage": [
+    "依藥袋保存；錠劑依一般原則處理，口服液不要倒馬桶。"
+   ],
+   "sources": [
+    "Keppra、Depakine Chrono、Lamictal 食藥署核准仿單",
+    "衛生署 carbamazepine 仿單加刊公告；健保 HLA-B*1502 給付規定",
+    "馬偕紀念醫院 認識癲癇",
+    "食藥署藥品仿單查詢平台 https://mcp.fda.gov.tw/（2026-10-17 查詢）"
+   ]
+  }
+ ]
 }

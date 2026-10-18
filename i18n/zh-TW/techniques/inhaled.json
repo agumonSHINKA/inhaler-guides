@@ -198,7 +198,7 @@
    "每次：蓋著轉半圈 → 打開蓋子 → 先吐氣 → 含住",
    "開始慢慢吸氣的同時按下按鈕，持續慢慢深吸",
    "閉氣約 10 秒（或盡量久）",
-   "通常每次 2 噴，一天 1 次（依處方）"
+   "每次幾噴、一天幾次依藥袋（通常 2 噴算一次劑量）"
   ],
   "prep": [
    {
@@ -347,8 +347,10 @@
    "藥霧噴進眼睛可能造成眼睛痛、視力模糊或看到光暈，請避免並告知醫師"
   ],
   "sources": [
-   "Boehringer Ingelheim 台灣 Respimat 病人使用說明（參考用；內容以食藥署仿單為準）",
-   "Respimat 各產品 DailyMed Instructions for Use"
+   "Boehringer Ingelheim 台灣 Respimat 病人使用說明（內容以食藥署仿單為準）（參考用，沒有固定網址；2026-10-18 取得）",
+   "Spiriva Respimat（美國版，參考用）DailyMed Instructions for Use：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=7b656b14-fcaa-2741-f6f0-e0be48971c02 （2026-10-18 查詢）",
+   "Spiolto Respimat（美國名稱 Stiolto Respimat，參考用）DailyMed Instructions for Use：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=01e15aee-40e0-23f3-537f-c96dd63e2cb1 （2026-10-18 查詢）",
+   "Striverdi Respimat（美國版，參考用）DailyMed Instructions for Use：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5d9a5433-857e-44ea-b3d6-2a400ca0cef5 （2026-10-18 查詢）"
   ],
   "missed": [
    "保養型吸入劑忘記用：各藥補用方式不同（有的當天補、有的等隔天），請看本藥品頁或說明書；一天不可超過處方次數，不要一次吸兩倍。",
@@ -479,7 +481,7 @@
    "手抖、心悸、頭痛（含 formoterol）"
   ],
   "sources": [
-   "AstraZeneca 台灣 Symbicort Turbuhaler 病人使用說明（參考用；內容以食藥署仿單為準）",
+   "AstraZeneca 台灣 Symbicort Turbuhaler 病人使用說明（內容以食藥署仿單為準）（參考用，沒有固定網址；2026-10-18 取得）",
    "Symbicort Turbuhaler 台灣說明書（衛署藥輸字第023265號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第023265號（2026-10-17 查詢）"
   ],
   "missed": [
@@ -579,7 +581,7 @@
    "手抖、頭痛、心悸"
   ],
   "sources": [
-   "Chiesi Foster NEXThaler 仿單與病人說明（參考用；內容以食藥署仿單為準）"
+   "Chiesi Foster NEXThaler 仿單與病人說明（內容以食藥署仿單為準）（參考用，沒有固定網址；2026-10-18 取得）"
   ],
   "missed": [
    "保養型吸入劑忘記用：各藥補用方式不同（有的當天補、有的等隔天），請看本藥品頁或說明書；一天不可超過處方次數，不要一次吸兩倍。",
@@ -687,7 +689,7 @@
   ],
   "sources": [
    "GSK Ellipta 系列 EU Package Leaflet（EMA EPAR，例：Relvar Ellipta）：https://www.ema.europa.eu/en/medicines/human/EPAR/relvar-ellipta （2026-10-18 查詢）",
-   "GSK 台灣 Ellipta 病人使用說明（參考用；內容以食藥署仿單為準）"
+   "GSK 台灣 Ellipta 病人使用說明（內容以食藥署仿單為準）（參考用，沒有固定網址；2026-10-18 取得）"
   ],
   "missed": [
    "保養型吸入劑忘記用：各藥補用方式不同（有的當天補、有的等隔天），請看本藥品頁或說明書；一天不可超過處方次數，不要一次吸兩倍。",
@@ -793,7 +795,7 @@
    "手抖、心悸、頭痛"
   ],
   "sources": [
-   "GSK Seretide Accuhaler 仿單與病人使用說明（參考用；內容以食藥署仿單為準）"
+   "GSK Seretide Accuhaler 仿單與病人使用說明（內容以食藥署仿單為準）（參考用，沒有固定網址；2026-10-18 取得）"
   ],
   "missed": [
    "保養型吸入劑忘記用：各藥補用方式不同（有的當天補、有的等隔天），請看本藥品頁或說明書；一天不可超過處方次數，不要一次吸兩倍。",
@@ -909,7 +911,7 @@
   ],
   "storage": [
    "膠囊留在鋁箔裡，要用時才取出；取出後要立刻用。",
-   "室溫乾燥保存。",
+   "30°C 以下保存（Onbrez、Ultibro、Enerzair 台灣說明書）。",
    "放在兒童拿不到、看不到的地方。"
   ],
   "mistakes": [

@@ -124,3 +124,14 @@
 - 吸入劑「忘記用藥」：只有 Onbrez、Ultibro、Enerzair、Trimbow 依台灣說明書寫出；其他保養型吸入劑寫「看本藥品頁或說明書」。
 - 胰島素筆「剩下的量不夠」：Levemir、NovoMix 30、NovoRapid、Humalog KwikPen、Humalog Mix50、Semglee 依台灣說明書；分兩支打只在 Humalog KwikPen、Humalog Mix50、Semglee 寫出。其他筆寫「多數注射筆的設計；以本筆說明書為準」。
 - 沒有固定網址的來源（台灣廠商病人使用說明、Respimat DailyMed IFU、食藥署用藥安全宣導）沒有補網址。
+
+## 9. v1.3.0（2026-10-18，Asia/Taipei）第 3 輪 QA 修正後的狀態
+來源：`qa/round-3-changes.md`（A、B、C 全部；D 大部分）。E 區未動。
+**新原則：急救動作（打 119、打第二支 EpiPen、含第 1 顆 5 分鐘沒改善就打 119）一律不加 ⓘ。** build 會檢查：ⓘ 前面那一句只要有「119／第二支／急診」就列為 warning。
+**ⓘ 標示改為：「ⓘ 這一句的細節本院藥師還在確認；有疑問請問藥師」，只標在它前面那一句。仍用這個標示的項目：**
+- 舌下硝化甘油：等救護車時每 5 分鐘再含 1 顆、最多 3 顆；PDE5 抑制劑的國外指引時間；溶完之前不要喝水；用太多時躺下抬腳。
+- 胰島素筆沒有藥滴：沒有寫次數的筆（Lantus 等）「再試一次（最多 3 次）」— 「最多 3 次」沒有台灣說明書來源，待藥師決定。
+- Awiqli「一週只打一次」（PS-04：安全提醒，保留，待藥師決定）。
+- 塞劑「盡量忍住，不要馬上上廁所」（沒有來源，沒有寫數字）。
+**說明書原文對照**：EpiPen 台灣說明書「只有在醫師直接監督下才可連續施打二次以上劑量的腎上腺素」（qa/src_high/epipen_page.txt l.108）→ 網站只在使用方法頁的「進階資訊」寫「說明書：超過 2 劑才需要在醫師直接監督下施打」。NovoMix 30「至少還有 12 單位」：qa/src_high/insulin2/novomix30-flexpen_0.txt l.549–550、728。Lantus 回溫 1–2 小時：qa/src/lantus-solostar_0.txt l.337、375–376。Berotec／Berodual／Duasma「容器不透明，無法看出何時用完」、Ventolin「吸入器未附有劑量計數器」→「本品沒有數字窗」；Flixotide 說明書沒有寫，維持「如果」。Spiolto「使用頻率不可超過一天一次」（spiolto_0.txt l.143），說明書沒有補用規則。
+**院方待提供**：`config/codes.json` 每個代碼的 `license`、`maintainer`、`confirmedAt`（目前空白，build 會列 warning）；院名、藥局電話、HIS 代碼、正式網域。

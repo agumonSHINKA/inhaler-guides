@@ -1,9 +1,37 @@
 {
- "_comment": "Hospital in-house drug code -> page. URL form: <baseUrl>?code=XXXX (or d/<slug>/?code=XXXX). status: active | disabled. target: 'd/<slug>' (40 detailed pages) or 't/<technique>'. One code maps to one active target. Codes below are SYNTHETIC examples only; replace with real HIS codes.",
+ "_comment": "Hospital in-house drug code -> page. URL form: <baseUrl>?code=XXXX (or d/<slug>/?code=XXXX). status: active | disabled. target: 'd/<slug>' (40 detailed pages) or 't/<technique>'. One code maps to one active target. Codes below are SYNTHETIC examples only; replace with real HIS codes. Governance (v1.3): every code carries license (藥品許可證字號 of the product the HIS code dispenses), maintainer (who keeps this row) and confirmedAt (YYYY-MM-DD the hospital last confirmed it). Leave empty until the hospital provides them; the build prints a warning for every empty field and checks for duplicate/case-conflicting codes, unknown targets and license mismatches.",
  "codes": {
-  "TEST-INH-001": { "target": "d/symbicort-turbuhaler", "status": "active", "note": "示範：吸必擴都保" },
-  "TEST-INS-001": { "target": "d/lantus-solostar", "status": "active", "note": "示範：蘭德仕" },
-  "TEST-EYE-001": { "target": "t/eye-drops", "status": "active", "note": "示範：眼藥水通用頁" },
-  "TEST-OLD-009": { "target": "d/seretide", "status": "disabled", "note": "示範：已停用代碼" }
+  "TEST-INH-001": {
+   "target": "d/symbicort-turbuhaler",
+   "status": "active",
+   "note": "示範：吸必擴都保",
+   "license": "",
+   "maintainer": "",
+   "confirmedAt": ""
+  },
+  "TEST-INS-001": {
+   "target": "d/lantus-solostar",
+   "status": "active",
+   "note": "示範：蘭德仕",
+   "license": "",
+   "maintainer": "",
+   "confirmedAt": ""
+  },
+  "TEST-EYE-001": {
+   "target": "t/eye-drops",
+   "status": "active",
+   "note": "示範：眼藥水通用頁",
+   "license": "",
+   "maintainer": "",
+   "confirmedAt": ""
+  },
+  "TEST-OLD-009": {
+   "target": "d/seretide",
+   "status": "disabled",
+   "note": "示範：已停用代碼",
+   "license": "",
+   "maintainer": "",
+   "confirmedAt": ""
+  }
  }
 }

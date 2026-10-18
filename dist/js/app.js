@@ -38,7 +38,7 @@
         if (target.pathname !== here) { var q = new URLSearchParams(); if (params.get('src')) q.set('src', params.get('src')); location.replace(target.href + (q.toString() ? '?' + q : '')); }
       } else {
         var msg = m && m.status === 'disabled' ? a.ui.retired : a.ui.notFound;
-        if (main) main.innerHTML = '<h1>⚠ ' + esc(m ? '衛教資料已停用' : '找不到衛教資料') + '</h1><p class="warnbox">' + esc(msg) + '</p><p class="small">代碼：' + esc(code) + '</p><p><a class="btn" href="' + B + '">← 回首頁搜尋</a></p>';
+        if (main) main.innerHTML = '<h1>⚠ ' + esc(m ? '衛教資料已停用' : '找不到衛教資料') + '</h1><p class="warnbox">' + esc(msg) + '</p><p>用藥諮詢：' + (a.ui.phone && a.ui.phoneHref ? '<a class="tel" href="' + esc(a.ui.phoneHref) + '">📞 ' + esc(a.ui.phone) + '</a>' : esc(a.ui.phoneFallback || '請打藥袋上印的藥局電話')) + '</p><p class="small">代碼：' + esc(code) + '</p><p><a class="btn" href="' + B + '">← 回首頁搜尋</a></p>';
       }
     }).catch(function () { notice('網路連線不穩，無法讀取代碼對應。請詢問藥師。', 'warn'); });
   }

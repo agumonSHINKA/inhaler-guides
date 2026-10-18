@@ -8,20 +8,42 @@ const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..')
 const J = p => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
 const SITE = J('config/site.json'), CODES = J('config/codes.json'), LANG = 'zh-TW';
 const C = J(`i18n/${LANG}/common.json`), U = C.ui, GL = J(`i18n/${LANG}/glossary.json`), HA = J(`i18n/${LANG}/high-alert.json`);
-const DR = J('data/drugs.json'), DRUGS = DR.drugs, LASA = J('data/lasa.json'), META = J('data/index/meta.json');
+const DR = J('data/drugs.json'); let DRUGS; const LASA = J('data/lasa.json'), META = J('data/index/meta.json');
 const T = {}; for (const f of ['inhaled', 'injection', 'oral', 'other']) Object.assign(T, J(`i18n/${LANG}/techniques/${f}.json`));
 T['easyhaler'] = { ...T['dpi-generic'], alias: 'dpi-generic' };
 const VER = SITE.version, BUILT = new Date().toISOString().slice(0, 10);
 const GROUPS = { inhaled: '吸入劑', injection: '注射（自行皮下注射）', oral: '口服', topical: '皮膚外用', eye: '眼用', ear: '耳用', nose: '鼻用', rectal: '肛門用', vaginal: '陰道用' };
 const CHIPS = { dpi: U.chip_dpi, smi: U.chip_smi, pmdi: U.chip_pmdi, insulin: U.chip_insulin };
+const ALL_DRUGS = DR.drugs, RETIRED = ALL_DRUGS.filter(d => d.status === 'retired'); DRUGS = ALL_DRUGS.filter(d => d.status !== 'retired');
 const TECH_DRUGS = {}; for (const d of DRUGS) (TECH_DRUGS[d.technique] ||= []).push(d);
 fs.rmSync(OUT, { recursive: true, force: true }); fs.mkdirSync(OUT, { recursive: true });
 let warnings = [];
+
+// ---------- v1.3: hospital code table governance (config/codes.json) ----------
+function checkCodes() {
+  const raw = fs.readFileSync(path.join(ROOT, 'config/codes.json'), 'utf8');
+  const keys = [...raw.matchAll(/^\s*"([^"]+)"\s*:\s*\{/gm)].map(m => m[1]).filter(k => k !== 'codes');
+  const seen = {};
+  for (const k of keys) { const u = k.toUpperCase(); if (seen[u]) throw new Error(`codes.json conflict: "${k}" and "${seen[u]}" are the same code (the site matches codes case-insensitively)`); seen[u] = k; }
+  const empty = { license: [], maintainer: [], confirmedAt: [] };
+  for (const [code, m] of Object.entries(CODES.codes)) {
+    if (!['active', 'disabled'].includes(m.status)) throw new Error(`codes.json ${code}: status must be active or disabled`);
+    const [kind, id] = String(m.target || '').split('/');
+    const drug = kind === 'd' ? ALL_DRUGS.find(d => d.slug === id) : null;
+    if (!(kind === 'd' ? drug : kind === 't' && T[id])) throw new Error(`codes.json ${code}: unknown target ${m.target}`);
+    if (m.status === 'active' && drug && drug.status === 'retired') throw new Error(`codes.json ${code}: active code points to retired page ${m.target}`);
+    if (m.license && drug && m.license !== drug.license) throw new Error(`codes.json ${code}: license ${m.license} does not match ${drug.slug} (${drug.license})`);
+    if (m.confirmedAt && !/^\d{4}-\d{2}-\d{2}$/.test(m.confirmedAt)) throw new Error(`codes.json ${code}: confirmedAt must be YYYY-MM-DD`);
+    for (const f of Object.keys(empty)) if (!m[f]) empty[f].push(code);
+  }
+  for (const [f, list] of Object.entries(empty)) if (list.length) warnings.push(`codes.json: ${f} empty (待院方提供) for ${list.length} code(s): ${list.join(', ')}`);
+}
 
 // ---------- helpers ----------
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 let glN = 0;
 function rich(s) { // escape + [[glossary]] tooltips + {審核中} marker
+  nvCheck(s);
   return esc(s).replaceAll(NV, nvHtml()).replace(/\[\[([^\]]+)\]\]/g, (m, term) => {
     const def = GL[term]; if (!def) { warnings.push('glossary missing: ' + term); return term; }
     const id = 'g' + (++glN);
@@ -29,6 +51,14 @@ function rich(s) { // escape + [[glossary]] tooltips + {審核中} marker
   });
 }
 const NV = '{審核中}';
+// v1.3: an ⓘ marker refers to the sentence just before it; it must never sit on an emergency instruction (119, second EpiPen)
+function nvCheck(s) {
+  const str = String(s ?? ''); let i = -1;
+  while ((i = str.indexOf(NV, i + 1)) !== -1) {
+    const before = str.slice(0, i).replace(/[。；]\s*$/, ''); const sent = before.slice(Math.max(before.lastIndexOf('。'), before.lastIndexOf('；')) + 1);
+    if (/119|第二支|急診/.test(sent)) warnings.push('ⓘ on emergency sentence: ' + sent.slice(0, 60));
+  }
+}
 const nvHtml = () => `<span class="nv">${esc(U.nvMark)}</span>`;
 const plain = s => String(s ?? '').replace(/\[\[([^\]]+)\]\]/g, '$1').replaceAll(NV, '（' + U.nvMark + '）');
 // v1.1: phone only when the hospital has filled it in (config/site.json)
@@ -43,13 +73,24 @@ function numLabel(t) {
   if (!m) return undefined;
   return (m[1] === '至少' ? '≥' : m[1] === '最多' ? '≤' : '') + m[2].replace(/\s/g, '') + (m[3] === '秒' ? ' s' : ' min');
 }
-// patient wording: 仿單 -> 說明書; the first visible occurrence on a page keeps the official word in brackets
-function plainTerms(html) {
-  const KEEP = '\u0002';
-  html = html.replace(/藥品仿單查詢平台|仿單查詢平台/g, '許可證查詢').replace(/仿單(加刊|查詢)/g, '說明書$1').replaceAll('（仿單）', KEEP).replace(/台灣仿單/g, '台灣說明書').replace(/食藥署(核准)?仿單/g, '食藥署核准說明書');
-  let first = !html.includes(KEEP);
-  html = html.replace(/(<[^>]*>)|([^<]+)/g, (m, tag, txt) => tag ? tag.replace(/仿單/g, '說明書') : txt.replace(/仿單/g, () => { if (first) { first = false; return '藥盒裡的說明書（仿單）'; } return '說明書'; }));
-  return html.replaceAll(KEEP, '（仿單）');
+// patient wording (v1.3, newcomer #2): every visible name for the label becomes 「藥盒裡的說明書」, with 「（仿單）」 once at its first
+// visible occurrence. Sources, 進階資訊 and SVG keep the formal names (仿單 -> 說明書 only). about/changelog pages: formal names (unify=false).
+function plainTerms(html, unify = true) {
+  if (unify === 'none') return html;
+  html = html.replace(/藥品仿單查詢平台|仿單查詢平台/g, '許可證查詢').replace(/仿單(加刊|查詢)/g, '說明書$1').replaceAll('藥盒裡的說明書（仿單）', '藥盒裡的說明書').replaceAll('（仿單）', '');
+  const formal = t => t.replace(/台灣仿單/g, '台灣說明書').replace(/食藥署(核准)?仿單/g, '食藥署核准說明書').replace(/仿單/g, '說明書');
+  const patient = t => formal(t).replace(/本筆的台灣說明書|本筆說明書/g, '本筆藥盒裡的說明書').replace(/(台灣食藥署核准|食藥署核准|台灣核准|台灣|盒內的|盒內使用|盒內|藥盒裡的|藥品)說明書/g, '藥盒裡的說明書')
+    .replace(/(?<!藥盒裡的|器的|EpiPen |美國|國外|原廠|使用)說明書/g, '藥盒裡的說明書').replaceAll('藥盒裡的藥盒裡的', '藥盒裡的');
+  let first = true;
+  const PROT = /(<svg[\s\S]*?<\/svg>|<section class="card sec meta"[\s\S]*?<\/section>|<details class="adv">[\s\S]*?<\/details>|<script[\s\S]*?<\/script>)/;
+  return html.split(PROT).map((part, i) => {
+    if (i % 2) return part.replace(/(<[^>]*>)|([^<]+)/g, (m, tag, txt) => tag ? tag.replace(/仿單/g, '說明書') : formal(txt));
+    return part.replace(/(<[^>]*>)|([^<]+)/g, (m, tag, txt) => {
+      if (tag) return tag.replace(/仿單/g, '說明書');
+      if (!unify) return formal(txt).replace(/藥盒裡的說明書/, x => first ? (first = false, x + '（仿單）') : x);
+      return patient(txt).replace(/藥盒裡的說明書/, x => first ? (first = false, x + '（仿單）') : x);
+    });
+  }).join('');
 }
 const tsvFile = tm => false; // teammate SVG set retired (2026-10-18); all steps use our own inline scenes (js/svg.js)
 function qrSvg(url, cell = 4) { const q = qrcode(0, 'M'); q.addData(url); q.make(); return q.createSvgTag({ cellSize: cell, margin: 2, scalable: true }).replace('<svg ', `<svg role="img" aria-label="QR Code：${esc(url)}" `); }
@@ -63,7 +104,7 @@ const roleBadge = r => r === 'reliever' ? `<span class="badge b-rescue">🚑 ${U
 const haBadge = `<span class="badge b-ha" title="${esc(GL['高警訊藥品'])}">❗ ${U.highAlert}</span>`;
 
 // ---------- layout ----------
-function layout({ rel, title, desc = '', body, cls = '', canonical = '', noindexSearch = false }) {
+function layout({ rel, title, desc = '', body, cls = '', canonical = '', noindexSearch = false, unify = true }) {
   const depth = rel.split('/').length - 1; const B = depth ? '../'.repeat(depth) : './';
   const url = SITE.baseUrl + rel.replace(/index\.html$/, '');
   const langs = SITE.languages.map(l => `<option value="${l.code}"${l.code === LANG ? ' selected' : ''}${l.enabled ? '' : ' disabled'}>${esc(l.label)}${l.enabled ? '' : '（準備中）'}</option>`).join('');
@@ -88,7 +129,7 @@ function layout({ rel, title, desc = '', body, cls = '', canonical = '', noindex
 <div class="emerg-bar"><p class="emerg-line"><b>🔴 ${esc(C.emergency.bar)}</b></p><a class="call" href="tel:119" aria-label="撥打 119">📞 119</a></div>
 <details class="emerg-more"><summary>哪些情況要打 119？誤食怎麼辦？</summary><p><b>${esc(C.emergency.lines[0].replace(/^🔴\s*/, ''))}</b></p>
 <p class="small">${esc(C.emergency.lines[1])} <a href="${SITE.poisonCenter.href}">${esc(SITE.poisonCenter.phone)}</a></p></details></aside>
-<main id="main" class="wrap" tabindex="-1">${plainTerms(body)}</main>
+<main id="main" class="wrap" tabindex="-1">${plainTerms(body, unify)}</main>
 <footer class="foot"><div class="wrap">
 <p class="print-only pfoot">${esc(SITE.hospitalName)}｜${U.version} v${VER}｜${U.effective} ${SITE.effective}｜${U.reviewStatus}：尚未審核｜${U.contact}：${PHONE_SET ? esc(SITE.consultPhone) : esc(U.phoneFallback)}｜${esc(url)}</p>
 <p><b>${U.doseRule}</b></p><p>${U.firstUse}</p>
@@ -115,7 +156,7 @@ function renderSteps(steps, opts, idp) {
     const alt = `步驟 ${i + 1}：${plain(st.t)}`;
     const inline = !tsvFile(st.tm) || st.forceInline;
     const pu = plain(st.t).match(/轉到\s*(\d+)\s*單位/), mx = plain(st.t).match(/(\d+)\s*次/);
-    const o2 = { ...opts, step: i + 1, label: numLabel(st.t), primeUnits: pu ? pu[1] : undefined, mixN: mx ? mx[1] : undefined };
+    const o2 = { ...opts, step: i + 1, label: st.lbl || numLabel(st.t), primeUnits: pu ? pu[1] : undefined, mixN: mx ? mx[1] : undefined, zh: st.zh };
     const figHtml = (st.img || st.tm) ? stepFig(st, o2, alt, st.forceInline) : '';
     const fig = (st.img || st.tm) ? `<figure class="fig">${figHtml}${inline && !st._noLegend && st.c && st.c.length && st.img ? `<figcaption><ol class="callouts" type="A">${st.c.map(c => `<li>${esc(c)}</li>`).join('')}</ol></figcaption>` : ''}</figure>` : '';
     return `<li class="step" id="${idp}-${i + 1}">${fig}<div class="st-t"><span class="st-n" aria-hidden="true">${i + 1}</span><p>${rich(st.t)}</p></div></li>`;
@@ -154,7 +195,7 @@ function drugUseSteps(t, d) {
         const head = d.test ? `[[安全測試]]：每次注射前，轉到 ${d.test}${d.testNote ? `（${d.testNote}）` : ''}，針頭朝上，輕彈筆芯讓氣泡升上去，把注射鈕按到底，確認針尖出現藥滴。` : `[[安全測試]]：${d.testText || '每次注射前都要做，看到藥滴才注射；單位數請依盒內使用說明書。'}針頭朝上，輕彈筆芯讓氣泡升上去，把注射鈕按到底，確認針尖出現藥滴。`;
         const next = '換一個新針頭再試；換了新針頭還是沒有藥滴，這支筆先不要用，改用新的一支筆，並把這支筆帶去問藥師。';
         const n = (d.retries || '').match(/(\d+)\s*次/), orig = /原廠/.test(d.retries || '');
-        const tail = d.retryNeedleFirst ? '沒有藥滴：換新針頭並重做，但總共不要超過 6 次（台灣說明書）；仍沒有，這支筆可能有問題，改用新的一支筆並問藥師。' : n ? `沒有藥滴就再做一次，最多 ${n[1]} 次${orig ? '（原廠使用說明，非台灣版）' : ''}；仍然沒有就${next}` : '沒有藥滴：重複到出現藥滴；重複幾次仍沒有：換新針頭再試；還是沒有：換一支新筆，並問藥師。';
+        const tail = d.retryNeedleFirst ? '沒有藥滴：換一個新針頭，再做一次安全測試；這樣最多重做 6 次，還是沒有就換新筆並問藥師（台灣說明書）。' : n ? `沒有藥滴就再做一次，最多 ${n[1]} 次${orig ? '（原廠使用說明，非台灣版）' : ''}；仍然沒有就${next}` : `沒有藥滴：再試一次（最多 3 次）。${NV}還是沒有 → 換新針頭再試；還是沒有 → 換一支新筆，並問藥師。`;
         return { ...s, t: head + tail, forceInline: true, img: 'pen-prime' };
       }
       if (s.id === 'hold') return { ...s, t: `按住注射鈕，劑量視窗回到 0 後，針頭繼續留在皮膚內「${d.hold}」${d.holdNote ? `（${d.holdNote}）` : ''}再拔出，確保藥全部打進去。拔出後不要揉。`, forceInline: true };
@@ -193,7 +234,7 @@ function abbr(d) { const a = []; if (d.technique === 'pmdi') a.push('定量噴�
 function penEmpty(arr, d) {
   return (arr || []).map((x, i) => {
     if (i !== 0) return x;
-    if (d.remainTW) x = x.replace('（多數注射筆的設計；以本筆說明書為準）', '（台灣說明書）');
+    if (d.remainTW) x = x.replace('（以您這支筆盒內的說明書為準）', '（台灣說明書）');
     if (d.splitOK) x = x.replace(/這時不要用這支打一部分再自己估算.*$/, '本筆的台灣說明書寫兩種做法：① 先把這支剩下的打完，再用新筆補足不夠的單位；② 直接用新筆打完整劑量。補打的單位要自己算，不確定就選 ②，並問藥師。');
     return x; });
 }
@@ -216,17 +257,18 @@ function drugPage(d) {
     keyPts.splice(3, 1, `垂直刺入，按到底並停留「${d.hold}」${d.holdNote ? `（${d.holdNote}）` : ''}`);
     if (d.mix) keyPts.splice(1, 0, '預混型（乳白色）：注射前要先混勻（方法見步驟）');
     keyPts.push(U.noDouble); }
-  if (d.role === 'insulinWeekly') keyPts.unshift('一週只打一次，不是每天打');
-  const prep = d.prep || t.prep;
+  if (d.role === 'insulinWeekly') keyPts.unshift('一週只打一次，不是每天打。' + NV);
+  let prep = d.prep || t.prep;
+  if (d.warm) prep = prep.map(s => s.img === 'pen-warm' ? { ...s, t: d.warm, lbl: '1–2 小時回到室溫' } : s);
   const use = drugUseSteps(t, d);
   const spacer = d.technique === 'pmdi' ? renderSteps(spacerSteps(t, d), opts, 'sp') + ul(d.spacerNote) : '';
-  const empty = d.empty || (isPen ? penEmpty(t.empty, d) : t.empty), cleaning = d.cleaning || t.cleaning, storage = [...(d.storage || []), ...(t.storage || []).filter(s => !d.storage || /兒童/.test(s))];
+  const empty = [...(d.empty || (isPen ? penEmpty(t.empty, d) : t.empty)), ...(d.emptyExtra || [])], cleaning = d.cleaning || t.cleaning, storage = [...(d.storage || []), ...(t.storage || []).filter(s => !d.storage || /兒童/.test(s))];
   const counter = ['pmdi'].includes(d.technique) ? counterBox(d.slug, d.brand, d.puffs) : '';
   const shakeNote = d.shakeNote && t === T.pmdi ? `<p class="note" role="note">ⓘ ${esc(d.shakeNote)}</p>` : '';
   const triExtra = d.role === 'reliever' ? [U.relieverRed] : [];
   const video = d.video ? `<p><a class="btn" href="${esc(d.video)}" target="_blank" rel="noopener">▶ ${U.video}（${esc(d.brand)}）↗</a></p><p class="small">${esc(d.videoNote || '')} ${U.videoNote} 影片連結只核對過標題${d.videoChecked ? `（${d.videoChecked} 核對）` : ''}，影片內容尚待藥師核對。</p><div class="print-only">${qrSvg(d.video, 2)}</div>` : `<p>${U.noVideo}</p>`;
   const missedBody = Array.isArray(d.missed) ? ul(d.missed) : `<p>${rich(d.missed || U.missedAsk)}</p>`;
-  const missed = isPen ? sec('missed', U.missedPen, `<p class="redline">${U.noDouble}</p>${missedBody}${ul(C.missed.slice(1, 2))}`) : (d.missed ? sec('missed', U.missed, missedBody) : (Array.isArray(t.missed) && d.role !== 'reliever' ? sec('missed', U.missed, ul(t.missed)) : (d.role === 'reliever' ? sec('missed', U.missed, ul(t.missed ? t.missed.slice(-1) : [])) : '')));
+  const missed = isPen ? sec('missed', U.missedPen, `<p class="redline">${U.noDouble}</p>${missedBody}${ul(C.missed.slice(1, 2))}`) : (d.missed ? sec('missed', U.missed, missedBody) : (Array.isArray(t.missed) && d.role !== 'reliever' ? sec('missed', U.missed, ul(t.missed.filter(x => !/^急救（緩解）吸入劑/.test(x)).map(x => /請看本藥品頁或說明書/.test(x) ? U.missedMaint : x))) : (d.role === 'reliever' ? sec('missed', U.missed, ul(t.missed ? t.missed.slice(-1) : [])) : '')));
   const haCard = isPen || d.highAlert ? haLinkCard(HA_OF[d.technique], B, d) : '';
   const body = `<nav class="crumb no-print"><a href="${B}">${U.back}</a></nav>
 <article class="drug${isPen ? ' pen' : ''}" data-slug="${d.slug}">
@@ -237,7 +279,7 @@ function drugPage(d) {
 <p class="check">✅ ${U.checkDrug}</p></div>
 ${roleBox}${warn}${lasaBox(d, B)}
 <div class="actions no-print"><button type="button" class="btn tts-all">${U.readAll}</button><button type="button" class="btn tts-stop" hidden>${U.stop}</button><button type="button" class="btn" data-print>🖨 ${U.print}</button><a class="btn" href="#qr">${U.qr}</a></div>
-${sec('key', U.keySteps, (isPen && d.hold ? `<p class="holdbig">⏱ ${esc(d.brand)}：打完停留 ${esc(d.hold)}</p>` : '') + `<ol class="keypts">${keyPts.map(k => `<li>${rich(k)}</li>`).join('')}</ol>`)}
+${sec('key', U.keySteps, (isPen && d.hold ? `<p class="holdbig">⏱ ${esc(d.brand)}：打完停留 ${esc(d.hold)}${/原廠/.test(d.holdNote || '') ? `<small>（${esc(plain(d.holdNote).replace(/（ⓘ[^）]*）/, ''))}）</small>` : ''}</p>` : '') + `<ol class="keypts">${keyPts.map(k => `<li>${rich(k)}</li>`).join('')}</ol>`)}
 ${sec('purpose', U.purpose, `<p>${rich(d.purpose)}</p>${ul(d.usual)}<p class="dose">${U.doseRule}</p>`)}
 ${sec('prep', U.prep, renderSteps(prep, opts, 'pr'))}
 ${sec('use', U.use, shakeNote + renderSteps(use, opts, 'st'))}
@@ -258,6 +300,13 @@ ${metaLine(d.version)}</section>
 <section class="card sec qr" id="qr"><h2>${U.qr}</h2><div class="qrimg">${qrSvg(url + '?src=qr')}</div><p class="small">${U.qrHint}<br>${esc(url)}</p></section>
 </article>`;
   write(rel, layout({ rel, title: `${d.brand} ${d.zhName}`, desc: `${d.zhName}（${d.ingredient}）使用方法、步驟圖解、保存、何時就醫`, body, cls: 'p-drug' }));
+}
+
+// v1.3: drugs.json status "retired" -> a safe "no longer used" page at the same address (old QR codes keep working)
+function retiredPage(d) {
+  const rel = `d/${d.slug}/index.html`, B = '../../';
+  const body = `<nav class="crumb no-print"><a href="${B}">${U.back}</a></nav><article class="drug retired" data-slug="${d.slug}"><h1>⚠ 衛教資料已停用</h1><p class="warnbox">${esc(U.retired)}</p><p>停用的資料：${esc(d.brand)} ${esc(d.zhName)}（${esc(d.license)}）${d.retiredAt ? `，停用日 ${esc(d.retiredAt)}` : ''}</p>${d.replacedBy ? `<p><a class="btn" href="${B}d/${esc(d.replacedBy)}/">看新的衛教資料 →</a></p>` : ''}${phoneBtn()}<p><a class="btn" href="${B}">← 回首頁搜尋</a></p></article>`;
+  write(rel, layout({ rel, title: `已停用：${d.brand} ${d.zhName}`, body, cls: 'p-retired' }));
 }
 
 // ---------- technique page ----------
@@ -313,7 +362,7 @@ function home() {
 }
 
 // ---------- other pages ----------
-function simple(rel, title, body, cls = 'p-simple') { write(rel, layout({ rel, title, body: `<nav class="crumb no-print"><a href="${'../'.repeat(rel.split('/').length - 1)}">${U.back}</a></nav><h1>${esc(title)}</h1>` + body, cls })); }
+function simple(rel, title, body, cls = 'p-simple', unify = true) { write(rel, layout({ rel, title, body: `<nav class="crumb no-print"><a href="${'../'.repeat(rel.split('/').length - 1)}">${U.back}</a></nav><h1>${esc(title)}</h1>` + body, cls, unify })); }
 function highAlert() {
   const B = '../';
   simple('high-alert/index.html', U.highAlertH, `<p class="lead">${esc(HA.intro)}</p><ul class="cards">${HA.classes.map(c => `<li class="dcard"><a href="${c.id}/"><span class="cat">❗ ${U.highAlert}</span><b>${esc(c.title)}</b><span class="ing">${esc(c.examples)}</span></a></li>`).join('')}</ul>`);
@@ -334,7 +383,7 @@ function disposal() {
   const D = C.disposal;
   simple('disposal/index.html', D.title, `${sec('a', '一般藥品：隨一般垃圾焚化', ul(D.routeB))}${sec('b', '特殊藥品：交回醫院、診所、衛生所或檢收站藥局', ul(D.routeA))}${sec('c', '針頭、針筒、注射筆等尖銳物', ul(D.sharps))}<p class="warnbox">${esc(D.never)}</p><p class="small">${linkify(D.sourcesLine)}</p>`);
 }
-function glossary() { simple('glossary/index.html', U.glossary, `<dl class="gloss">${Object.entries(GL).map(([k, v]) => `<div id="${encodeURIComponent(k)}"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>`); }
+function glossary() { simple('glossary/index.html', U.glossary, `<dl class="gloss">${Object.entries(GL).map(([k, v]) => `<div id="${encodeURIComponent(k)}"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>`, 'p-simple', 'none'); }
 function qrSheet() {
   const all = [...DRUGS.map(d => [`d/${d.slug}/`, d.brand, d.zhName]), ...Object.entries(T).filter(([, t]) => !t.alias).map(([id, t]) => [`t/${id}/`, t.title, U.technique])];
   simple('qr/index.html', U.qrSheet, `<p class="no-print">${U.printTip}</p><p class="no-print"><button type="button" class="btn" data-print>🖨 列印 QR 一覽表</button></p><ul class="qrsheet">${all.map(([p, a, b]) => `<li>${qrSvg(SITE.baseUrl + p + '?src=qr', 2)}<b>${esc(a)}</b><span>${esc(b)}</span></li>`).join('')}</ul>`, 'p-qr');
@@ -355,22 +404,35 @@ ${sec('a2', '內容來源與優先順序', ul(['① 台灣食藥署核准仿單�
 ${sec('a3', '藥品索引（食藥署開放資料）', `<p>資料集：${esc(META.source)}（https://data.fda.gov.tw/opendata/exportDataList.do?method=ExportData&InfoId=36&logType=3），下載日 ${META.downloaded}。原始 ${META.total_rows.toLocaleString()} 列，收錄 ${META.included.toLocaleString()} 項。</p>${ul(['只收「未註銷」許可證。', '排除：原料藥、硬空膠囊、體外診斷試劑；藥品類別為「限由醫師使用」「由醫師或檢驗師使用」「限由牙醫師使用」「製劑原料」「調劑專用」者（病人可自行注射的胰島素、GLP-1、生物製劑、低分子量肝素、腎上腺素筆等，依成分例外收錄）；品名含「診斷」者；靜脈輸注與濃縮注射液。', '依「劑型」欄與品名關鍵字對應到使用方法頁（例如 Respimat、Turbuhaler、Ellipta 等品牌裝置；眼藥水、塞劑、貼片等劑型）。劑型欄是自由文字，對應規則可能有誤，個別產品以仿單為準。', '索引項目沒有個別劑量資訊：一律「依處方與仿單」，並提供食藥署仿單查詢連結。', `排除統計：${sk}。`]) }`)}
 ${sec('a4', '審核流程', ul(['每頁標示內容版本、發布日（YYYY-MM-DD）與審核狀態。目前所有頁面都是「尚未審核（尚未經醫師／藥師正式審核）」；經藥師（注射與高警訊頁另需醫師）簽核後，才會改為「已審核」並顯示審核日期。', '待確認項目由網站維護者集中整理；未確認的內容不寫成事實，而是標示「' + U.nvMark + '」。', '內容以 JSON 檔管理（data/drugs.json、i18n/zh-TW/*.json），藥師可直接編修；醫院名稱、顏色、電話在 config/site.json；院內藥品代碼對應在 config/codes.json。', '病人端沒有登入；未來若有後台編修系統，會與病人端分開。']))}
 ${sec('a5', 'QR Code 與院內藥品代碼', ul(['QR Code 只包含網址與頁面代號（加上 src=qr），不含任何個人資料。', `院內藥品代碼：網址加上 ?code=代碼（例如 ${SITE.baseUrl}?code=TEST-INH-001），會依 config/codes.json 轉到對應頁面；停用的代碼顯示停用說明，不明代碼顯示安全的找不到頁面。目前代碼為示範用。`]))}
-${sec('a6', '多語言', `<p>v1 只提供繁體中文。架構已預備多語（每種語言一組 JSON、語言選單、雙語對照），其他語言尚未翻譯，選單中顯示「準備中」。</p>`)}`);
+${sec('a6', '多語言', `<p>v1 只提供繁體中文。架構已預備多語（每種語言一組 JSON、語言選單、雙語對照），其他語言尚未翻譯，選單中顯示「準備中」。</p>`)}`, 'p-simple', false);
 }
-function changelog() { simple('changelog/index.html', U.changelog, CHANGES.map(([v, date, items]) => `<h2>v${v}（${date}）</h2>${ul(items)}`).join('')); }
+function changelog() { simple('changelog/index.html', U.changelog, CHANGES.map(([v, date, items]) => `<h2>v${v}（${date}）</h2>${ul(items)}`).join(''), 'p-simple', false); }
 function tally() {
   const cells = Array.from({ length: 200 }, (_, i) => `<td>${i + 1}</td>`);
   const rows = []; for (let r = 0; r < 20; r++) rows.push(`<tr>${cells.slice(r * 10, r * 10 + 10).join('')}</tr>`);
   simple('print/tally/index.html', '吸入器噴數計數表', `<p>藥名：＿＿＿＿＿＿＿＿　總噴數：＿＿＿＿　開始日期：＿＿＿＿</p><p class="small">每用 1 下，就把一格劃掉。劃到總噴數就換新的一支（即使搖起來還有聲音）。</p><p class="no-print"><button type="button" class="btn" data-print>🖨 列印計數表</button></p><table class="tally" aria-label="噴數計數格">${rows.join('')}</table>`);
 }
 const CHANGES = [
+ ['1.3.0', SITE.effective, [
+  '舌下硝化甘油：含第 1 顆 5 分鐘後胸痛沒有改善或更嚴重，立刻撥 119，不要等含完 3 顆，也不要自己開車或走路去醫院；「等救護車時每 5 分鐘再含 1 顆、最多 3 顆」另寫成一步。坐下含藥的圖改成自己的圖。',
+  '腎上腺素注射筆：第二支只寫一個動作（打完 5–15 分鐘沒有改善，或任何時候變嚴重，而且手邊有第二支：在另一側大腿打第二支，並繼續等救護車），不再附說明書的監督說法；說明書的正確說法（超過 2 劑才需要在醫師直接監督下施打）只放在「進階資訊」。',
+  '「尚待確認」標示改成：「ⓘ 這一句的細節本院藥師還在確認；有疑問請問藥師」，而且不再出現在打 119、打第二支等緊急指示上。',
+  '諾和密斯 30：筆內至少還有 12 單位才能搖勻，剩不到 12 單位要換新筆（台灣說明書）。',
+  '胰島素筆：沒有藥滴時的下一步寫出具體順序；要不要捏皮改用「很瘦（捏起來皮膚很薄）」；蘭德仕回溫時間統一為注射前 1–2 小時；剩量不夠時的說法改成「以您這支筆盒內的說明書為準」。',
+  '「這是什麼藥」的使用次數改成「依藥袋」；Awiqli「一週只打一次」保留。',
+  'Berotec、Berodual、Duasma、Ventolin 直接寫「本品沒有數字窗」。保養型吸入劑藥品頁的「忘記用藥」不再出現急救吸入劑那一行；Spiolto 依台灣說明書寫出一天不可超過 1 次。',
+  '說明書的叫法統一為「藥盒裡的說明書」；眼藥水改成「醫師要您兩眼都點時」；塞劑步驟順序調整。',
+  '步驟圖恢復簡短中文說明，螢幕報讀可以念（朗讀功能仍不念圖）；修正幾張圖的文字位置與描述。',
+  '院內藥品代碼：停用或找不到時，也顯示「用藥諮詢：請打藥袋上印的藥局電話」；代碼對應表加上維護者、確認日、許可證欄位與建置檢查。',
+  '資料來源：Respimat 補上 DailyMed 網址；沒有固定網址的來源加註取得日期；Ultibro、Enerzair、Breezhaler 保存改為 30°C 以下。'
+ ]],
  ['1.2.0', '2026-10-18', [
   '每一頁最上方的緊急橫幅直接寫出要打 119 的情況（呼吸困難、胸痛、意識不清、抽搐、臉歪手無力、嚴重過敏）。',
   'Symbicort 都保、Foster 等可當「保養加緩解」的藥，標示改為「保養藥；能否也當急救用，依醫師處方」。',
   '吸入劑「忘記用藥」改成：各藥補用方式不同，看本藥品頁；Onbrez、Ultibro、Enerzair、Trimbow 依台灣說明書寫出補用方式。',
   '舌下硝化甘油：依台灣說明書寫出等救護車時每 5 分鐘再含 1 顆、15 分鐘內最多 3 顆；吃過威而鋼、犀利士等同類藥或 riociguat 不可含；保存、交互作用、用太多怎麼辦；列出台灣的產品。',
   '腎上腺素注射筆：壓住 3 秒依台灣說明書（201811V2），拔出後按摩 10 秒；第二支的時機；台灣有單支與 2 支盒裝。',
-  '「尚待確認」標示改成同一句：「這一點本院藥師／醫師還在確認；請先照盒內說明書做，或問藥師」。',
+  '「尚待確認」標示改成同一句（v1.3.0 已再改寫，見上方）。',
   '胰島素筆：剩下的量不夠時怎麼辦，依各筆台灣說明書寫；安全測試沒有藥滴的下一步（FlexPen 依說明書最多 6 次）；每支筆的停留秒數放大顯示；要不要捏皮的判斷方式。',
   '資料來源加上可點的網址與查詢日期；使用方法頁列出各藥的台灣說明書連結。',
   '步驟圖：修正 Breezhaler、Ellipta、都保、Respimat、塞劑、胰島素筆等圖；圖的文字說明改成中文，朗讀時不再念圖。',
@@ -414,7 +476,8 @@ function assets() {
   fs.writeFileSync(path.join(OUT, 'robots.txt'), 'User-agent: *\nAllow: /\n');
 }
 
-home(); for (const d of DRUGS) drugPage(d); for (const id of Object.keys(T)) techPage(id);
+checkCodes();
+home(); for (const d of DRUGS) drugPage(d); for (const d of RETIRED) retiredPage(d); for (const id of Object.keys(T)) techPage(id);
 highAlert(); disposal(); glossary(); qrSheet(); printPages(); tally(); about(); changelog(); errorPages(); assets();
 const pages = []; (function walk(d) { for (const f of fs.readdirSync(d)) { const p = path.join(d, f); if (fs.statSync(p).isDirectory()) walk(p); else if (f.endsWith('.html')) pages.push(path.relative(OUT, p)); } })(OUT);
 fs.writeFileSync(path.join(OUT, 'pages.json'), JSON.stringify(pages.sort()));

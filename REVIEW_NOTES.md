@@ -155,3 +155,17 @@
 - 一次一步模式（A11Y-08）預設關閉；列印一律顯示全部步驟。
 - 筆型頁列印：字級不變（9pt／頁尾 8pt），只縮行距、步驟間距與步驟圖寬（19 mm），92/92 頁 ≤2 頁。
 **院方待提供**（同 §9）：`config/codes.json` 的 `license`、`maintainer`、`confirmedAt`；院名、藥局電話、HIS 代碼、正式網域；EpiPen 第二支做法簽核。
+
+## 11. v1.5.0（2026-10-19，Asia/Taipei）第 5 輪 QA 修正後的狀態
+來源：`qa/round-5-changes.md`（A、B 全部；C 全部）。「不改（交真人／院方）」區未動。
+**EpiPen 第二支（醫師阻擋項）：** 主句（重點、第 7 步、高警訊過量卡、common triage.anaphylaxis.redWait，4 處同一句、沒有 ⓘ）改為「打完 5–15 分鐘沒有改善、變嚴重，或症狀又出現，而且手邊有第二支：在另一側大腿打第二支，並繼續等救護車。」「說明書與指引的不同說法（第二支）」區塊：/t/epinephrine-autoinjector/ 從頁首角色框移到頁尾「資料來源」上方；/high-alert/epinephrine/ 位置不變（在「立即就醫／撥打 119」之後）。兩頁刪掉「本院要採用哪一種做法，待醫師與藥師簽核」；引言改「下面是原文，給醫護人員參考。急救時只要照本頁第 7 步做，同時撥 119；說明書與國際指引寫法不同，不影響您現在該做的事。」（高警訊頁沒有編號步驟，改寫成「照使用方法頁第 7 步做（和本頁「用太多或重複用了」第二支那一句相同）」）。出處補「§5.1.1，第 1 頁，版本 201811V2/201808-0002029」「步驟三，第 2 頁，版本 201811V2/201702-0001985」、025223／025133 號原文相同；美國處方資訊直譯（刪「才需要」）；WAO「應重複」並註明醫護人員給藥建議。
+**簽核紀錄（原網頁上的那一行移到這裡）：** EpiPen 第二支本院採用哪一種做法（台灣說明書／病人須知：連續施打應在醫師監督下；WAO 2020：5–15 分鐘可重複）、「在另一側大腿」的出處（factcheck X7：找不到出處）—— 待醫師與藥師簽核。
+**劑量視窗沒有回到 0（high-alert M3、M4；factcheck M1）：** injection.json 的共用句拆成各筆覆寫（drugs.json `notZeroText`）：
+- Humalog KwikPen／Mix25／Mix50：照使用手冊（mix25_um.txt l.376–386；humalog-kwikpen_0.txt l.288–296；humalog-mix50-kwikpen_0.txt l.321–330）把針刺回皮膚完成注射，仍覺得不足不要重打。
+- Ryzodeg：照處方資訊（ryzodeg-flextouch_0.txt l.1394–1398）針頭可能堵住、可能完全沒打到 → 換新針頭從安全測試重做、打完整劑量。
+- Levemir／NovoRapid／NovoMix 30：前半句照說明書（沒有打完整劑量、可能血糖太高）；後半句（繼續按到底、換針頭、不要再打一整劑、記數字、聯絡）是本院做法 → 句末 ⓘ。
+- Tresiba、Awiqli（用「劑量計數器」）、Lantus、Apidra、Toujeo、Soliqua×2、Semglee：通用句＋句末 ⓘ；t/insulin-pen 前加「依您這支筆藥盒裡的說明書；」。
+**Humalog Mix25（pharmacist major）：** 來源＝衛署菌疫輸字第000898號 食藥署仿單平台「Humalog KwikPen-使用手冊」（https://mcp.fda.gov.tw/insert/pdfcasefile/i_08e1826c-ce30-4c83-a316-29a366c0089d ，qa/src_v4/mix25_um.txt l.210–252、343–349；qa/src_v5/mix25_1–5）。安全測試 2 單位、數到 5、最多 4 次、換針頭；注射數到 5 再拔針。刪除「藥盒裡的說明書沒有寫秒數，請問藥師」「（原廠使用說明，非台灣版）」。
+**Lantus／Apidra 沒藥滴：** Lantus 照 pharmacist-review-v5 §3 建議文字，「3 次」標本院做法並註明參考原廠歐盟版使用說明（EMA EPAR IFU Step 3，資料來源已加）。Apidra 沒有原文次數 → 同樣文字＋「（『3 次』是本院做法）」＋句末 ⓘ。
+**目前仍標 ⓘ 的新增項目：** FlexPen 3 支與其他 8 支筆＋t/insulin-pen 的「劑量視窗沒有回到 0」處理方式；Apidra「3 次」。
+**院方待提供**（同 §10）：`config/codes.json` 的 `license`、`maintainer`、`confirmedAt`；院名、藥局電話、HIS 代碼、正式網域；EpiPen 第二支做法簽核；手部改用官方圖（需授權）。

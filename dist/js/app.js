@@ -155,34 +155,42 @@
   if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register(B + 'sw.js').catch(function () { });
 
   // v1.4 (A11Y-08): "一次看一步" step-by-step view for the use steps. Off by default; screen only (print and read-aloud keep all steps).
+  // v1.5 (newcomer #1, acceptance #1): fixed toggle text (state only in aria-pressed); each step change scrolls to the step and moves
+  // focus to its text so screen readers read it; focus never stays on a button that becomes disabled; "完成，看全部步驟" on the last step.
   $$('#use ol.steps').forEach(function (ol, k) {
     var items = $$(':scope > li.step', ol); if (items.length < 2) return;
     var N = items.length, cur = 0, on = false, id = 'os' + k;
     var bar = d.createElement('div'); bar.className = 'onestep no-print no-tts';
     bar.innerHTML = '<button type="button" class="btn os-toggle" aria-pressed="false" aria-controls="' + id + '">👣 一次看一步</button>';
     var nav = d.createElement('div'); nav.className = 'os-nav no-print no-tts'; nav.hidden = true;
-    nav.innerHTML = '<button type="button" class="btn os-prev">← 上一步</button><span class="os-count" aria-live="polite" aria-atomic="true"></span><button type="button" class="btn os-next">下一步 →</button>';
+    nav.innerHTML = '<button type="button" class="btn os-prev">← 上一步</button><span class="os-count" aria-live="polite" aria-atomic="true"></span><button type="button" class="btn os-next">下一步 →</button><button type="button" class="btn os-done" hidden>✅ 完成，看全部步驟</button>';
     ol.id = ol.id || id; ol.parentNode.insertBefore(bar, ol); ol.parentNode.insertBefore(nav, ol.nextSibling);
-    var tg = $('.os-toggle', bar), pv = $('.os-prev', nav), nx = $('.os-next', nav), cnt = $('.os-count', nav);
+    var tg = $('.os-toggle', bar), pv = $('.os-prev', nav), nx = $('.os-next', nav), dn = $('.os-done', nav), cnt = $('.os-count', nav);
+    items.forEach(function (li) { var t = $('.st-t', li); if (t) t.setAttribute('tabindex', '-1'); });
     function show(focus) {
       items.forEach(function (li, i) { li.classList.toggle('os-hide', on && i !== cur); });
-      cnt.textContent = '第 ' + (cur + 1) + '／共 ' + N + ' 步';
-      pv.disabled = cur === 0; nx.disabled = cur === N - 1;
-      if (focus) { items[cur].setAttribute('tabindex', '-1'); items[cur].focus({ preventScroll: true }); var r = ol.getBoundingClientRect(); if (r.top < 0 || r.top > innerHeight * 0.5) bar.scrollIntoView({ block: 'start' }); }
+      cnt.textContent = on ? '第 ' + (cur + 1) + '／共 ' + N + ' 步' : '';
+      var last = cur === N - 1, a = d.activeElement;
+      // move focus off a button before it is disabled or hidden
+      if (on && !focus && ((a === pv && cur === 0) || (a === nx && last))) (cur === 0 ? nx : dn).focus();
+      pv.disabled = cur === 0; nx.disabled = last; dn.hidden = !(on && last);
+      if (on && focus) {
+        var li = items[cur], t = $('.st-t', li) || li;
+        li.scrollIntoView({ block: 'start' });
+        t.focus({ preventScroll: true });
+      }
     }
-    function go(n, focus) { cur = Math.max(0, Math.min(N - 1, n)); show(focus); }
-    tg.addEventListener('click', function () {
-      on = !on; tg.setAttribute('aria-pressed', on ? 'true' : 'false'); tg.textContent = on ? '📋 顯示全部步驟' : '👣 一次看一步';
-      ol.classList.toggle('os-on', on); nav.hidden = !on; cur = 0; show(false);
-      if (!on) cnt.textContent = '';
-    });
-    pv.addEventListener('click', function () { go(cur - 1, false); });
-    nx.addEventListener('click', function () { go(cur + 1, false); });
+    function go(n) { cur = Math.max(0, Math.min(N - 1, n)); show(true); }
+    function setOn(v) { on = v; tg.setAttribute('aria-pressed', on ? 'true' : 'false'); ol.classList.toggle('os-on', on); nav.hidden = !on; cur = 0; show(false); }
+    tg.addEventListener('click', function () { setOn(!on); });
+    pv.addEventListener('click', function () { go(cur - 1); });
+    nx.addEventListener('click', function () { go(cur + 1); });
+    dn.addEventListener('click', function () { setOn(false); bar.scrollIntoView({ block: 'start' }); tg.focus({ preventScroll: true }); });
     [ol, nav].forEach(function (el) { el.addEventListener('keydown', function (e) {
       if (!on || e.altKey || e.ctrlKey || e.metaKey) return;
-      if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); go(cur + 1, e.target.closest('ol') === ol); }
-      else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(cur - 1, e.target.closest('ol') === ol); }
-      else if (e.key === 'Home') { e.preventDefault(); go(0, true); } else if (e.key === 'End') { e.preventDefault(); go(N - 1, true); }
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); go(cur + 1); }
+      else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(cur - 1); }
+      else if (e.key === 'Home') { e.preventDefault(); go(0); } else if (e.key === 'End') { e.preventDefault(); go(N - 1); }
     }); });
   });
 

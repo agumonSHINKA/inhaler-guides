@@ -209,6 +209,11 @@ html.lt .tbtn.lang{max-width:100%}html.lt .tbtn select{max-width:calc(100vw - 70
 .os-count{flex:1 1 100%;order:-1;text-align:center;font-weight:800;font-size:1.15rem}
 @media screen{.steps.os-on>.step.os-hide{display:none}.steps.os-on>.step{border-top:0;padding-top:0}}
 @media print{.onestep,.os-nav{display:none!important}}
+/* v1.5: 完成按鈕、切換鈕狀態只靠 aria-pressed、換步後焦點在步驟文字 */
+.os-nav .os-done{flex:1 1 100%;min-width:100%}.os-nav .os-done[hidden]{display:none}
+.os-toggle[aria-pressed="true"]{background:var(--primary);color:#fff;border-color:var(--primary)}
+.steps .st-t:focus{outline:4px solid var(--focus);outline-offset:4px;border-radius:6px}
+.fig-note{margin:4px 0 0;text-align:center}
 .cmp{margin-top:6px}
 /* v1.4.0: 筆型頁 A4 列印維持 2 頁內（字級不變，只縮行距與間距） */
 @media print{.drug.pen{line-height:1.25}.drug.pen .step{margin:0 0 2px!important}.drug.pen .step .fig,.drug.pen .step svg.ill{width:19mm!important;max-width:19mm!important}.drug.pen .step{grid-template-columns:19mm 1fr}.drug.pen .sec-head h2,.drug.pen h2{margin:3px 0 1px}}

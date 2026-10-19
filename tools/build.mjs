@@ -16,7 +16,6 @@ const GROUPS = { inhaled: '吸入劑', injection: '注射（自行皮下注射�
 const CHIPS = { dpi: U.chip_dpi, smi: U.chip_smi, pmdi: U.chip_pmdi, insulin: U.chip_insulin };
 const ALL_DRUGS = DR.drugs, RETIRED = ALL_DRUGS.filter(d => d.status === 'retired'); DRUGS = ALL_DRUGS.filter(d => d.status !== 'retired');
 const TECH_DRUGS = {}; for (const d of DRUGS) (TECH_DRUGS[d.technique] ||= []).push(d);
-fs.rmSync(OUT, { recursive: true, force: true }); fs.mkdirSync(OUT, { recursive: true });
 let warnings = [];
 
 // ---------- v1.3: hospital code table governance (config/codes.json) ----------
@@ -77,6 +76,7 @@ function numLabel(t) {
 // visible occurrence. Sources, 進階資訊 and SVG keep the formal names (仿單 -> 說明書 only). about/changelog pages: formal names (unify=false).
 function plainTerms(html, unify = true) {
   if (unify === 'none') return html;
+  const vb = []; html = html.replace(/<span class="vb">[^<]*<\/span>/g, m => (vb.push(m), `\u0000vb${vb.length - 1}\u0000`)); // v1.5: wording kept exactly as written
   html = html.replace(/藥品仿單查詢平台|仿單查詢平台/g, '許可證查詢').replace(/仿單(加刊|查詢)/g, '說明書$1').replaceAll('藥盒裡的說明書（仿單）', '藥盒裡的說明書').replaceAll('（仿單）', '');
   const formal = t => t.replace(/台灣仿單/g, '台灣說明書').replace(/食藥署(核准)?仿單/g, '食藥署核准說明書').replace(/仿單/g, '說明書');
   const patient = t => formal(t).replace(/本筆的台灣說明書|本筆說明書/g, '本筆藥盒裡的說明書').replace(/(台灣食藥署核准|食藥署核准|台灣核准|台灣|盒內的|盒內使用|盒內|藥盒裡的|藥品)說明書/g, '藥盒裡的說明書')
@@ -90,27 +90,30 @@ function plainTerms(html, unify = true) {
       if (!unify) return formal(txt).replace(/藥盒裡的說明書/, x => first ? (first = false, x + '（仿單）') : x);
       return patient(txt).replace(/藥盒裡的說明書/, x => first ? (first = false, x + '（仿單）') : x);
     });
-  }).join('');
+  }).join('').replace(/\u0000vb(\d+)\u0000/g, (m, i) => vb[+i]);
 }
 const tsvFile = tm => false; // teammate SVG set retired (2026-10-18); all steps use our own inline scenes (js/svg.js)
-function qrSvg(url, cell = 4) { const q = qrcode(0, 'M'); q.addData(url); q.make(); return q.createSvgTag({ cellSize: cell, margin: 2, scalable: true }).replace('<svg ', `<svg role="img" aria-label="QR Code：${esc(url)}" `); }
+// v1.5 (acceptance A11Y-05 #2): the QR label no longer reads the URL aloud
+function qrSvg(url, cell = 4, label = '用手機相機掃描，開啟本頁') { const q = qrcode(0, 'M'); q.addData(url); q.make(); return q.createSvgTag({ cellSize: cell, margin: 2, scalable: true }).replace('<svg ', `<svg role="img" aria-label="QR Code：${esc(label)}" `); }
 function write(rel, html) { const f = path.join(OUT, rel); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, html); }
 const linkify = s => rich(s).replace(/https?:\/\/[^\s（）()，；、<]+/g, u => { const h = u.replace(/&amp;/g, '&'); return `<a href="${esc(h)}" target="_blank" rel="noopener">${u}</a>`; });
 const srcList = arr => arr && arr.length ? `<ul class="srcs">${arr.map(x => `<li>${linkify(x)}</li>`).join('')}</ul>` : '';
 const ul = (arr, cls = '') => arr && arr.length ? `<ul class="${cls}">${arr.map(x => `<li>${rich(x)}</li>`).join('')}</ul>` : '';
-const compareBlock = t => t && t.labelCompare ? `<div class="cmp"><details class="adv"><summary>${esc(t.labelCompare.title)}</summary><p class="small">${esc(t.labelCompare.intro)}</p>${ul(t.labelCompare.items)}</details></div>` : '';
+const compareBlock = (t, ha) => t && t.labelCompare ? `<div class="cmp"><details class="adv"><summary>${esc(t.labelCompare.title)}</summary><p class="small">${esc(ha && t.labelCompare.introHA || t.labelCompare.intro)}</p>${ul(t.labelCompare.items)}</details></div>` : '';
 const sec = (id, title, body, extra = '') => body ? `<section class="card sec" id="${id}" aria-labelledby="${id}-h"${extra}><div class="sec-head"><h2 id="${id}-h">${esc(title)}</h2><button type="button" class="tts-sec" data-tts="${id}" aria-label="${esc(U.readSection)}：${esc(title)}">${U.readSection}</button></div>${body}</section>` : '';
 const vlist = (arr, d) => (arr || []).filter(x => d.rinse || !/含類固醇|吸入型類固醇|口腔念珠菌|鵝口瘡/.test(x)).filter(x => d.mix || !/預混型/.test(x));
 const roleBadge = r => r === 'reliever' ? `<span class="badge b-rescue">🚑 ${U.rescue}</span>` : r === 'mart' ? `<span class="badge b-mart">⚠ ${U.martTitle}</span>` : (['maintenance', 'copd', 'copdOnly'].includes(r) ? `<span class="badge b-notrescue">⚠ ${U.notRescue}</span>` : '');
 const haBadge = `<span class="badge b-ha" title="${esc(GL['高警訊藥品'])}">❗ ${U.highAlert}</span>`;
 
 // ---------- layout ----------
+// v1.5 (newcomer #3): share-preview text uses the same patient wording as the page (first 仿單 -> 藥盒裡的說明書（仿單）)
+function metaDesc(t) { let first = true; return plain(t).replace(/(?:產品|藥品)?仿單/g, () => first ? (first = false, '藥盒裡的說明書（仿單）') : '藥盒裡的說明書'); }
 function layout({ rel, title, desc = '', body, cls = '', canonical = '', noindexSearch = false, unify = true }) {
   const depth = rel.split('/').length - 1; const B = depth ? '../'.repeat(depth) : './';
   const url = SITE.baseUrl + rel.replace(/index\.html$/, '');
   const langs = SITE.languages.map(l => `<option value="${l.code}"${l.code === LANG ? ' selected' : ''}${l.enabled ? '' : ' disabled'}>${esc(l.label)}${l.enabled ? '' : '（準備中）'}</option>`).join('');
   return `<!doctype html><html lang="zh-Hant-TW"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
-<title>${esc(title)}｜${esc(SITE.hospitalShort)} ${esc(U.siteTitle)}</title><meta name="description" content="${esc(desc || U.homeIntro)}">
+<title>${esc(title)}｜${esc(SITE.hospitalShort)} ${esc(U.siteTitle)}</title><meta name="description" content="${esc(metaDesc(desc || U.homeIntro))}">
 <link rel="canonical" href="${esc(canonical || url)}"><meta name="theme-color" content="${SITE.colors.primary}">
 <link rel="stylesheet" href="${B}css/style.css?v=${VER}"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%F0%9F%92%8A%3C/text%3E%3C/svg%3E"><link rel="manifest" href="${B}manifest.webmanifest">
 <style>:root{--primary:${SITE.colors.primary};--accent:${SITE.colors.accent};--bg:${SITE.colors.bg}}</style>
@@ -162,12 +165,12 @@ function renderSteps(steps, opts, idp) {
     if (!zh && st.img === 'hold-breath') { const hs = plain(st.t).match(/閉(?:住這口)?氣[^。；]*?((?:至少|約|最多)?\s*\d+(?:\s*[–-]\s*\d+)?\s*秒)/); zh = '移開吸入器、閉上嘴巴閉氣' + (hs ? hs[1].replace(/\s+/g, ' ') : '') + '，旁邊有計時'; }
     const o2 = { ...opts, step: i + 1, label: st.lbl || numLabel(st.t), primeUnits: pu ? pu[1] : undefined, mixN: mx ? mx[1] : undefined, zh, nc: (st.c || []).length, flick: st.img === 'pen-prime' ? /輕彈/.test(plain(st.t)) : undefined };
     const figHtml = (st.img || st.tm) ? stepFig(st, o2, alt, st.forceInline) : '';
-    const fig = (st.img || st.tm) ? `<figure class="fig">${figHtml}${inline && !st._noLegend && st.c && st.c.length && st.img ? `<figcaption><ol class="callouts" type="A">${st.c.map(c => `<li>${esc(c)}</li>`).join('')}</ol></figcaption>` : ''}</figure>` : '';
+    const fig = (st.img || st.tm) ? `<figure class="fig">${figHtml}${inline && !st._noLegend && st.c && st.c.length && st.img ? `<figcaption><ol class="callouts" type="A">${st.c.map(c => `<li>${esc(c)}</li>`).join('')}</ol></figcaption>` : ''}${st.figNote ? `<p class="small fig-note">${esc(st.figNote)}</p>` : ''}</figure>` : '';
     return `<li class="step" id="${idp}-${i + 1}">${fig}<div class="st-t"><span class="st-n" aria-hidden="true">${i + 1}</span><p>${rich(st.t)}</p></div></li>`;
   }).join('')}</ol>`;
 }
-function triageBox(key, extraRed = [], key2) {
-  const t = C.triage[key] || C.triage.general, t2 = key2 ? C.triage[key2] : null;
+function triageBox(key, extraRed = [], key2, redWait) {
+  const t0 = C.triage[key] || C.triage.general, t = redWait ? { ...t0, redWait } : t0, t2 = key2 ? C.triage[key2] : null;
   const red = [...extraRed, ...(t.red || []), ...(t2?.red || [])], orange = [...(t.orange || []), ...(t2?.orange || [])], yellow = [...(t.yellow || []), ...(t2?.yellow || [])];
   return `<div class="tri"><div class="tri-r"><h3>🔴 ${U.red}</h3>${ul(red)}${t.redWait ? `<p class="wait">${esc(t.redWait)}</p>` : ''}<a class="call" href="tel:119">📞 撥打 119</a></div>
 <div class="tri-o"><h3>🟠 ${U.orange}</h3>${ul(orange)}</div><div class="tri-y"><h3>🟡 ${U.yellow}</h3>${ul(yellow)}</div></div>`;
@@ -204,13 +207,16 @@ function drugUseSteps(t, d) {
         if (d.primeText) return { ...s, t: d.primeText, forceInline: true, img: 'pen-prime' };
         const tail = d.retryNeedleFirst ? '沒有藥滴：換一個新針頭，再做一次安全測試；這樣最多重做 6 次，還是沒有就換新筆並問藥師（台灣說明書）。家裡請多備幾個新針頭。'
           : n ? `沒有藥滴就再做一次，最多 ${n[1]} 次${orig ? '（原廠使用說明，非台灣版）' : ''}；仍然沒有就${next}`
+          : d.primeTail ? d.primeTail
           : /直到/.test(d.retries || '') ? '沒有藥滴：再做一次安全測試，直到針尖出現藥滴（台灣說明書）。試了幾次還是沒有：換新針頭再試；還是沒有就換一支新筆，並問藥師。'
           : '沒有藥滴：再做一次安全測試。試了幾次還是沒有：換新針頭再試；還是沒有就換一支新筆，並問藥師。';
         return { ...s, t: head + diff + tail, forceInline: true, img: 'pen-prime' };
       }
       if (s.id === 'hold') return { ...s, t: d.holdText || `按住注射鈕，劑量視窗回到 0 後，針頭繼續留在皮膚內「${d.hold}」${d.holdNote ? `（${d.holdNote}）` : ''}再拔出，確保藥全部打進去。${d.holdAfter || ''}拔出後不要揉。`, forceInline: true };
       if (s.img === 'pen-dial' && d.dialText) return { ...s, t: d.dialText };
-      if (s.img === 'pen-sites' && d.sitesText) return { ...s, t: d.sitesText, zh: d.sitesZh || s.zh };
+      // v1.5 (round-5 #2): what to do when the dose window is not back to 0 differs per pen (drugs.json notZeroText); default carries ⓘ
+      if (s.id === 'notzero') return { ...s, t: d.notZeroText || s.penText || s.t };
+      if (s.img === 'pen-sites' && (d.sitesText || d.sitesFigNote)) return { ...s, t: d.sitesText || s.t, zh: d.sitesZh || s.zh, figNote: d.sitesFigNote };
       return s;
     });
   }
@@ -278,7 +284,7 @@ function drugPage(d) {
   const counter = ['pmdi'].includes(d.technique) ? counterBox(d.slug, d.brand, d.puffs) : '';
   const shakeNote = d.shakeNote && t === T.pmdi ? `<p class="note" role="note">ⓘ ${esc(d.shakeNote)}</p>` : '';
   const triExtra = d.role === 'reliever' ? [U.relieverRed] : [];
-  const video = d.video ? `<p><a class="btn" href="${esc(d.video)}" target="_blank" rel="noopener">▶ ${U.video}（${esc(d.brand)}）↗</a></p><p class="small">${esc(d.videoNote || '')} ${U.videoNote} 影片連結只核對過標題${d.videoChecked ? `（${d.videoChecked} 核對）` : ''}，影片內容尚待藥師核對。</p><div class="print-only">${qrSvg(d.video, 2)}</div>` : `<p>${U.noVideo}</p>`;
+  const video = d.video ? `<p><a class="btn" href="${esc(d.video)}" target="_blank" rel="noopener">▶ ${U.video}（${esc(d.brand)}）↗</a></p><p class="small">${esc(d.videoNote || '')} ${U.videoNote} 影片連結只核對過標題${d.videoChecked ? `（${d.videoChecked} 核對）` : ''}，影片內容尚待藥師核對。</p><div class="print-only">${qrSvg(d.video, 2, '用手機相機掃描，開啟影片')}</div>` : `<p>${U.noVideo}</p>`;
   const missedBody = Array.isArray(d.missed) ? ul(d.missed) : `<p>${rich(d.missed || U.missedAsk)}</p>`;
   const missed = isPen ? sec('missed', U.missedPen, `<p class="redline">${U.noDouble}</p>${missedBody}${ul(C.missed.slice(1, 2))}`) : (d.missed ? sec('missed', U.missed, missedBody) : (Array.isArray(t.missed) && d.role !== 'reliever' ? sec('missed', U.missed, ul(t.missed.filter(x => !/^急救（緩解）吸入劑/.test(x)).map(x => /請看本藥品頁或說明書/.test(x) ? U.missedMaint : x))) : (d.role === 'reliever' ? sec('missed', U.missed, ul(t.missed ? t.missed.slice(-1) : [])) : '')));
   const haCard = isPen || d.highAlert ? haLinkCard(HA_OF[d.technique], B, d) : '';
@@ -304,7 +310,7 @@ ${sec('storage', U.storage, ul(storage))}
 ${isPen ? sec('sharps', U.disposal, ul(C.disposal.sharps) + `<p><a href="${B}disposal/">${U.disposal} →</a></p>`) : ''}
 ${sec('mistakes', U.mistakes, ul(vlist(t.mistakes, d)))}
 ${sec('side', U.side, ul(vlist([...(d.side || []), ...(t.side || []).filter(x => !d.sideExclude || !x.includes(d.sideExclude))], d)))}
-${sec('triage', U.triage, triageBox(t.triage, triExtra, d.triage2))}
+${sec('triage', U.triage, triageBox(t.triage, triExtra, d.triage2, d.role === 'copdOnly' && C.triage[t.triage]?.redWaitCopd))}
 ${sec('video', U.video, video, ' data-noprint="1"')}
 <section class="card sec meta" id="sources"><h2>${U.sources}</h2>${srcList([...(d.sources || []), ...(t.sources || []).filter(x => !(d.sources || []).includes(x)).filter(x => !(/DailyMed/.test(x) && /Respimat/.test(x)) || x.startsWith(d.brand.split(' ')[0]))])}
 <p><a class="btn" href="${esc(d.insert)}" target="_blank" rel="noopener">${U.insert}</a></p>
@@ -331,7 +337,7 @@ function techPage(id) {
 <article class="tech" data-tech="${id}">
 <header class="dh"><p class="eyebrow">${esc(GROUPS[t.group] || '')}｜${U.technique}</p><h1>${esc(t.title)}</h1><p class="badges">${t.highAlert ? haBadge : ''}</p></header>
 <div id="product" class="idbox card" hidden></div>
-<div class="role" role="note"><p>${rich(t.summary)}</p><p class="small">${U.indexOnlyNote}</p>${t.products ? `<details class="adv"><summary>進階資訊（台灣的產品、許可證字號）</summary>${ul(t.products)}</details>` : ''}${compareBlock(t)}</div>
+<div class="role" role="note"><p>${rich(t.summary)}</p><p class="small">${U.indexOnlyNote}</p>${t.products ? `<details class="adv"><summary>進階資訊（台灣的產品、許可證字號）</summary>${ul(t.products)}</details>` : ''}</div>
 <div class="actions no-print"><button type="button" class="btn tts-all">${U.readAll}</button><button type="button" class="btn tts-stop" hidden>${U.stop}</button><button type="button" class="btn" data-print>🖨 ${U.print}</button></div>
 ${sec('key', U.keySteps, `<ol class="keypts">${(t.keyPoints || []).map(k => `<li>${rich(k)}</li>`).join('')}</ol>`)}
 ${sec('prep', U.prep, renderSteps(t.prep, opts, 'pr'))}
@@ -345,6 +351,7 @@ ${HA_OF[id] ? haLinkCard(HA_OF[id], B) : ''}
 ${t.device === 'pmdi' ? sec('counter', '噴數計數', counterBox('t-' + id)) : ''}
 ${sec('triage', U.triage, triageBox(t.triage))}
 ${ds.length ? sec('drugs', '這個裝置的詳細藥品頁', `<ul class="links">${ds.map(d => `<li><a href="${B}d/${d.slug}/">${esc(d.brand)} ${esc(d.zhName)}</a></li>`).join('')}</ul>`) : ''}
+${t.labelCompare ? `<div class="card cmp-foot">${compareBlock(t)}</div>` : ''}
 <section class="card sec meta" id="sources"><h2>${U.sources}</h2>${srcList([...(t.sources || []).filter(s => !/\.md|qa\//.test(s)), ...ds.map(d => `${d.brand} 台灣說明書（${d.license}）：${d.insert}（2026-10-17 查詢）`)])}${metaLine()}</section>
 <section class="card sec qr" id="qr"><h2>${U.qr}</h2><div class="qrimg">${qrSvg(url + '?src=qr')}</div><p class="small">${esc(url)}</p></section>
 </article>`;
@@ -383,7 +390,7 @@ function highAlert() {
     const body = `<nav class="crumb no-print"><a href="../">← ${U.highAlertH}</a></nav><article><header class="dh"><p class="eyebrow">❗ ${U.highAlert}</p><h1>${esc(c.title)}</h1><p>${esc(c.examples)}</p></header>
 <div class="actions no-print"><button type="button" class="btn tts-all">${U.readAll}</button><button type="button" class="btn tts-stop" hidden>${U.stop}</button><button type="button" class="btn" data-print>🖨 ${U.print}</button><a class="btn" href="${BB}t/${c.technique}/">${U.openTechnique}</a></div>
 ${sec('k', '必知安全重點', ul(c.key))}${sec('m', U.missed, ul(c.missed))}${sec('o', '用太多或重複用了', ul(c.overdose))}
-${sec('c', '立即就醫／撥打 119', `<div class="tri"><div class="tri-r">${ul(c.call)}<a class="call" href="tel:119">📞 撥打 119</a></div></div>`)}${T[c.technique] && T[c.technique].labelCompare ? `<div class="card">${compareBlock(T[c.technique])}</div>` : ''}
+${sec('c', '立即就醫／撥打 119', `<div class="tri"><div class="tri-r">${ul(c.call)}<a class="call" href="tel:119">📞 撥打 119</a></div></div>`)}${T[c.technique] && T[c.technique].labelCompare ? `<div class="card">${compareBlock(T[c.technique], true)}</div>` : ''}
 ${c.id === 'insulin-glp1' || c.id === 'oral-hypoglycemics' ? sec('h', '低血糖', hypoBox()) : ''}
 ${sec('i', '重要交互作用', ul(c.interactions))}${sec('s', '保存與丟棄', ul(c.storage) + `<p><a href="${BB}disposal/">${U.disposal} →</a></p>`)}
 ${sec('tr', U.triage, triageBox(c.triage))}
@@ -398,7 +405,7 @@ function disposal() {
 function glossary() { simple('glossary/index.html', U.glossary, `<dl class="gloss">${Object.entries(GL).map(([k, v]) => `<div id="${encodeURIComponent(k)}"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>`, 'p-simple', 'none'); }
 function qrSheet() {
   const all = [...DRUGS.map(d => [`d/${d.slug}/`, d.brand, d.zhName]), ...Object.entries(T).filter(([, t]) => !t.alias).map(([id, t]) => [`t/${id}/`, t.title, U.technique])];
-  simple('qr/index.html', U.qrSheet, `<p class="no-print">${U.printTip}</p><p class="no-print"><button type="button" class="btn" data-print>🖨 列印 QR 一覽表</button></p><ul class="qrsheet">${all.map(([p, a, b]) => `<li>${qrSvg(SITE.baseUrl + p + '?src=qr', 2)}<b>${esc(a)}</b><span>${esc(b)}</span></li>`).join('')}</ul>`, 'p-qr');
+  simple('qr/index.html', U.qrSheet, `<p class="no-print">${U.printTip}</p><p class="no-print"><button type="button" class="btn" data-print>🖨 列印 QR 一覽表</button></p><ul class="qrsheet">${all.map(([p, a, b]) => `<li>${qrSvg(SITE.baseUrl + p + '?src=qr', 2, '用手機相機掃描，開啟' + a)}<b>${esc(a)}</b><span>${esc(b)}</span></li>`).join('')}</ul>`, 'p-qr');
 }
 function printPages() {
   const sets = { inhalers: ['全部吸入劑（25 項）', DRUGS.filter(d => d.chip !== 'insulin')], insulin: ['全部胰島素注射筆（15 項）', DRUGS.filter(d => d.chip === 'insulin')] };
@@ -425,6 +432,15 @@ function tally() {
   simple('print/tally/index.html', '吸入器噴數計數表', `<p>藥名：＿＿＿＿＿＿＿＿　總噴數：＿＿＿＿　開始日期：＿＿＿＿</p><p class="small">每用 1 下，就把一格劃掉。劃到總噴數就換新的一支（即使搖起來還有聲音）。</p><p class="no-print"><button type="button" class="btn" data-print>🖨 列印計數表</button></p><table class="tally" aria-label="噴數計數格">${rows.join('')}</table>`);
 }
 const CHANGES = [
+ ['1.5.0', SITE.effective, [
+  '腎上腺素注射筆：第二支那一句加回「變嚴重」：「打完 5–15 分鐘沒有改善、變嚴重，或症狀又出現，而且手邊有第二支：在另一側大腿打第二支，並繼續等救護車。」「說明書與指引的不同說法」區塊移到使用方法頁最下面（資料來源旁），開頭寫明「急救時只要照本頁第 7 步做，同時撥 119」，補上說明書頁碼與版本，美國處方資訊與 WAO 改成直譯。',
+  '胰島素筆「打完劑量視窗沒有回到 0」改成每支筆各自的做法：禮來 KwikPen 把針頭刺回皮膚完成這次注射；Ryzodeg 換新針頭、從安全測試重做；FlexPen 針頭先不要拔、繼續按到底；其他筆標示「本院藥師還在確認」。NovoRapid 加上先拔針再放開注射鈕。',
+  'Humalog Mix25 KwikPen：依食藥署收錄的台灣使用手冊，安全測試 2 單位、數到 5、最多 4 次再換針頭；打完繼續按住、慢慢數到 5 再拔針。',
+  'Lantus、Apidra 沒有藥滴：連同第一次共做 3 次還是沒有，換新針頭再做一次；還是沒有就換新筆並問藥師（「3 次」是本院做法）。',
+  '「一次看一步」：最後一步有「完成，看全部步驟」按鈕；換步時畫面捲到這一步開頭，螢幕報讀會念出步驟內容。',
+  '眼藥水最後一步提醒「點完至少等 15 分鐘再戴回隱形眼鏡」，搜尋「隱形眼鏡」可以找到眼藥水；首頁與分享預覽的說明書叫法統一。',
+  'Awiqli 寫出用完時可以分兩次注射的做法（台灣使用說明）；只用於 COPD 的吸入劑，等救護車那一句改成「依醫師給您的 COPD 行動計畫」；舌下錠圖片說明與 QR Code 的螢幕報讀文字修正。'
+ ]],
  ['1.4.0', SITE.effective, [
   '腎上腺素注射筆：第二支的時機改成有出處的寫法：「打完 5–15 分鐘沒有改善，或症狀又出現，而且手邊有第二支：在另一側大腿打第二支，並繼續等救護車。」說明書、病人須知、美國說明書與 WAO 2020 的原文，改放在獨立的「說明書與指引的不同說法」區塊逐字引用。高警訊頁改成「一律撥 119，即使已經好轉；不要自己開車，也不要讓病人站起來走路」，並加上抗組織胺不能取代腎上腺素、拇指不可蓋住注射端兩行。',
   '舌下硝化甘油：等救護車時每 5 分鐘再含 1 顆，「總共最多 3 顆（包含第 1 顆）」；說明書那句改成原文引用，「5 分鐘就打 119」標出國外指引（AHA/ACC 2014）。',
@@ -501,6 +517,8 @@ function assets() {
 }
 
 checkCodes();
+// v1.5 (acceptance #5): a codes.json error stops the build before the old dist/ is removed
+fs.rmSync(OUT, { recursive: true, force: true }); fs.mkdirSync(OUT, { recursive: true });
 home(); for (const d of DRUGS) drugPage(d); for (const d of RETIRED) retiredPage(d); for (const id of Object.keys(T)) techPage(id);
 highAlert(); disposal(); glossary(); qrSheet(); printPages(); tally(); about(); changelog(); errorPages(); assets();
 const pages = []; (function walk(d) { for (const f of fs.readdirSync(d)) { const p = path.join(d, f); if (fs.statSync(p).isDirectory()) walk(p); else if (f.endsWith('.html')) pages.push(path.relative(OUT, p)); } })(OUT);

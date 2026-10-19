@@ -176,7 +176,7 @@
    "支氣管擴張劑：手抖、心跳變快、心悸、頭痛"
   ],
   "sources": [
-   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）；台灣廠商病人使用說明（參考用，沒有固定網址）",
+   "食藥署西藥、醫療器材及化粧品許可證查詢（各產品說明書）：https://mcp.fda.gov.tw/（2026-10-18 查詢）；台灣廠商病人使用說明（參考用，沒有固定網址；2026-10-18 取得）",
    "GINA 2024 Global Strategy for Asthma Management：https://ginasthma.org/wp-content/uploads/2025/05/GINA-2024-strategy-report_24_05_22-WMSA.pdf （2026-10-18 查詢）",
    "Asthma + Lung UK：How to use your inhaler https://www.asthmaandlung.org.uk/living-with/inhaler-videos （2026-10-18 查詢）"
   ],
@@ -347,7 +347,7 @@
    "藥霧噴進眼睛可能造成眼睛痛、視力模糊或看到光暈，請避免並告知醫師"
   ],
   "sources": [
-   "Boehringer Ingelheim 台灣 Respimat 病人使用說明（內容以食藥署仿單為準）（參考用，沒有固定網址；2026-10-18 取得）",
+   "Boehringer Ingelheim 台灣 Respimat 病人使用說明（內容以藥盒裡的說明書為準）（參考用，沒有固定網址；2026-10-18 取得）",
    "Spiriva Respimat（美國版，參考用）DailyMed Instructions for Use：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=7b656b14-fcaa-2741-f6f0-e0be48971c02 （2026-10-18 查詢）",
    "Spiolto Respimat（美國名稱 Stiolto Respimat，參考用）DailyMed Instructions for Use：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=01e15aee-40e0-23f3-537f-c96dd63e2cb1 （2026-10-18 查詢）",
    "Striverdi Respimat（美國版，參考用）DailyMed Instructions for Use：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5d9a5433-857e-44ea-b3d6-2a400ca0cef5 （2026-10-18 查詢）"
@@ -481,7 +481,7 @@
    "手抖、心悸、頭痛（含 formoterol）"
   ],
   "sources": [
-   "AstraZeneca 台灣 Symbicort Turbuhaler 病人使用說明（內容以食藥署仿單為準）（參考用，沒有固定網址；2026-10-18 取得）",
+   "AstraZeneca 台灣 Symbicort Turbuhaler 病人使用說明（內容以藥盒裡的說明書為準）（參考用，沒有固定網址；2026-10-18 取得）",
    "Symbicort Turbuhaler 台灣說明書（衛署藥輸字第023265號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第023265號（2026-10-17 查詢）"
   ],
   "missed": [
@@ -581,7 +581,7 @@
    "手抖、頭痛、心悸"
   ],
   "sources": [
-   "Chiesi Foster NEXThaler 仿單與病人說明（內容以食藥署仿單為準）（參考用，沒有固定網址；2026-10-18 取得）"
+   "Chiesi Foster NEXThaler 仿單與病人說明（內容以藥盒裡的說明書為準）（參考用，沒有固定網址；2026-10-18 取得）"
   ],
   "missed": [
    "保養型吸入劑忘記用：各藥補用方式不同（有的當天補、有的等隔天），請看本藥品頁或說明書；一天不可超過處方次數，不要一次吸兩倍。",
@@ -595,13 +595,13 @@
   "device": "ellipta",
   "triage": "inhaler",
   "accent": "#d97706",
-  "summary": "滑開蓋子聽到「喀」就裝好一劑，一天一次。吸的方式是「長、穩、深」的一口。",
+  "summary": "滑開蓋子聽到「喀」就裝好一劑。吸的方式是「長、穩、深」的一口。",
   "keyPoints": [
    "滑開蓋子直到「喀」一聲，計數器減少 1",
    "不要搖；手指不要擋住通氣孔",
    "先吐氣（不要對吸嘴吐）",
    "嘴唇包緊，長、穩、深地吸一口",
-   "盡量閉氣至少 3–4 秒，關上蓋子；一天 1 次"
+   "盡量閉氣至少 3–4 秒，關上蓋子；使用次數依藥袋"
   ],
   "use": [
    {
@@ -689,7 +689,7 @@
   ],
   "sources": [
    "GSK Ellipta 系列 EU Package Leaflet（EMA EPAR，例：Relvar Ellipta）：https://www.ema.europa.eu/en/medicines/human/EPAR/relvar-ellipta （2026-10-18 查詢）",
-   "GSK 台灣 Ellipta 病人使用說明（內容以食藥署仿單為準）（參考用，沒有固定網址；2026-10-18 取得）"
+   "GSK 台灣 Ellipta 病人使用說明（內容以藥盒裡的說明書為準）（參考用，沒有固定網址；2026-10-18 取得）"
   ],
   "missed": [
    "保養型吸入劑忘記用：各藥補用方式不同（有的當天補、有的等隔天），請看本藥品頁或說明書；一天不可超過處方次數，不要一次吸兩倍。",
@@ -795,7 +795,7 @@
    "手抖、心悸、頭痛"
   ],
   "sources": [
-   "GSK Seretide Accuhaler 仿單與病人使用說明（內容以食藥署仿單為準）（參考用，沒有固定網址；2026-10-18 取得）"
+   "GSK Seretide Accuhaler 仿單與病人使用說明（內容以藥盒裡的說明書為準）（參考用，沒有固定網址；2026-10-18 取得）"
   ],
   "missed": [
    "保養型吸入劑忘記用：各藥補用方式不同（有的當天補、有的等隔天），請看本藥品頁或說明書；一天不可超過處方次數，不要一次吸兩倍。",
@@ -989,7 +989,7 @@
    "依產品說明；多數只能乾擦，部分產品允許定期水洗並完全風乾。"
   ],
   "storage": [
-   "膠囊留在鋁箔中，乾燥室溫保存。",
+   "膠囊留在鋁箔中；保存溫度依藥盒裡的說明書（Breezhaler 類為 30°C 以下）。",
    "放在兒童拿不到、看不到的地方。"
   ],
   "mistakes": [

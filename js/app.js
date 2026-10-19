@@ -154,6 +154,38 @@
   // ---- offline-ish ----
   if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register(B + 'sw.js').catch(function () { });
 
+  // v1.4 (A11Y-08): "一次看一步" step-by-step view for the use steps. Off by default; screen only (print and read-aloud keep all steps).
+  $$('#use ol.steps').forEach(function (ol, k) {
+    var items = $$(':scope > li.step', ol); if (items.length < 2) return;
+    var N = items.length, cur = 0, on = false, id = 'os' + k;
+    var bar = d.createElement('div'); bar.className = 'onestep no-print no-tts';
+    bar.innerHTML = '<button type="button" class="btn os-toggle" aria-pressed="false" aria-controls="' + id + '">👣 一次看一步</button>';
+    var nav = d.createElement('div'); nav.className = 'os-nav no-print no-tts'; nav.hidden = true;
+    nav.innerHTML = '<button type="button" class="btn os-prev">← 上一步</button><span class="os-count" aria-live="polite" aria-atomic="true"></span><button type="button" class="btn os-next">下一步 →</button>';
+    ol.id = ol.id || id; ol.parentNode.insertBefore(bar, ol); ol.parentNode.insertBefore(nav, ol.nextSibling);
+    var tg = $('.os-toggle', bar), pv = $('.os-prev', nav), nx = $('.os-next', nav), cnt = $('.os-count', nav);
+    function show(focus) {
+      items.forEach(function (li, i) { li.classList.toggle('os-hide', on && i !== cur); });
+      cnt.textContent = '第 ' + (cur + 1) + '／共 ' + N + ' 步';
+      pv.disabled = cur === 0; nx.disabled = cur === N - 1;
+      if (focus) { items[cur].setAttribute('tabindex', '-1'); items[cur].focus({ preventScroll: true }); var r = ol.getBoundingClientRect(); if (r.top < 0 || r.top > innerHeight * 0.5) bar.scrollIntoView({ block: 'start' }); }
+    }
+    function go(n, focus) { cur = Math.max(0, Math.min(N - 1, n)); show(focus); }
+    tg.addEventListener('click', function () {
+      on = !on; tg.setAttribute('aria-pressed', on ? 'true' : 'false'); tg.textContent = on ? '📋 顯示全部步驟' : '👣 一次看一步';
+      ol.classList.toggle('os-on', on); nav.hidden = !on; cur = 0; show(false);
+      if (!on) cnt.textContent = '';
+    });
+    pv.addEventListener('click', function () { go(cur - 1, false); });
+    nx.addEventListener('click', function () { go(cur + 1, false); });
+    [ol, nav].forEach(function (el) { el.addEventListener('keydown', function (e) {
+      if (!on || e.altKey || e.ctrlKey || e.metaKey) return;
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); go(cur + 1, e.target.closest('ol') === ol); }
+      else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(cur - 1, e.target.closest('ol') === ol); }
+      else if (e.key === 'Home') { e.preventDefault(); go(0, true); } else if (e.key === 'End') { e.preventDefault(); go(N - 1, true); }
+    }); });
+  });
+
   // v1.1 puff counter (localStorage only)
   $$('.counter[data-key]').forEach(function (c) {
     var k = c.getAttribute('data-key'), tot = $('.cnt-total', c), used = $('.cnt-used', c), left = $('.cnt-left', c);

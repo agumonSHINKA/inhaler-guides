@@ -98,6 +98,7 @@ function write(rel, html) { const f = path.join(OUT, rel); fs.mkdirSync(path.dir
 const linkify = s => rich(s).replace(/https?:\/\/[^\s（）()，；、<]+/g, u => { const h = u.replace(/&amp;/g, '&'); return `<a href="${esc(h)}" target="_blank" rel="noopener">${u}</a>`; });
 const srcList = arr => arr && arr.length ? `<ul class="srcs">${arr.map(x => `<li>${linkify(x)}</li>`).join('')}</ul>` : '';
 const ul = (arr, cls = '') => arr && arr.length ? `<ul class="${cls}">${arr.map(x => `<li>${rich(x)}</li>`).join('')}</ul>` : '';
+const compareBlock = t => t && t.labelCompare ? `<div class="cmp"><details class="adv"><summary>${esc(t.labelCompare.title)}</summary><p class="small">${esc(t.labelCompare.intro)}</p>${ul(t.labelCompare.items)}</details></div>` : '';
 const sec = (id, title, body, extra = '') => body ? `<section class="card sec" id="${id}" aria-labelledby="${id}-h"${extra}><div class="sec-head"><h2 id="${id}-h">${esc(title)}</h2><button type="button" class="tts-sec" data-tts="${id}" aria-label="${esc(U.readSection)}：${esc(title)}">${U.readSection}</button></div>${body}</section>` : '';
 const vlist = (arr, d) => (arr || []).filter(x => d.rinse || !/含類固醇|吸入型類固醇|口腔念珠菌|鵝口瘡/.test(x)).filter(x => d.mix || !/預混型/.test(x));
 const roleBadge = r => r === 'reliever' ? `<span class="badge b-rescue">🚑 ${U.rescue}</span>` : r === 'mart' ? `<span class="badge b-mart">⚠ ${U.martTitle}</span>` : (['maintenance', 'copd', 'copdOnly'].includes(r) ? `<span class="badge b-notrescue">⚠ ${U.notRescue}</span>` : '');
@@ -155,8 +156,11 @@ function renderSteps(steps, opts, idp) {
     if (typeof st === 'string') st = { t: st };
     const alt = `步驟 ${i + 1}：${plain(st.t)}`;
     const inline = !tsvFile(st.tm) || st.forceInline;
-    const pu = plain(st.t).match(/轉到\s*(\d+)\s*單位/), mx = plain(st.t).match(/(\d+)\s*次/);
-    const o2 = { ...opts, step: i + 1, label: st.lbl || numLabel(st.t), primeUnits: pu ? pu[1] : undefined, mixN: mx ? mx[1] : undefined, zh: st.zh };
+    const pu = plain(st.t).match(/轉到[^。；，]*?(\d+)\s*單位/), mx = plain(st.t).match(/(\d+)\s*次/);
+    // v1.4 (illustration low #7): the breath-hold label carries this page's own seconds
+    let zh = st.zh;
+    if (!zh && st.img === 'hold-breath') { const hs = plain(st.t).match(/閉(?:住這口)?氣[^。；]*?((?:至少|約|最多)?\s*\d+(?:\s*[–-]\s*\d+)?\s*秒)/); zh = '移開吸入器、閉上嘴巴閉氣' + (hs ? hs[1].replace(/\s+/g, ' ') : '') + '，旁邊有計時'; }
+    const o2 = { ...opts, step: i + 1, label: st.lbl || numLabel(st.t), primeUnits: pu ? pu[1] : undefined, mixN: mx ? mx[1] : undefined, zh, nc: (st.c || []).length, flick: st.img === 'pen-prime' ? /輕彈/.test(plain(st.t)) : undefined };
     const figHtml = (st.img || st.tm) ? stepFig(st, o2, alt, st.forceInline) : '';
     const fig = (st.img || st.tm) ? `<figure class="fig">${figHtml}${inline && !st._noLegend && st.c && st.c.length && st.img ? `<figcaption><ol class="callouts" type="A">${st.c.map(c => `<li>${esc(c)}</li>`).join('')}</ol></figcaption>` : ''}</figure>` : '';
     return `<li class="step" id="${idp}-${i + 1}">${fig}<div class="st-t"><span class="st-n" aria-hidden="true">${i + 1}</span><p>${rich(st.t)}</p></div></li>`;
@@ -195,10 +199,18 @@ function drugUseSteps(t, d) {
         const head = d.test ? `[[安全測試]]：每次注射前，轉到 ${d.test}${d.testNote ? `（${d.testNote}）` : ''}，針頭朝上，輕彈筆芯讓氣泡升上去，把注射鈕按到底，確認針尖出現藥滴。` : `[[安全測試]]：${d.testText || '每次注射前都要做，看到藥滴才注射；單位數請依盒內使用說明書。'}針頭朝上，輕彈筆芯讓氣泡升上去，把注射鈕按到底，確認針尖出現藥滴。`;
         const next = '換一個新針頭再試；換了新針頭還是沒有藥滴，這支筆先不要用，改用新的一支筆，並把這支筆帶去問藥師。';
         const n = (d.retries || '').match(/(\d+)\s*次/), orig = /原廠/.test(d.retries || '');
-        const tail = d.retryNeedleFirst ? '沒有藥滴：換一個新針頭，再做一次安全測試；這樣最多重做 6 次，還是沒有就換新筆並問藥師（台灣說明書）。' : n ? `沒有藥滴就再做一次，最多 ${n[1]} 次${orig ? '（原廠使用說明，非台灣版）' : ''}；仍然沒有就${next}` : `沒有藥滴：再試一次（最多 3 次）。${NV}還是沒有 → 換新針頭再試；還是沒有 → 換一支新筆，並問藥師。`;
-        return { ...s, t: head + tail, forceInline: true, img: 'pen-prime' };
+        // v1.4 (round-4 #12): every pen page says the no-drop routine differs per pen; pens whose label gives no count follow the label (repeat until a drop appears)
+        const diff = '每一種筆沒藥滴的做法不一樣，請照這支筆的步驟做。';
+        if (d.primeText) return { ...s, t: d.primeText, forceInline: true, img: 'pen-prime' };
+        const tail = d.retryNeedleFirst ? '沒有藥滴：換一個新針頭，再做一次安全測試；這樣最多重做 6 次，還是沒有就換新筆並問藥師（台灣說明書）。家裡請多備幾個新針頭。'
+          : n ? `沒有藥滴就再做一次，最多 ${n[1]} 次${orig ? '（原廠使用說明，非台灣版）' : ''}；仍然沒有就${next}`
+          : /直到/.test(d.retries || '') ? '沒有藥滴：再做一次安全測試，直到針尖出現藥滴（台灣說明書）。試了幾次還是沒有：換新針頭再試；還是沒有就換一支新筆，並問藥師。'
+          : '沒有藥滴：再做一次安全測試。試了幾次還是沒有：換新針頭再試；還是沒有就換一支新筆，並問藥師。';
+        return { ...s, t: head + diff + tail, forceInline: true, img: 'pen-prime' };
       }
-      if (s.id === 'hold') return { ...s, t: `按住注射鈕，劑量視窗回到 0 後，針頭繼續留在皮膚內「${d.hold}」${d.holdNote ? `（${d.holdNote}）` : ''}再拔出，確保藥全部打進去。拔出後不要揉。`, forceInline: true };
+      if (s.id === 'hold') return { ...s, t: d.holdText || `按住注射鈕，劑量視窗回到 0 後，針頭繼續留在皮膚內「${d.hold}」${d.holdNote ? `（${d.holdNote}）` : ''}再拔出，確保藥全部打進去。${d.holdAfter || ''}拔出後不要揉。`, forceInline: true };
+      if (s.img === 'pen-dial' && d.dialText) return { ...s, t: d.dialText };
+      if (s.img === 'pen-sites' && d.sitesText) return { ...s, t: d.sitesText, zh: d.sitesZh || s.zh };
       return s;
     });
   }
@@ -254,10 +266,10 @@ function drugPage(d) {
   if (d.role === 'reliever') keyPts.push('用了還是喘、沒有緩解：立即撥打 119');
   if (isPen) {
     keyPts.splice(1, 1, d.test ? `每次換新針頭，安全測試 ${d.test}${d.testNote ? `（${d.testNote}）` : ''}（看到藥滴）` : `每次換新針頭，都要做安全測試，看到藥滴才注射（單位數依盒內說明書）${NV}`);
-    keyPts.splice(3, 1, `垂直刺入，按到底並停留「${d.hold}」${d.holdNote ? `（${d.holdNote}）` : ''}`);
+    keyPts.splice(3, 1, d.holdKey || `垂直刺入，按到底並停留「${d.hold}」${d.holdNote ? `（${d.holdNote}）` : ''}`);
     if (d.mix) keyPts.splice(1, 0, '預混型（乳白色）：注射前要先混勻（方法見步驟）');
     keyPts.push(U.noDouble); }
-  if (d.role === 'insulinWeekly') keyPts.unshift('一週只打一次，不是每天打。' + NV);
+  if (d.role === 'insulinWeekly') keyPts.unshift('一週只打一次，不是每天打。');
   let prep = d.prep || t.prep;
   if (d.warm) prep = prep.map(s => s.img === 'pen-warm' ? { ...s, t: d.warm, lbl: '1–2 小時回到室溫' } : s);
   const use = drugUseSteps(t, d);
@@ -279,7 +291,7 @@ function drugPage(d) {
 <p class="check">✅ ${U.checkDrug}</p></div>
 ${roleBox}${warn}${lasaBox(d, B)}
 <div class="actions no-print"><button type="button" class="btn tts-all">${U.readAll}</button><button type="button" class="btn tts-stop" hidden>${U.stop}</button><button type="button" class="btn" data-print>🖨 ${U.print}</button><a class="btn" href="#qr">${U.qr}</a></div>
-${sec('key', U.keySteps, (isPen && d.hold ? `<p class="holdbig">⏱ ${esc(d.brand)}：打完停留 ${esc(d.hold)}${/原廠/.test(d.holdNote || '') ? `<small>（${esc(plain(d.holdNote).replace(/（ⓘ[^）]*）/, ''))}）</small>` : ''}</p>` : '') + `<ol class="keypts">${keyPts.map(k => `<li>${rich(k)}</li>`).join('')}</ol>`)}
+${sec('key', U.keySteps, (isPen && d.hold ? `<p class="holdbig">⏱ ${esc(d.brand)}：${esc(d.holdBig || '打完停留 ' + d.hold)}${/原廠/.test(d.holdNote || '') ? `<small>（${esc(plain(d.holdNote).replace(/（ⓘ[^）]*）/, ''))}）</small>` : ''}</p>` : '') + `<ol class="keypts">${keyPts.map(k => `<li>${rich(k)}</li>`).join('')}</ol>`)}
 ${sec('purpose', U.purpose, `<p>${rich(d.purpose)}</p>${ul(d.usual)}<p class="dose">${U.doseRule}</p>`)}
 ${sec('prep', U.prep, renderSteps(prep, opts, 'pr'))}
 ${sec('use', U.use, shakeNote + renderSteps(use, opts, 'st'))}
@@ -294,7 +306,7 @@ ${sec('mistakes', U.mistakes, ul(vlist(t.mistakes, d)))}
 ${sec('side', U.side, ul(vlist([...(d.side || []), ...(t.side || []).filter(x => !d.sideExclude || !x.includes(d.sideExclude))], d)))}
 ${sec('triage', U.triage, triageBox(t.triage, triExtra, d.triage2))}
 ${sec('video', U.video, video, ' data-noprint="1"')}
-<section class="card sec meta" id="sources"><h2>${U.sources}</h2>${srcList([...(d.sources || []), ...(t.sources || []).filter(x => !(d.sources || []).includes(x))])}
+<section class="card sec meta" id="sources"><h2>${U.sources}</h2>${srcList([...(d.sources || []), ...(t.sources || []).filter(x => !(d.sources || []).includes(x)).filter(x => !(/DailyMed/.test(x) && /Respimat/.test(x)) || x.startsWith(d.brand.split(' ')[0]))])}
 <p><a class="btn" href="${esc(d.insert)}" target="_blank" rel="noopener">${U.insert}</a></p>
 ${metaLine(d.version)}</section>
 <section class="card sec qr" id="qr"><h2>${U.qr}</h2><div class="qrimg">${qrSvg(url + '?src=qr')}</div><p class="small">${U.qrHint}<br>${esc(url)}</p></section>
@@ -319,7 +331,7 @@ function techPage(id) {
 <article class="tech" data-tech="${id}">
 <header class="dh"><p class="eyebrow">${esc(GROUPS[t.group] || '')}｜${U.technique}</p><h1>${esc(t.title)}</h1><p class="badges">${t.highAlert ? haBadge : ''}</p></header>
 <div id="product" class="idbox card" hidden></div>
-<div class="role" role="note"><p>${rich(t.summary)}</p><p class="small">${U.indexOnlyNote}</p>${t.products ? `<details class="adv"><summary>進階資訊（台灣的產品、許可證字號）</summary>${ul(t.products)}</details>` : ''}</div>
+<div class="role" role="note"><p>${rich(t.summary)}</p><p class="small">${U.indexOnlyNote}</p>${t.products ? `<details class="adv"><summary>進階資訊（台灣的產品、許可證字號）</summary>${ul(t.products)}</details>` : ''}${compareBlock(t)}</div>
 <div class="actions no-print"><button type="button" class="btn tts-all">${U.readAll}</button><button type="button" class="btn tts-stop" hidden>${U.stop}</button><button type="button" class="btn" data-print>🖨 ${U.print}</button></div>
 ${sec('key', U.keySteps, `<ol class="keypts">${(t.keyPoints || []).map(k => `<li>${rich(k)}</li>`).join('')}</ol>`)}
 ${sec('prep', U.prep, renderSteps(t.prep, opts, 'pr'))}
@@ -371,7 +383,7 @@ function highAlert() {
     const body = `<nav class="crumb no-print"><a href="../">← ${U.highAlertH}</a></nav><article><header class="dh"><p class="eyebrow">❗ ${U.highAlert}</p><h1>${esc(c.title)}</h1><p>${esc(c.examples)}</p></header>
 <div class="actions no-print"><button type="button" class="btn tts-all">${U.readAll}</button><button type="button" class="btn tts-stop" hidden>${U.stop}</button><button type="button" class="btn" data-print>🖨 ${U.print}</button><a class="btn" href="${BB}t/${c.technique}/">${U.openTechnique}</a></div>
 ${sec('k', '必知安全重點', ul(c.key))}${sec('m', U.missed, ul(c.missed))}${sec('o', '用太多或重複用了', ul(c.overdose))}
-${sec('c', '立即就醫／撥打 119', `<div class="tri"><div class="tri-r">${ul(c.call)}<a class="call" href="tel:119">📞 撥打 119</a></div></div>`)}
+${sec('c', '立即就醫／撥打 119', `<div class="tri"><div class="tri-r">${ul(c.call)}<a class="call" href="tel:119">📞 撥打 119</a></div></div>`)}${T[c.technique] && T[c.technique].labelCompare ? `<div class="card">${compareBlock(T[c.technique])}</div>` : ''}
 ${c.id === 'insulin-glp1' || c.id === 'oral-hypoglycemics' ? sec('h', '低血糖', hypoBox()) : ''}
 ${sec('i', '重要交互作用', ul(c.interactions))}${sec('s', '保存與丟棄', ul(c.storage) + `<p><a href="${BB}disposal/">${U.disposal} →</a></p>`)}
 ${sec('tr', U.triage, triageBox(c.triage))}
@@ -413,9 +425,21 @@ function tally() {
   simple('print/tally/index.html', '吸入器噴數計數表', `<p>藥名：＿＿＿＿＿＿＿＿　總噴數：＿＿＿＿　開始日期：＿＿＿＿</p><p class="small">每用 1 下，就把一格劃掉。劃到總噴數就換新的一支（即使搖起來還有聲音）。</p><p class="no-print"><button type="button" class="btn" data-print>🖨 列印計數表</button></p><table class="tally" aria-label="噴數計數格">${rows.join('')}</table>`);
 }
 const CHANGES = [
- ['1.3.0', SITE.effective, [
+ ['1.4.0', SITE.effective, [
+  '腎上腺素注射筆：第二支的時機改成有出處的寫法：「打完 5–15 分鐘沒有改善，或症狀又出現，而且手邊有第二支：在另一側大腿打第二支，並繼續等救護車。」說明書、病人須知、美國說明書與 WAO 2020 的原文，改放在獨立的「說明書與指引的不同說法」區塊逐字引用。高警訊頁改成「一律撥 119，即使已經好轉；不要自己開車，也不要讓病人站起來走路」，並加上抗組織胺不能取代腎上腺素、拇指不可蓋住注射端兩行。',
+  '舌下硝化甘油：等救護車時每 5 分鐘再含 1 顆，「總共最多 3 顆（包含第 1 顆）」；說明書那句改成原文引用，「5 分鐘就打 119」標出國外指引（AHA/ACC 2014）。',
+  'Spiolto：忘記用藥那一段加上「本品不是急救藥，突然喘請用急救（緩解型）吸入劑」。',
+  'Awiqli：依食藥署收錄的台灣使用說明，寫出安全測試（第一個標記 10 單位，沒有液滴最多 6 次）、打完按住慢慢數到 6、先拔針再放開注射鈕；注射部位只寫腹部、大腿、上臂。',
+  '所有胰島素筆：加上「打完劑量視窗沒有回到 0」怎麼辦；沒藥滴時先提醒「每一種筆做法不一樣」；沒有寫次數的筆改照說明書「再做一次直到出現藥滴」，不再寫沒有出處的次數；FlexPen 提醒多備幾個新針頭；回溫改成「放到摸起來不冰」。',
+  '使用步驟可以切換「一次看一步」：一次只顯示一步，有大的「上一步／下一步」按鈕，也可以用鍵盤左右鍵；列印和朗讀不受影響。',
+  '步驟圖：注射筆安全測試圖重畫（標出針頭與注射鈕、拇指往上按、劑量視窗、放大藥滴）；定量噴霧吸入器試噴圖改成對著空氣噴；吸嘴蓋改成從吸嘴拔下；自動注射筆回溫與等結束訊號、腎上腺素按摩與平躺抬腳、酒精棉擦皮膚、灌腸球、眼藥水兩眼都點，都換成對得上的圖。',
+  'Ellipta：重點步驟不再寫「一天 1 次」，改成「使用次數依藥袋」；Relvar 依說明書加上「一天最多 1 次」。',
+  'ⓘ 標示改成「前面這一句的細節本院藥師還在確認」，並放在句子最後；塞劑「要躺多久、多久不能上廁所」改成「藥盒裡的說明書沒寫，請問藥師」。',
+  '說明書叫法統一為「藥盒裡的說明書」；頁尾改成「請依醫師開的藥袋指示」；沒有固定網址的來源都加上取得日期。'
+ ]],
+ ['1.3.0', '2026-10-18', [
   '舌下硝化甘油：含第 1 顆 5 分鐘後胸痛沒有改善或更嚴重，立刻撥 119，不要等含完 3 顆，也不要自己開車或走路去醫院；「等救護車時每 5 分鐘再含 1 顆、最多 3 顆」另寫成一步。坐下含藥的圖改成自己的圖。',
-  '腎上腺素注射筆：第二支只寫一個動作（打完 5–15 分鐘沒有改善，或任何時候變嚴重，而且手邊有第二支：在另一側大腿打第二支，並繼續等救護車），不再附說明書的監督說法；說明書的正確說法（超過 2 劑才需要在醫師直接監督下施打）只放在「進階資訊」。',
+  '腎上腺素注射筆：第二支只寫一個動作（在另一側大腿打第二支，並繼續等救護車），不再附說明書的監督說法；說明書的說法另外放在「進階資訊」（v1.4.0 已改成逐字引用，見上方）。',
   '「尚待確認」標示改成：「ⓘ 這一句的細節本院藥師還在確認；有疑問請問藥師」，而且不再出現在打 119、打第二支等緊急指示上。',
   '諾和密斯 30：筆內至少還有 12 單位才能搖勻，剩不到 12 單位要換新筆（台灣說明書）。',
   '胰島素筆：沒有藥滴時的下一步寫出具體順序；要不要捏皮改用「很瘦（捏起來皮膚很薄）」；蘭德仕回溫時間統一為注射前 1–2 小時；剩量不夠時的說法改成「以您這支筆盒內的說明書為準」。',

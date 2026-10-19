@@ -201,3 +201,15 @@ html.lt .badge{font-size:1.05rem;padding:3px 12px}html.lt .beta-banner{font-size
  .drug.pen #prep{display:none!important}
 }
 html.lt .tbtn.lang{max-width:100%}html.lt .tbtn select{max-width:calc(100vw - 70px)}
+/* v1.4.0: 一次看一步 (A11Y-08) */
+.onestep{margin:0 0 10px}.os-toggle{min-height:48px;font-size:1.05rem}
+.os-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:12px 0 0;flex-wrap:wrap}
+.os-nav[hidden]{display:none}.os-nav .btn{min-height:56px;min-width:44%;font-size:1.15rem;font-weight:700}
+.os-nav .btn:disabled{opacity:.45;cursor:default}
+.os-count{flex:1 1 100%;order:-1;text-align:center;font-weight:800;font-size:1.15rem}
+@media screen{.steps.os-on>.step.os-hide{display:none}.steps.os-on>.step{border-top:0;padding-top:0}}
+@media print{.onestep,.os-nav{display:none!important}}
+.cmp{margin-top:6px}
+/* v1.4.0: 筆型頁 A4 列印維持 2 頁內（字級不變，只縮行距與間距） */
+@media print{.drug.pen{line-height:1.25}.drug.pen .step{margin:0 0 2px!important}.drug.pen .step .fig,.drug.pen .step svg.ill{width:19mm!important;max-width:19mm!important}.drug.pen .step{grid-template-columns:19mm 1fr}.drug.pen .sec-head h2,.drug.pen h2{margin:3px 0 1px}}
+.step>.st-t:only-child{grid-column:1/-1}

@@ -587,7 +587,9 @@
    "EpiPen 0.3 mg 台灣說明書（衛署藥輸字第025223號，病人使用說明 201811V2）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第025223號（2026-10-18 查詢）",
    "EpiPen Jr 0.15 mg 台灣說明書（衛署藥輸字第025133號）：https://mcp.fda.gov.tw/exportpdf/衛署藥輸字第025133號（2026-10-18 查詢）",
    "World Allergy Organization Anaphylaxis Guidance 2020：https://doi.org/10.1016/j.waojou.2020.100472 （2026-10-18 查詢）",
-   "EpiPen 美國 DailyMed 處方資訊與病人說明（參考用）：https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=7560c201-9246-487c-a13b-6295db04274a&type=display （2026-10-18 查詢）"
+   "EpiPen 美國 DailyMed 處方資訊與病人說明（參考用）：https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=7560c201-9246-487c-a13b-6295db04274a&type=display （2026-10-18 查詢）",
+   "美國 Epinephrine Injection 自動注射筆仿單（Amneal，非 EpiPen 品牌，參考用）§2.1：沒有改善或症狀變嚴重，可從第一劑後 5 分鐘起用第二支：https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e13f05f1-7d21-49bb-b8d5-24bf9301c3d7 （2026-10-19 查詢）",
+   "EAACI guidelines: Anaphylaxis (2021 update)，Allergy 2022;77:357–377，doi:10.1111/all.15032，Box 3：https://doi.org/10.1111/all.15032 （2026-10-19 查詢）"
   ],
   "missed": [
    "這是急救用的藥，不是每天用的藥。請隨時隨身攜帶醫師開給您的注射筆（台灣說明書：有單支盒裝和 2 支盒裝；要帶幾支依醫師指示），並注意有效期限。"
@@ -601,7 +603,7 @@
    "intro": "下面是原文，給醫護人員參考。急救時只要照本頁第 7 步做，同時撥 119；說明書與國際指引寫法不同，不影響您現在該做的事。",
    "introHA": "下面是原文，給醫護人員參考。急救時只要照使用方法頁第 7 步做（和本頁「用太多或重複用了」第二支那一句相同），同時撥 119；說明書與國際指引寫法不同，不影響您現在該做的事。",
    "items": [
-    "台灣說明書 §5.1.1 緊急治療（第 1 頁，版本 201811V2/201808-0002029）：「只有在醫師直接監督下才可連續施打二次以上劑量的腎上腺素。」",
+    "台灣說明書 §5.1 緊急治療（第 1 頁，版本 201811V2/201808-0002029）：「只有在醫師直接監督下才可連續施打二次以上劑量的腎上腺素。」",
     "台灣病人須知步驟三（第 2 頁，版本 201811V2/201702-0001985）：「如果症狀持續或再次發生，您可能需要使用第二劑 EpiPen® 和 EpiPen® Jr 自動注射筆，應在醫師監督下才可連續施打。」",
     "以上兩份是 EpiPen 0.3 mg（衛署藥輸字第025223號）與 EpiPen Jr 0.15 mg（衛署藥輸字第025133號）的台灣說明書，兩張許可證的原文相同。",
     "美國 EpiPen 處方資訊（英文版，參考用）：連續超過 2 劑的腎上腺素，應只在醫師直接監督下施打（原文：More than two sequential doses of epinephrine should only be administered under direct medical supervision.）。",

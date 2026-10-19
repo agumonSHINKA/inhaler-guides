@@ -169,3 +169,15 @@
 **Lantus／Apidra 沒藥滴：** Lantus 照 pharmacist-review-v5 §3 建議文字，「3 次」標本院做法並註明參考原廠歐盟版使用說明（EMA EPAR IFU Step 3，資料來源已加）。Apidra 沒有原文次數 → 同樣文字＋「（『3 次』是本院做法）」＋句末 ⓘ。
 **目前仍標 ⓘ 的新增項目：** FlexPen 3 支與其他 8 支筆＋t/insulin-pen 的「劑量視窗沒有回到 0」處理方式；Apidra「3 次」。
 **院方待提供**（同 §10）：`config/codes.json` 的 `license`、`maintainer`、`confirmedAt`；院名、藥局電話、HIS 代碼、正式網域；EpiPen 第二支做法簽核；手部改用官方圖（需授權）。
+
+## 12. v1.6.0（2026-10-19，Asia/Taipei）第 6 輪 QA 修正後的狀態
+來源：`qa/round-6-changes.md`（A、B、C 第 1–9 項）。第 10 項（SVG 改完整手掌、真機一次看一步＋朗讀測試）與「不改區」未動。
+**Ryzodeg 劑量視窗沒有回到 0（pharmacist-review-v6 major）：** 台灣仿單 §17（qa/src_high/insulin2/ryzodeg-flextouch_0.txt l.1394–1397）有「針頭可能堵塞…並未接受到任何胰島素…更換針頭並重複所有步驟」，所以前半句（可能堵住、可能沒打到藥）標「藥盒裡的說明書」；後半句（先測血糖並聯絡藥師或醫師、不要自己再打一整劑或估算補打、記下剩下的數字）是本院做法 → 句末 ⓘ。
+**簽核紀錄（新增）：** Ryzodeg 仿單寫「換針頭、重複所有步驟、確保選擇所需的完整劑量」，本院網站寫「先聯絡藥師或醫師再決定要不要補、補多少」—— 兩者不同，待醫師與藥師簽核採用哪一種。
+**EpiPen：** 台灣說明書節號改成仿單實際的「5.1 緊急治療」（qa/src_v2/epi_衛署藥輸字第025223號_0.txt l.49；025133 號同；全文沒有 5.1.1）。主句「打完 5–15 分鐘沒有改善、**變嚴重**，或症狀又出現…」的「變嚴重」是醫師建議的措辭（physician-review-v5），不是台灣說明書原文；physician-review-v6 找到的出處：美國 Epinephrine Injection 自動注射筆仿單 §2.1（Amneal，DailyMed setid e13f05f1-7d21-49bb-b8d5-24bf9301c3d7：「…or if symptoms worsen after the initial treatment, a second dose… starting 5 minutes after the first dose」）與 EAACI 2021（doi:10.1111/all.15032，Box 3），兩頁資料來源已加上。
+**其他（依台灣說明書／使用手冊）：** Ryzodeg 注射部位只寫腹部、大腿、上臂（l.47、1612），用藥時間「每天 1 或 2 次，在正餐時（兒童每天 1 次）」（l.58–59）；Humalog KwikPen 與 Mix50 安全測試照使用手冊（按住到劑量視窗顯示 0、慢慢數到 5，最多 4 次）；資料來源加 000900 一般版使用手冊（i_5afd2e4b，非 Junior 版）與 000899 使用手冊（i_62f484db），兩份 2026-10-19 下載核對；Mix50 使用中「30°C 以下，不要放冰箱，28 天」（qa/src_v4/mix50_spc.txt l.228–243，原本的 ⓘ 移除）；Apidra 回溫 1–2 小時（apidra-solostar_0.txt l.303、325）與「飯前 0–15 分鐘內或飯後儘快」（l.27）。
+**目前仍標 ⓘ 的新增項目：** Ryzodeg 視窗沒有回到 0 的後半句；Awiqli「針頭先不要拔、繼續按住」整句（physician-review-v6 建議，台灣使用說明沒有寫計數器沒回到 0 怎麼辦）；Lantus「3 次」本院做法（和 Apidra 一致）。
+**COPD 行動計畫：** role copd（Anoro、Incruse Ellipta、Bevespi Aerosphere、Breztri）也套用 common triage.inhaler.redWaitCopd。
+**眼藥水：** 「點完至少等 15 分鐘（以藥盒裡的說明書為準）」—— 頁面所列來源沒有 15 分鐘這個數字（factcheck-v6 X20），仍待藥師確認。
+**看真實裝置（patient #1）：** 每個藥品頁上方加按鈕，只連到本頁已有的網址：操作影片（台灣胸腔暨重症加護醫學會，有的才放；不是原廠影片）、資料來源裡的食藥署台灣使用手冊／使用說明（Awiqli、Humalog KwikPen、Mix25、Mix50）、食藥署說明書（d.insert）。沒有原廠圖。列印不顯示。
+**院方待提供**（同 §11）：`config/codes.json` 的 `license`、`maintainer`、`confirmedAt`；院名、藥局電話、HIS 代碼、正式網域；EpiPen 第二支做法簽核；手部改用官方圖（需授權）；真機（iPhone／Android）一次看一步＋朗讀測試。

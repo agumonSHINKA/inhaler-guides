@@ -163,7 +163,8 @@ function renderSteps(steps, opts, idp) {
     // v1.4 (illustration low #7): the breath-hold label carries this page's own seconds
     let zh = st.zh;
     if (!zh && st.img === 'hold-breath') { const hs = plain(st.t).match(/閉(?:住這口)?氣[^。；]*?((?:至少|約|最多)?\s*\d+(?:\s*[–-]\s*\d+)?\s*秒)/); zh = '移開吸入器、閉上嘴巴閉氣' + (hs ? hs[1].replace(/\s+/g, ' ') : '') + '，旁邊有計時'; }
-    const o2 = { ...opts, step: i + 1, label: st.lbl || numLabel(st.t), primeUnits: pu ? pu[1] : undefined, mixN: mx ? mx[1] : undefined, zh, nc: (st.c || []).length, flick: st.img === 'pen-prime' ? /輕彈/.test(plain(st.t)) : undefined };
+    // v1.6 (factcheck O5): pens whose text says 劑量計數器 (Awiqli) get the same word in the safety-test picture
+    const o2 = { ...opts, step: i + 1, label: st.lbl || numLabel(st.t), primeUnits: pu ? pu[1] : undefined, mixN: mx ? mx[1] : undefined, zh, nc: (st.c || []).length, flick: st.img === 'pen-prime' ? /輕彈/.test(plain(st.t)) : undefined, win: /劑量計數器/.test(plain(st.t)) ? '劑量計數器' : undefined };
     const figHtml = (st.img || st.tm) ? stepFig(st, o2, alt, st.forceInline) : '';
     const fig = (st.img || st.tm) ? `<figure class="fig">${figHtml}${inline && !st._noLegend && st.c && st.c.length && st.img ? `<figcaption><ol class="callouts" type="A">${st.c.map(c => `<li>${esc(c)}</li>`).join('')}</ol></figcaption>` : ''}${st.figNote ? `<p class="small fig-note">${esc(st.figNote)}</p>` : ''}</figure>` : '';
     return `<li class="step" id="${idp}-${i + 1}">${fig}<div class="st-t"><span class="st-n" aria-hidden="true">${i + 1}</span><p>${rich(st.t)}</p></div></li>`;
@@ -288,6 +289,10 @@ function drugPage(d) {
   const missedBody = Array.isArray(d.missed) ? ul(d.missed) : `<p>${rich(d.missed || U.missedAsk)}</p>`;
   const missed = isPen ? sec('missed', U.missedPen, `<p class="redline">${U.noDouble}</p>${missedBody}${ul(C.missed.slice(1, 2))}`) : (d.missed ? sec('missed', U.missed, missedBody) : (Array.isArray(t.missed) && d.role !== 'reliever' ? sec('missed', U.missed, ul(t.missed.filter(x => !/^急救（緩解）吸入劑/.test(x)).map(x => /請看本藥品頁或說明書/.test(x) ? U.missedMaint : x))) : (d.role === 'reliever' ? sec('missed', U.missed, ul(t.missed ? t.missed.slice(-1) : [])) : '')));
   const haCard = isPen || d.highAlert ? haLinkCard(HA_OF[d.technique], B, d) : '';
+  // v1.6 (patient #1): 「看真實裝置」 links only — this page's existing video, the TFDA user manual already listed in this page's sources, and the TFDA label (d.insert). No new URLs, no vendor images.
+  const manuals = (d.sources || []).map(x => (x.match(/https:\/\/mcp\.fda\.gov\.tw\/(?:insert\/pdfcasefile|fileshow)\/[^\s（）()，；、]+/) || [])[0] && [(x.match(/https:\/\/mcp\.fda\.gov\.tw\/(?:insert\/pdfcasefile|fileshow)\/[^\s（）()，；、]+/))[0], /使用手冊/.test(x) ? '台灣使用手冊' : '台灣使用說明']).filter(Boolean);
+  const vb = s => `<span class="vb">${esc(s)}</span>`;
+  const realDev = `<div class="realdev no-print no-tts" role="group" aria-label="看真實裝置"><p class="rd-btns">${d.video ? `<a class="btn big" href="${esc(d.video)}" target="_blank" rel="noopener">▶ ${vb('看真實裝置：操作影片')} ↗</a>` : ''}${manuals.map(([u, n]) => `<a class="btn big" href="${esc(u)}" target="_blank" rel="noopener">📄 ${vb('看真實裝置：' + n + '（食藥署網站，PDF）')} ↗</a>`).join('')}<a class="btn big" href="${esc(d.insert)}" target="_blank" rel="noopener">📄 ${vb('看真實裝置：食藥署網站上的說明書（仿單）')} ↗</a></p><p class="small">${vb('只放連結，會開到外部網站' + (d.video ? '（影片：台灣胸腔暨重症加護醫學會網站）' : '') + '。本頁的步驟圖是示意圖，外觀以您手上的裝置為準。')}</p></div>`;
   const body = `<nav class="crumb no-print"><a href="${B}">${U.back}</a></nav>
 <article class="drug${isPen ? ' pen' : ''}" data-slug="${d.slug}">
 <header class="dh"><p class="eyebrow">${esc(d.category)}${d.role === 'insulinCombo' ? '｜胰島素＋GLP-1 複方' : ''}</p><h1>${esc(d.brand)}<span class="zh">${esc(d.zhName)}</span></h1>
@@ -296,6 +301,7 @@ function drugPage(d) {
 <details class="adv"><summary>進階資訊（成分、許可證字號）</summary><dl><div><dt>${U.ingredient}</dt><dd>${esc(d.ingredient)}</dd></div><div><dt>${U.license}（藥品身分證號）</dt><dd>${esc(d.license)}</dd></div>${abbr(d)}</dl></details>
 <p class="check">✅ ${U.checkDrug}</p></div>
 ${roleBox}${warn}${lasaBox(d, B)}
+${realDev}
 <div class="actions no-print"><button type="button" class="btn tts-all">${U.readAll}</button><button type="button" class="btn tts-stop" hidden>${U.stop}</button><button type="button" class="btn" data-print>🖨 ${U.print}</button><a class="btn" href="#qr">${U.qr}</a></div>
 ${sec('key', U.keySteps, (isPen && d.hold ? `<p class="holdbig">⏱ ${esc(d.brand)}：${esc(d.holdBig || '打完停留 ' + d.hold)}${/原廠/.test(d.holdNote || '') ? `<small>（${esc(plain(d.holdNote).replace(/（ⓘ[^）]*）/, ''))}）</small>` : ''}</p>` : '') + `<ol class="keypts">${keyPts.map(k => `<li>${rich(k)}</li>`).join('')}</ol>`)}
 ${sec('purpose', U.purpose, `<p>${rich(d.purpose)}</p>${ul(d.usual)}<p class="dose">${U.doseRule}</p>`)}
@@ -310,7 +316,7 @@ ${sec('storage', U.storage, ul(storage))}
 ${isPen ? sec('sharps', U.disposal, ul(C.disposal.sharps) + `<p><a href="${B}disposal/">${U.disposal} →</a></p>`) : ''}
 ${sec('mistakes', U.mistakes, ul(vlist(t.mistakes, d)))}
 ${sec('side', U.side, ul(vlist([...(d.side || []), ...(t.side || []).filter(x => !d.sideExclude || !x.includes(d.sideExclude))], d)))}
-${sec('triage', U.triage, triageBox(t.triage, triExtra, d.triage2, d.role === 'copdOnly' && C.triage[t.triage]?.redWaitCopd))}
+${sec('triage', U.triage, triageBox(t.triage, triExtra, d.triage2, ['copd', 'copdOnly'].includes(d.role) && C.triage[t.triage]?.redWaitCopd))}
 ${sec('video', U.video, video, ' data-noprint="1"')}
 <section class="card sec meta" id="sources"><h2>${U.sources}</h2>${srcList([...(d.sources || []), ...(t.sources || []).filter(x => !(d.sources || []).includes(x)).filter(x => !(/DailyMed/.test(x) && /Respimat/.test(x)) || x.startsWith(d.brand.split(' ')[0]))])}
 <p><a class="btn" href="${esc(d.insert)}" target="_blank" rel="noopener">${U.insert}</a></p>
@@ -432,7 +438,15 @@ function tally() {
   simple('print/tally/index.html', '吸入器噴數計數表', `<p>藥名：＿＿＿＿＿＿＿＿　總噴數：＿＿＿＿　開始日期：＿＿＿＿</p><p class="small">每用 1 下，就把一格劃掉。劃到總噴數就換新的一支（即使搖起來還有聲音）。</p><p class="no-print"><button type="button" class="btn" data-print>🖨 列印計數表</button></p><table class="tally" aria-label="噴數計數格">${rows.join('')}</table>`);
 }
 const CHANGES = [
- ['1.5.0', SITE.effective, [
+ ['1.6.0', SITE.effective, [
+  'Ryzodeg：「繼續按住後劑量視窗還是沒有回到 0」改成：換新針頭並做安全測試；要不要再打、打多少，先測血糖並聯絡藥師或醫師，不要自己再打一整劑。注射部位只寫腹部、大腿、上臂；用藥時間依說明書寫成每天 1 或 2 次、在正餐時。',
+  'Awiqli：打完劑量計數器沒有回到 0，先不要拔針、繼續按住；安全測試圖改標「劑量計數器」。',
+  'Humalog KwikPen、Mix50：安全測試寫出按住到視窗顯示 0、再慢慢數到 5；Mix50 開始使用後 30°C 以下、不要放冰箱、28 天內用完；資料來源加上台灣使用手冊。Apidra：回溫 1–2 小時與用藥時間依說明書。Lantus「3 次」那一句加上 ⓘ。',
+  '腎上腺素注射筆：說明書節號更正為「5.1 緊急治療」；資料來源加上美國 Epinephrine Injection 自動注射筆仿單與 EAACI 2021 指引。',
+  '只用於 COPD 的 Anoro、Incruse、Bevespi、Breztri：等救護車那一句改成「依醫師給您的 COPD 行動計畫」。眼藥水「至少等 15 分鐘」加上「以藥盒裡的說明書為準」；塞劑重點步驟加上「要多久請問藥師」。',
+  '藥品頁上方加「看真實裝置」按鈕（連到本頁已有的操作影片與食藥署說明書）；「一次看一步」開啟時，按鈕旁顯示「再按一次看全部步驟」。'
+ ]],
+ ['1.5.0', '2026-10-19', [
   '腎上腺素注射筆：第二支那一句加回「變嚴重」：「打完 5–15 分鐘沒有改善、變嚴重，或症狀又出現，而且手邊有第二支：在另一側大腿打第二支，並繼續等救護車。」「說明書與指引的不同說法」區塊移到使用方法頁最下面（資料來源旁），開頭寫明「急救時只要照本頁第 7 步做，同時撥 119」，補上說明書頁碼與版本，美國處方資訊與 WAO 改成直譯。',
   '胰島素筆「打完劑量視窗沒有回到 0」改成每支筆各自的做法：禮來 KwikPen 把針頭刺回皮膚完成這次注射；Ryzodeg 換新針頭、從安全測試重做；FlexPen 針頭先不要拔、繼續按到底；其他筆標示「本院藥師還在確認」。NovoRapid 加上先拔針再放開注射鈕。',
   'Humalog Mix25 KwikPen：依食藥署收錄的台灣使用手冊，安全測試 2 單位、數到 5、最多 4 次再換針頭；打完繼續按住、慢慢數到 5 再拔針。',
@@ -441,7 +455,7 @@ const CHANGES = [
   '眼藥水最後一步提醒「點完至少等 15 分鐘再戴回隱形眼鏡」，搜尋「隱形眼鏡」可以找到眼藥水；首頁與分享預覽的說明書叫法統一。',
   'Awiqli 寫出用完時可以分兩次注射的做法（台灣使用說明）；只用於 COPD 的吸入劑，等救護車那一句改成「依醫師給您的 COPD 行動計畫」；舌下錠圖片說明與 QR Code 的螢幕報讀文字修正。'
  ]],
- ['1.4.0', SITE.effective, [
+ ['1.4.0', '2026-10-19', [
   '腎上腺素注射筆：第二支的時機改成有出處的寫法：「打完 5–15 分鐘沒有改善，或症狀又出現，而且手邊有第二支：在另一側大腿打第二支，並繼續等救護車。」說明書、病人須知、美國說明書與 WAO 2020 的原文，改放在獨立的「說明書與指引的不同說法」區塊逐字引用。高警訊頁改成「一律撥 119，即使已經好轉；不要自己開車，也不要讓病人站起來走路」，並加上抗組織胺不能取代腎上腺素、拇指不可蓋住注射端兩行。',
   '舌下硝化甘油：等救護車時每 5 分鐘再含 1 顆，「總共最多 3 顆（包含第 1 顆）」；說明書那句改成原文引用，「5 分鐘就打 119」標出國外指引（AHA/ACC 2014）。',
   'Spiolto：忘記用藥那一段加上「本品不是急救藥，突然喘請用急救（緩解型）吸入劑」。',

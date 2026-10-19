@@ -161,11 +161,12 @@
     var items = $$(':scope > li.step', ol); if (items.length < 2) return;
     var N = items.length, cur = 0, on = false, id = 'os' + k;
     var bar = d.createElement('div'); bar.className = 'onestep no-print no-tts';
-    bar.innerHTML = '<button type="button" class="btn os-toggle" aria-pressed="false" aria-controls="' + id + '">👣 一次看一步</button>';
+    // v1.6 (newcomer #1): while the mode is on, a line next to the toggle says how to get back to all steps
+    bar.innerHTML = '<button type="button" class="btn os-toggle" aria-pressed="false" aria-controls="' + id + '">👣 一次看一步</button><span class="os-hint" id="' + id + '-hint" hidden>再按一次看全部步驟</span>';
     var nav = d.createElement('div'); nav.className = 'os-nav no-print no-tts'; nav.hidden = true;
     nav.innerHTML = '<button type="button" class="btn os-prev">← 上一步</button><span class="os-count" aria-live="polite" aria-atomic="true"></span><button type="button" class="btn os-next">下一步 →</button><button type="button" class="btn os-done" hidden>✅ 完成，看全部步驟</button>';
     ol.id = ol.id || id; ol.parentNode.insertBefore(bar, ol); ol.parentNode.insertBefore(nav, ol.nextSibling);
-    var tg = $('.os-toggle', bar), pv = $('.os-prev', nav), nx = $('.os-next', nav), dn = $('.os-done', nav), cnt = $('.os-count', nav);
+    var hint = $('.os-hint', bar), tg = $('.os-toggle', bar), pv = $('.os-prev', nav), nx = $('.os-next', nav), dn = $('.os-done', nav), cnt = $('.os-count', nav);
     items.forEach(function (li) { var t = $('.st-t', li); if (t) t.setAttribute('tabindex', '-1'); });
     function show(focus) {
       items.forEach(function (li, i) { li.classList.toggle('os-hide', on && i !== cur); });
@@ -181,7 +182,7 @@
       }
     }
     function go(n) { cur = Math.max(0, Math.min(N - 1, n)); show(true); }
-    function setOn(v) { on = v; tg.setAttribute('aria-pressed', on ? 'true' : 'false'); ol.classList.toggle('os-on', on); nav.hidden = !on; cur = 0; show(false); }
+    function setOn(v) { on = v; tg.setAttribute('aria-pressed', on ? 'true' : 'false'); hint.hidden = !on; if (on) tg.setAttribute('aria-describedby', hint.id); else tg.removeAttribute('aria-describedby'); ol.classList.toggle('os-on', on); nav.hidden = !on; cur = 0; show(false); }
     tg.addEventListener('click', function () { setOn(!on); });
     pv.addEventListener('click', function () { go(cur - 1); });
     nx.addEventListener('click', function () { go(cur + 1); });

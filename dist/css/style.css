@@ -218,3 +218,7 @@ html.lt .tbtn.lang{max-width:100%}html.lt .tbtn select{max-width:calc(100vw - 70
 /* v1.4.0: 筆型頁 A4 列印維持 2 頁內（字級不變，只縮行距與間距） */
 @media print{.drug.pen{line-height:1.25}.drug.pen .step{margin:0 0 2px!important}.drug.pen .step .fig,.drug.pen .step svg.ill{width:19mm!important;max-width:19mm!important}.drug.pen .step{grid-template-columns:19mm 1fr}.drug.pen .sec-head h2,.drug.pen h2{margin:3px 0 1px}}
 .step>.st-t:only-child{grid-column:1/-1}
+/* v1.6: 一次看一步 hint (newcomer #1); 看真實裝置 links (patient #1) */
+.onestep{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.os-hint{font-weight:700;color:var(--primary)}.os-hint[hidden]{display:none}
+.realdev{margin:12px 0}.rd-btns{display:flex;flex-direction:column;gap:8px;margin:0 0 6px}.realdev .btn.big{display:flex;align-items:center;justify-content:center;min-height:56px;font-size:1.15rem;font-weight:700;text-align:center}
+@media print{.realdev{display:none!important}}
